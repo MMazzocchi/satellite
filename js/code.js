@@ -13,7 +13,7 @@ function setup() {
     renderer.setSize(500, 500);
     $('#container').append(renderer.domElement);
 
-    currentView = new GlobeView();
+    currentView = new BuildView();
 
     setInterval(step, 40);
 }
