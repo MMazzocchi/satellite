@@ -1,6 +1,8 @@
 var BuildView = function(satellite) {
     View.call(this, "Build View");
 
+    this.camera = new THREE.OrthographicCamera(-800, 800, 800, -800, 1, 10000);
+
     this.camera.position.z = 1000;
     this.camera.position.y = 1000;
     this.camera.rotation.x -= Math.PI*0.25;
