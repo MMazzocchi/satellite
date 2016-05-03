@@ -1,11 +1,11 @@
 var Chassis = function() {
-    var geometry = new THREE.BoxGeometry(500, 500, 500);
+    var geometry = new THREE.BoxGeometry(400, 400, 400);
     var material = new THREE.MeshLambertMaterial({ color: "#555555" });
     THREE.Mesh.call(this, geometry, material);
 
-    this.width  = 500;
-    this.height = 500;
-    this.length = 500;
+    this.width  = 400;
+    this.height = 400;
+    this.length = 400;
 };
 
 Chassis.prototype = Object.create(THREE.Mesh.prototype);
