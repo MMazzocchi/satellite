@@ -31,7 +31,13 @@ var Satellite = function() {
     this.hardDrive.position.z += this.hardDrive.length/2;
     this.add(this.hardDrive);
 
-    this.fuelTank = undefined;
+    // Fuel tank will be on the back of the chassis.
+    this.fuelTank = new FuelTank();
+    this.fuelTank.position.z -= this.chassis.length/2 + 
+                                this.fuelTank.length/2;
+    this.add(this.fuelTank);
+
+    this.processor = undefined;
 };
 
 Satellite.prototype = Object.create(THREE.Object3D.prototype);
@@ -47,7 +53,7 @@ Satellite.prototype.replaceChassis = function(newChassis) {
 
 Satellite.prototype.replaceCommDish = function(newCommDish) {
     this.remove(this.commDish);
-    this.ccommDish = newCommDish;
+    this.commDish = newCommDish;
     this.commDish.position.z = this.chassis.length/2  +
                                this.commDish.length/2 + 1;
     this.add(newCommDish);
@@ -72,4 +78,13 @@ Satellite.prototype.replaceHardDrive = function(newHardDrive) {
     this.hardDrive.position.z += this.hardDrive.length/2;
     this.add(newHardDrive);
 };
+
+Satellite.prototype.replaceFuelTank = function(newFuelTank) {
+    this.remove(this.fuelTank);
+    this.fuelTank = newFuelTank;
+    this.fuelTank.position.z -= this.chassis.length/2 + 
+                                this.fuelTank.length/2;
+    this.add(newFuelTank);
+};
+
 
