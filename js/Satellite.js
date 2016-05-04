@@ -20,8 +20,10 @@ var Satellite = function() {
     this.processor = new Processor();
     this.replaceProcessor(this.processor);
 
+    this.solarPanels = new SolarPanels();
+    this.replaceSolarPanels(this.solarPanels);
+
     this.thrusters = undefined;
-    this.solarPanels = undefined;
 };
 
 Satellite.prototype = Object.create(THREE.Object3D.prototype);
@@ -96,4 +98,24 @@ Satellite.prototype.replaceProcessor = function(newProcessor) {
     this.processor.position.x += this.processor.width/2;
     this.processor.position.z -= this.processor.length/2;
     this.add(newProcessor);
+};
+
+Satellite.prototype.replaceSolarPanels = function(newSolarPanels) {
+    // SolarPanels will be  on the left and right sides of the chassis.
+    if(this.solarPanels != undefined) {
+        this.remove(this.solarPanels.getLeftPanel());
+        this.remove(this.solarPanels.getRightPanel());
+    }
+
+    this.solarPanels = newSolarPanels;
+    var leftPanel = newSolarPanels.getLeftPanel();
+    leftPanel.position.x += this.chassis.width/2 +
+                            leftPanel.width/2;
+    this.add(leftPanel);
+
+    var rightPanel = newSolarPanels.getRightPanel();
+    rightPanel.position.x -= this.chassis.width/2 +
+                            rightPanel.width/2;
+    this.add(rightPanel);
+
 };
