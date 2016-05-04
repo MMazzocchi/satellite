@@ -32,10 +32,18 @@ var FuelTank = function() {
 
     tank2.position.x += midLength/2 + radius;
     tank2.rotation.z += Math.PI*0.5;
-    tank2.position.y -= radius
+    tank2.position.y -= radius;
+
+    var tubeGeom = new THREE.TorusGeometry(radius, 20, 15, 20, Math.PI);
+    var tubeMat  = new THREE.MeshLambertMaterial({ color: "#FF0000" });
+    var tube     = new THREE.Mesh(tubeGeom, tubeMat);
+
+    tube.position.x -= (radius + midLength)/2;
+    tube.rotation.z += Math.PI*0.5;
 
     this.add(tank1);
     this.add(tank2);
+    this.add(tube);
 
     this.length = 2*radius;
     this.width  = 2*radius + midLength;
