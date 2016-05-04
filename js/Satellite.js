@@ -1,58 +1,47 @@
 var Satellite = function() {
     THREE.Object3D.call(this);
 
-    // The chassis will be the center of the satellite.
+    // No need to do any replacing; the chassis is always the center.
     this.chassis = new Chassis();
     this.add(this.chassis);
 
-    this.solarPanels = undefined;
-
-    // Comm Dish will be on the front of the chassis.
     this.commDish = new CommDish();
-    this.commDish.position.z += this.chassis.length/2  + 
-                                this.commDish.length/2 + 1;
-    this.add(this.commDish);
+    this.replaceCommDish(this.commDish);
+
+    this.batteries = new Batteries();
+    this.replaceBatteries(this.batteries);
+
+    this.hardDrive = new HardDrive();
+    this.replaceHardDrive(this.hardDrive);
+
+    this.fuelTank = new FuelTank();
+    this.replaceFuelTank(this.fuelTank);
+
+    this.processor = new Processor();
+    this.replaceProcessor(this.processor);
 
     this.thrusters = undefined;
-
-    // Batteries will be in front left corner of the chassis.
-    this.batteries = new Batteries();
-    this.batteries.position.y += this.chassis.height/2   + 
-                                 this.batteries.height/2 + 1;
-    this.batteries.position.x += this.batteries.width/2;
-    this.batteries.position.z += this.batteries.length/2;
-    this.add(this.batteries);
-
-    // Hard drive will be in front right corner of the chassis.
-    this.hardDrive = new HardDrive();
-    this.hardDrive.position.y += this.chassis.height/2   + 
-                                 this.hardDrive.height/2 + 1;
-    this.hardDrive.position.x -= this.hardDrive.width/2;
-    this.hardDrive.position.z += this.hardDrive.length/2;
-    this.add(this.hardDrive);
-
-    // Fuel tank will be on the back of the chassis.
-    this.fuelTank = new FuelTank();
-    this.fuelTank.position.z -= this.chassis.length/2 + 
-                                this.fuelTank.length/2;
-    this.add(this.fuelTank);
-
-    this.processor = undefined;
+    this.solarPanels = undefined;
 };
 
 Satellite.prototype = Object.create(THREE.Object3D.prototype);
 Satellite.prototype.constructor = Satellite;
 
 Satellite.prototype.replaceChassis = function(newChassis) {
-    this.remove(this.chassis);
+    // The chassis will be the center of the satellite.
+    if(this.chassis != undefined) {
+        this.remove(this.chassis);
+    }
     this.chassis = newChassis;
     this.add(newChassis);
-    this.commDish.position.z = this.chassis.length/2  +
-                               this.commDish.length/2 + 1;
+    if(this.commDish) { this.replaceCommDish(this.commDish); }
 };
 
 Satellite.prototype.replaceCommDish = function(newCommDish) {
-    this.remove(this.commDish);
+    // Comm Dish will be on the front of the chassis.
+    if(this.commDish != undefined) {
+        this.remove(this.commDish);
+    }
     this.commDish = newCommDish;
     this.commDish.position.z = this.chassis.length/2  +
                                this.commDish.length/2 + 1;
@@ -60,7 +49,10 @@ Satellite.prototype.replaceCommDish = function(newCommDish) {
 };
 
 Satellite.prototype.replaceBatteries = function(newBatteries) {
-    this.remove(this.batteries);
+    // Batteries will be in front left corner of the chassis.
+    if(this.batteries != undefined) {
+        this.remove(this.batteries);
+    }
     this.batteries = newBatteries;
     this.batteries.position.y += this.chassis.height/2   + 
                                  this.batteries.height/2 + 1;
@@ -70,7 +62,10 @@ Satellite.prototype.replaceBatteries = function(newBatteries) {
 };
 
 Satellite.prototype.replaceHardDrive = function(newHardDrive) {
-    this.remove(this.hardDrive);
+    // Hard drive will be in front right corner of the chassis.
+    if(this.hardDrive != undefined) {
+        this.remove(this.hardDrive);
+    }
     this.hardDrive = newHardDrive;
     this.hardDrive.position.y += this.chassis.height/2   + 
                                  this.hardDrive.height/2 + 1;
@@ -80,11 +75,25 @@ Satellite.prototype.replaceHardDrive = function(newHardDrive) {
 };
 
 Satellite.prototype.replaceFuelTank = function(newFuelTank) {
-    this.remove(this.fuelTank);
+    // Fuel tank will be on the back of the chassis.
+    if(this.fuelTank != undefined) {
+        this.remove(this.fuelTank);
+    }
     this.fuelTank = newFuelTank;
     this.fuelTank.position.z -= this.chassis.length/2 + 
                                 this.fuelTank.length/2;
     this.add(newFuelTank);
 };
 
-
+Satellite.prototype.replaceProcessor = function(newProcessor) {
+    // Processor will be in back left corner of the chassis.
+    if(this.processor != undefined) {
+        this.remove(this.processor);
+    }
+    this.processor = newProcessor;
+    this.processor.position.y += this.chassis.height/2 +
+                                 this.processor.height/2;
+    this.processor.position.x += this.processor.width/2;
+    this.processor.position.z -= this.processor.length/2;
+    this.add(newProcessor);
+};
