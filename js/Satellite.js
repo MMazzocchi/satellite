@@ -20,6 +20,9 @@ var Satellite = function() {
     this.processor = new Processor();
     this.replaceProcessor(this.processor);
 
+    this.sensors = new Sensors();
+    this.replaceSensors(this.sensors);
+
     this.solarPanels = new SolarPanels();
     this.replaceSolarPanels(this.solarPanels);
 
@@ -99,6 +102,19 @@ Satellite.prototype.replaceProcessor = function(newProcessor) {
     this.processor.position.x += this.processor.width/2;
     this.processor.position.z -= this.processor.length/2;
     this.add(newProcessor);
+};
+
+Satellite.prototype.replaceSensors = function(newSensors) {
+    // Sensors will be in back right corner of the chassis.
+    if(this.sensors != undefined) {
+        this.remove(this.sensors);
+    }
+    this.sensors = newSensors;
+    this.sensors.position.y += this.chassis.height/2 +
+                               this.sensors.height/2;
+    this.sensors.position.x -= this.sensors.width/2;
+    this.sensors.position.z -= this.sensors.length/2;
+    this.add(newSensors);
 };
 
 Satellite.prototype.replaceSolarPanels = function(newSolarPanels) {
