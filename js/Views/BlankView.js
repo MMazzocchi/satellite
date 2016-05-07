@@ -2,7 +2,7 @@ var BlankView = function(satellite) {
     View.call(this, "Blank View");
 };
 
-BuildView.prototype = Object.create(View.prototype);
-BuildView.prototype.constructor = BuildView;
+BlankView.prototype = Object.create(View.prototype);
+BlankView.prototype.constructor = BuildView;
 
-BuildView.prototype.step = function() {};
+BlankView.prototype.step = function() {};
