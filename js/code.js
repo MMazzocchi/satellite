@@ -7,13 +7,22 @@ function step() {
 }
 
 function setup() {
-
-    // Setup three.js
+    // Setup the renderer
     renderer = new THREE.WebGLRenderer();
-    renderer.setSize(500, 500);
-    $('#container').append(renderer.domElement);
 
-    currentView = new BlankView();
+    // Determine the best dimensions for the renderer.
+    var viewColumn = $('#viewColumn')[0];
+
+    // Pick the shortest length between the width of the column, and the height
+    // of the window. We don't want a vertical scrollbar.
+    var dimension = viewColumn.offsetWidth;
+    if(dimension > window.innerHeight) {
+        dimension = window.innerHeight;
+    }
+    renderer.setSize(dimension, dimension);
+    $('#viewColumn').append(renderer.domElement);
+
+    currentView = new BuildView();
 
     setInterval(step, 40);
 }

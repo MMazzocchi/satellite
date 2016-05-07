@@ -3,11 +3,19 @@
   <head>
     <title>Satellite</title>
     <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable= no"/>
+
     <link rel="stylesheet" type="text/css" href="css/3rd_party/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="css/style.css">
   </head>
   <body>
-    <div id="container"></div>
+    <div id="content" class="container-fluid">
+      <div id="row" class="row">
+        <div id="menuColumn" class="col-xs-3"></div>
+        <div id="viewColumn" class="col-xs-6 nopadding"></div>
+        <div id="displayColumn" class="col-xs-3"></div>
+    </div>
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
     <script src="js/3rd_party/three.min.js"></script>
     <script src="js/3rd_party/bootstrap.min.js"></script>

@@ -5,3 +5,19 @@ body {
   width: 100%;
   text-align: center;
 }
+
+#menuColumn {
+}
+
+#viewColumn {
+  text-align: center;
+  line-height: 0px;
+}
+
+#displayColumn {
+}
+
+.nopadding {
+  padding: 0px;
+  margin: 0px;
+}
