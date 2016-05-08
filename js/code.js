@@ -1,30 +1,19 @@
 var renderer;
 var currentView;
 
+var navigation;
+
 function step() {
     currentView.step();
     currentView.render(renderer);
 }
 
-function setCurrentView(newView) {
-    var menuPane = $('#menuPane');
-    var statusColumn = $('#statusColumn');
-
-    menuPane.html("");
-    statusColumn.html("");
-
-    menuPane.append(newView.getMenuElement());
-    statusColumn.append(newView.getStatusElement());
-
-    currentView = newView;
-}
-
 function setup() {
+    navigation = new Navigation();
+    navigation.loadHomeView();
+
     // Setup the renderer
     renderer = new THREE.WebGLRenderer();
-
-    var view = new HomeView();
-    setCurrentView(view);
 
     // Determine the best dimensions for the renderer.
     var viewColumn = $('#viewColumn')[0];
