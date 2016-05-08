@@ -23,7 +23,7 @@ function setup() {
     // Setup the renderer
     renderer = new THREE.WebGLRenderer();
 
-    var view = new View();
+    var view = new HomeView();
     setCurrentView(view);
 
     // Determine the best dimensions for the renderer.
