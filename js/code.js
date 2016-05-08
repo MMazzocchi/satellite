@@ -1,5 +1,6 @@
 var renderer;
 var currentView;
+var currentMenu;
 
 function step() {
     currentView.step();
@@ -23,6 +24,9 @@ function setup() {
     $('#viewColumn').append(renderer.domElement);
 
     currentView = new BuildView();
+
+    currentMenu = new MenuPane();
+    $('#menuColumn').append(currentMenu.generateElement());
 
     setInterval(step, 40);
 }
