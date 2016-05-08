@@ -40,7 +40,14 @@ Satellite.prototype.replaceChassis = function(newChassis) {
     }
     this.chassis = newChassis;
     this.add(newChassis);
-    if(this.commDish) { this.replaceCommDish(this.commDish); }
+    if(this.commDish) {           this.replaceCommDish(this.commDish);       }
+    if(this.replaceBatteries) {   this.replaceBatteries(this.batteries);     }
+    if(this.replaceHardDrive) {   this.replaceHardDrive(this.hardDrive);     }
+    if(this.replaceFuelTank) {    this.replaceFuelTank(this.fuelTank);       }
+    if(this.replaceProcessor) {   this.replaceProcessor(this.processor);     }
+    if(this.replaceSensors) {     this.replaceSensors(this.sensors);         }
+    if(this.replaceSolarPanels) { this.replaceSolarPanels(this.solarPanels); }
+    if(this.replaceThrusters) {   this.replaceThrusters(this.thrusters);     }
 };
 
 Satellite.prototype.replaceCommDish = function(newCommDish) {
