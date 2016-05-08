@@ -1,5 +1,5 @@
-var OrbitView = function() {
-    View.call(this, "Orbit View");
+var OrbitScene = function() {
+    Scene.call(this, "Orbit Scene");
 
     this.globe = new Globe();
     this.scene.add(this.globe);
@@ -24,10 +24,10 @@ var OrbitView = function() {
     this.scene.add(this.satellite);
 };
 
-OrbitView.prototype = Object.create(View.prototype);
-OrbitView.prototype.constructor = OrbitView;
+OrbitScene.prototype = Object.create(Scene.prototype);
+OrbitScene.prototype.constructor = OrbitScene;
 
-OrbitView.prototype.step = function() {
+OrbitScene.prototype.step = function() {
     this.globe.rotation.y -= 0.005;
 
     this.satellite.angle += 0.01;

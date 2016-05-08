@@ -1,5 +1,5 @@
-var GlobeView = function() {
-    View.call(this, "Globe View");
+var GlobeScene = function() {
+    Scene.call(this, "Globe Scene");
 
     this.camera = new THREE.OrthographicCamera(-700, 700, 700, -700, 1, 10000);
     this.camera.position.z = 1000;
@@ -24,9 +24,9 @@ var GlobeView = function() {
     this.scene.add(ellipse);
 };
 
-GlobeView.prototype = Object.create(View.prototype);
-GlobeView.prototype.constructor = GlobeView;
+GlobeScene.prototype = Object.create(Scene.prototype);
+GlobeScene.prototype.constructor = GlobeScene;
 
-GlobeView.prototype.step = function() {
+GlobeScene.prototype.step = function() {
     this.globe.rotation.y -= 0.03;
 };

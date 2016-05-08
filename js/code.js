@@ -1,10 +1,10 @@
 var renderer;
-var currentView;
+var currentScene;
 var currentMenu;
 
 function step() {
-    currentView.step();
-    currentView.render(renderer);
+    currentScene.step();
+    currentScene.render(renderer);
 }
 
 function setup() {
@@ -23,7 +23,7 @@ function setup() {
     renderer.setSize(dimension, dimension);
     $('#viewColumn').append(renderer.domElement);
 
-    currentView = new BuildView();
+    currentScene = new BuildScene();
 
     currentMenu = new MenuPane();
     $('#menuColumn').append(currentMenu.generateElement());

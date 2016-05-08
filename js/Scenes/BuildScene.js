@@ -1,5 +1,5 @@
-var BuildView = function(satellite) {
-    View.call(this, "Build View");
+var BuildScene = function(satellite) {
+    Scene.call(this, "Build Scene");
 
     this.camera = new THREE.OrthographicCamera(-800, 800, 800, -800, 1, 10000);
 
@@ -21,9 +21,9 @@ var BuildView = function(satellite) {
     this.scene.add(satellite);
 };
 
-BuildView.prototype = Object.create(View.prototype);
-BuildView.prototype.constructor = BuildView;
+BuildScene.prototype = Object.create(Scene.prototype);
+BuildScene.prototype.constructor = BuildScene;
 
-BuildView.prototype.step = function() {
+BuildScene.prototype.step = function() {
     this.satellite.rotation.y += 0.03;
 };
