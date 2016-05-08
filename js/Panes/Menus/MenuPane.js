@@ -25,5 +25,6 @@ MenuPane.prototype.generateElement = function() {
     html +=     "<li><a href\"#\">Purchase</a></li>\n";
     html +=   "</ul>\n";
     html += "</div>\n";
+    html += "<div class=\"divider\"></div>\n";
     return html;
 };
