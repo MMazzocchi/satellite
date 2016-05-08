@@ -7,13 +7,13 @@ function step() {
 }
 
 function setCurrentView(newView) {
-    var menuColumn = $('#menuColumn');
+    var menuPane = $('#menuPane');
     var statusColumn = $('#statusColumn');
 
-    menuColumn.html("");
+    menuPane.html("");
     statusColumn.html("");
 
-    menuColumn.append(newView.getMenuElement());
+    menuPane.append(newView.getMenuElement());
     statusColumn.append(newView.getStatusElement());
 
     currentView = newView;
