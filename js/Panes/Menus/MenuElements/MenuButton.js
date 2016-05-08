@@ -5,9 +5,7 @@ var MenuButton = function(label, onclickName) {
 
 MenuButton.prototype.generateElement = function() {
     var html = "";
-    html += "<div class=\"btn-group\" role=\"group\">\n";
-    html += "<button type=\"button\" class=\"btn btn-default\" onclick=\""+
-            this.onclickName+"\">"+this.label+"</button>\n";
-    html += "</div>\n";
+    html += "<button type=\"button\" class=\"btn btn-default full-btn\" "+
+            "onclick=\""+this.onclickName+"\">"+this.label+"</button>\n";
     return html;
 };

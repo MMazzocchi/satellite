@@ -9,7 +9,7 @@ MenuPane.prototype.constructor = MenuPane;
 
 MenuPane.prototype.generateElement = function() {
     var html = "";
-    html += "<div class=\"btn-group-vertical btn-group-justified\" role=\"group\" "+
+    html += "<div class=\"btn-group-vertical menu-container\" role=\"group\" "+
             "aria-label=\"...\">\n";
     for(var i in this.menuItems) {
         html += this.menuItems[i].generateElement();

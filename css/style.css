@@ -17,6 +17,10 @@ body {
 #displayColumn {
 }
 
+#menuPane .menu-container {
+  width: 100%;
+}
+
 .nopadding {
   padding: 0px;
   margin: 0px;
@@ -32,4 +36,8 @@ body {
   border-color: #999999;
   margin-top: 10px;
   margin-bottom: 10px;
+}
+
+.full-btn {
+  width: 100%;
 }

@@ -18,3 +18,7 @@ Navigation.prototype.setCurrentView = function(newView) {
 Navigation.prototype.loadHomeView = function() {
     this.setCurrentView(this.homeView);
 };
+
+Navigation.prototype.loadBuildView = function() {
+    this.setCurrentView(new BuildView());
+};
