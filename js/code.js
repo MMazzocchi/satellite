@@ -1,15 +1,30 @@
 var renderer;
-var currentScene;
-var currentMenu;
+var currentView;
 
 function step() {
-    currentScene.step();
-    currentScene.render(renderer);
+    currentView.step();
+    currentView.render(renderer);
+}
+
+function setCurrentView(newView) {
+    var menuColumn = $('#menuColumn');
+    var statusColumn = $('#statusColumn');
+
+    menuColumn.html("");
+    statusColumn.html("");
+
+    menuColumn.append(newView.getMenuElement());
+    statusColumn.append(newView.getStatusElement());
+
+    currentView = newView;
 }
 
 function setup() {
     // Setup the renderer
     renderer = new THREE.WebGLRenderer();
+
+    var view = new View();
+    setCurrentView(view);
 
     // Determine the best dimensions for the renderer.
     var viewColumn = $('#viewColumn')[0];
@@ -22,11 +37,6 @@ function setup() {
     }
     renderer.setSize(dimension, dimension);
     $('#viewColumn').append(renderer.domElement);
-
-    currentScene = new BuildScene();
-
-    currentMenu = new MenuPane();
-    $('#menuColumn').append(currentMenu.generateElement());
 
     setInterval(step, 40);
 }
