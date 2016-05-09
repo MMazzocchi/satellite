@@ -45,11 +45,11 @@
               <!-- TODO: Generate these with a django template. -->
               <h4>Chassis</h4>
               <div class="btn-group btn-group-justified">
-                <a class="btn btn-default" role="button">
+                <a id="chassis-left" class="btn btn-default" role="button">
                   <span class="glyphicon glyphicon-chevron-left"
                         aria-hidden="true"></span>
                 </a>
-                <a class="btn btn-default" role="button">
+                <a id="chassis-right" class="btn btn-default" role="button">
                   <span class="glyphicon glyphicon-chevron-right"
                         aria-hidden="true"></span>
                 </a>
@@ -162,15 +162,18 @@
     <script src="js/3rd_party/three.min.js"></script>
     <script src="js/3rd_party/bootstrap.min.js"></script>
     <script src="js/Globe.js"></script>
-    <script src="js/Components/Chassis.js"></script>
-    <script src="js/Components/CommDish.js"></script>
-    <script src="js/Components/Batteries.js"></script>
-    <script src="js/Components/HardDrive.js"></script>
-    <script src="js/Components/FuelTank.js"></script>
-    <script src="js/Components/Processor.js"></script>
-    <script src="js/Components/SolarPanels.js"></script>
-    <script src="js/Components/Thrusters.js"></script>
-    <script src="js/Components/Sensors.js"></script>
+    <script src="js/Components/Chassis/Chassis.js"></script>
+    <script src="js/Components/Chassis/StandardChassis.js"></script>
+    <script src="js/Components/Chassis/LightChassis.js"></script>
+    <script src="js/Components/Chassis/HeavyChassis.js"></script>
+    <script src="js/Components/CommDish/CommDish.js"></script>
+    <script src="js/Components/Batteries/Batteries.js"></script>
+    <script src="js/Components/HardDrive/HardDrive.js"></script>
+    <script src="js/Components/FuelTank/FuelTank.js"></script>
+    <script src="js/Components/Processor/Processor.js"></script>
+    <script src="js/Components/SolarPanels/SolarPanels.js"></script>
+    <script src="js/Components/Thrusters/Thrusters.js"></script>
+    <script src="js/Components/Sensors/Sensors.js"></script>
     <script src="js/Satellite.js"></script>
     <script src="js/Scenes/Scene.js"></script>
     <script src="js/Scenes/BuildScene.js"></script>
@@ -178,10 +181,6 @@
     <script src="js/Scenes/OrbitScene.js"></script>
     <script src="js/Scenes/BlankScene.js"></script>
     <script src="js/Scenes/TitleScene.js"></script>
-    <script src="js/Panes/Pane.js"></script>
-    <script src="js/Panes/Menus/MenuElements/MenuButton.js"></script>
-    <script src="js/Panes/Menus/MenuPane.js"></script>
-    <script src="js/Panes/Menus/HomeMenu.js"></script>
     <script src="js/Views/View.js"></script>
     <script src="js/Views/HomeView.js"></script>
     <script src="js/Views/BuildView.js"></script>
