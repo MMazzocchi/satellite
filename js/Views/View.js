@@ -14,6 +14,8 @@ View.prototype.step = function() {
     this.scene.step();
 };
 
+View.prototype.setupMenu = function() {};
+
 View.prototype.getMenuElement = function() {
     return this.menuPane.generateElement();
 };

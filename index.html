@@ -20,14 +20,30 @@
                     aria-hidden="true"></span>
             </button>
             <ul class="dropdown-menu" aria-labelledby="mainMenuDropdown">
-              <li><a href"#" onclick="navigation.loadHomeView()">Home</a></li>
-              <li><a href"#" onclick="navigation.loadBuildView()">Build</a></li>
-              <li><a href"#">Jobs</a></li>
-              <li><a href"#">Status</a></li>
+              <li><a href="#" class="home-link"  >Home</a></li>
+              <li><a href="#" class="build-link" >Build</a></li>
+              <li><a href="#" class="jobs-link"  >Jobs</a></li>
+              <li><a href="#" class="status-link">Status</a></li>
             </ul>
           </div>
           <div class="divider"></div>
-          <div id="menuPane"></div>
+          <div id="menuPane">
+            <div id="homeMenu" class="btn-group-vertical menu-container"
+                 aria-label="..." role="group">
+              <button class="btn btn-default full-btn home-link" 
+                      type="button">Home</button>
+              <button class="btn btn-default full-btn build-link"
+                      type="button">Build</button>
+              <button class="btn btn-default full-btn jobs-link"
+                      type="button">Jobs</button>
+              <button class="btn btn-default full-btn status-link"
+                      type="button">Status</button>
+            </div>
+            <div id="buildMenu" class="btn-group-vertical menu-container"
+                 aria-label="..." role="group">
+              <p>Hi I'm the build menu.</p>
+            </div>
+          </div>
         </div>
         <div id="viewColumn" class="col-xs-6 nopadding"></div>
         <div id="displayColumn" class="col-xs-3"></div>

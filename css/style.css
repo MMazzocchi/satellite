@@ -17,8 +17,13 @@ body {
 #displayColumn {
 }
 
-#menuPane .menu-container {
+#menuPane {
   width: 100%;
+}
+
+.menu-container {
+  width: 100%;
+  display: none;
 }
 
 .nopadding {

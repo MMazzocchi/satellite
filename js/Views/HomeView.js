@@ -3,7 +3,18 @@ var HomeView = function() {
 
     this.scene = new TitleScene();
     this.menuPane = new HomeMenu();
+
+    this.menuId = "homeMenu";
 };
 
 HomeView.prototype = Object.create(View.prototype);
 HomeView.prototype.constructor = HomeView;
+
+HomeView.prototype.setupMenu = function() {
+    // Clear any already bound click functions.
+    $('.home-link').off("click");
+    $('.build-link').off("click");
+
+    $('.home-link').click(function() { navigation.loadHomeView() });
+    $('.build-link').click(function() { navigation.loadBuildView() });
+};

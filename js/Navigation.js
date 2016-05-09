@@ -4,13 +4,18 @@ var Navigation = function() {
 
 Navigation.prototype.setCurrentView = function(newView) {
     var menuPane = $('#menuPane');
-    var statusColumn = $('#statusColumn');
+    var children = menuPane.children();
 
-    menuPane.html("");
-    statusColumn.html("");
+    for(var i = 0; i < children.length; i++) {
+        if(children[i].style.display != "none") {
+            children[i].style.display = "none";
+        }
+    }
 
-    menuPane.append(newView.getMenuElement());
-    statusColumn.append(newView.getStatusElement());
+    var menuId = newView.menuId;
+    $('#'+menuId)[0].style.display = "block";
+
+    newView.setupMenu();
 
     currentView = newView;
 };
