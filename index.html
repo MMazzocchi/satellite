@@ -12,21 +12,23 @@
     <div id="content" class="container-fluid">
       <div id="row" class="row">
         <div id="menuColumn" class="col-xs-3">
-          <div class="dropdown">
-            <button class="btn btn-default dropdown-toggle" type="button"
-                    data-toggle="dropdown" aria-haspopup="true" 
-                    aria-expanded="true" id="mainMenuDropdown">
-              <span class="glyphicon glyphicon-menu-hamburger" 
-                    aria-hidden="true"></span>
-            </button>
-            <ul class="dropdown-menu" aria-labelledby="mainMenuDropdown">
-              <li><a href="#" class="home-link"  >Home</a></li>
-              <li><a href="#" class="build-link" >Build</a></li>
-              <li><a href="#" class="jobs-link"  >Jobs</a></li>
-              <li><a href="#" class="status-link">Status</a></li>
-            </ul>
+          <div id="navHeader">
+            <div class="dropdown">
+              <button class="btn btn-default dropdown-toggle" type="button"
+                      data-toggle="dropdown" aria-haspopup="true" 
+                      aria-expanded="true" id="mainMenuDropdown">
+                <span class="glyphicon glyphicon-menu-hamburger" 
+                      aria-hidden="true"></span>
+              </button>
+              <ul class="dropdown-menu" aria-labelledby="mainMenuDropdown">
+                <li><a href="#" class="home-link"  >Home</a></li>
+                <li><a href="#" class="build-link" >Build</a></li>
+                <li><a href="#" class="jobs-link"  >Jobs</a></li>
+                <li><a href="#" class="status-link">Status</a></li>
+              </ul>
+            </div>
+            <div class="divider"></div>
           </div>
-          <div class="divider"></div>
           <div id="menuPane">
             <div id="homeMenu" class="btn-group-vertical menu-container"
                  aria-label="..." role="group">
@@ -39,9 +41,116 @@
               <button class="btn btn-default full-btn status-link"
                       type="button">Status</button>
             </div>
-            <div id="buildMenu" class="btn-group-vertical menu-container"
-                 aria-label="..." role="group">
-              <p>Hi I'm the build menu.</p>
+            <div id="buildMenu" class="menu-container">
+              <!-- TODO: Generate these with a django template. -->
+              <h4>Chassis</h4>
+              <div class="btn-group btn-group-justified">
+                <a class="btn btn-default" role="button">
+                  <span class="glyphicon glyphicon-chevron-left"
+                        aria-hidden="true"></span>
+                </a>
+                <a class="btn btn-default" role="button">
+                  <span class="glyphicon glyphicon-chevron-right"
+                        aria-hidden="true"></span>
+                </a>
+              </div>
+
+              <h4>Comm Dish</h4>
+              <div class="btn-group btn-group-justified">
+                <a class="btn btn-default" role="button">
+                  <span class="glyphicon glyphicon-chevron-left"
+                        aria-hidden="true"></span>
+                </a>
+                <a class="btn btn-default" role="button">
+                  <span class="glyphicon glyphicon-chevron-right"
+                        aria-hidden="true"></span>
+                </a>
+              </div>
+
+              <h4>Batteries</h4>
+              <div class="btn-group btn-group-justified">
+                <a class="btn btn-default" role="button">
+                  <span class="glyphicon glyphicon-chevron-left"
+                        aria-hidden="true"></span>
+                </a>
+                <a class="btn btn-default" role="button">
+                  <span class="glyphicon glyphicon-chevron-right"
+                        aria-hidden="true"></span>
+                </a>
+              </div>
+
+              <h4>Solar Panels</h4>
+              <div class="btn-group btn-group-justified">
+                <a class="btn btn-default" role="button">
+                  <span class="glyphicon glyphicon-chevron-left"
+                        aria-hidden="true"></span>
+                </a>
+                <a class="btn btn-default" role="button">
+                  <span class="glyphicon glyphicon-chevron-right"
+                        aria-hidden="true"></span>
+                </a>
+              </div>
+
+              <h4>Storage</h4>
+              <div class="btn-group btn-group-justified">
+                <a class="btn btn-default" role="button">
+                  <span class="glyphicon glyphicon-chevron-left"
+                        aria-hidden="true"></span>
+                </a>
+                <a class="btn btn-default" role="button">
+                  <span class="glyphicon glyphicon-chevron-right"
+                        aria-hidden="true"></span>
+                </a>
+              </div>
+
+              <h4>Sensors</h4>
+              <div class="btn-group btn-group-justified">
+                <a class="btn btn-default" role="button">
+                  <span class="glyphicon glyphicon-chevron-left"
+                        aria-hidden="true"></span>
+                </a>
+                <a class="btn btn-default" role="button">
+                  <span class="glyphicon glyphicon-chevron-right"
+                        aria-hidden="true"></span>
+                </a>
+              </div>
+ 
+              <h4>Processor</h4>
+              <div class="btn-group btn-group-justified">
+                <a class="btn btn-default" role="button">
+                  <span class="glyphicon glyphicon-chevron-left"
+                        aria-hidden="true"></span>
+                </a>
+                <a class="btn btn-default" role="button">
+                  <span class="glyphicon glyphicon-chevron-right"
+                        aria-hidden="true"></span>
+                </a>
+              </div>
+
+              <h4>Fuel Tank</h4>
+              <div class="btn-group btn-group-justified">
+                <a class="btn btn-default" role="button">
+                  <span class="glyphicon glyphicon-chevron-left"
+                        aria-hidden="true"></span>
+                </a>
+                <a class="btn btn-default" role="button">
+                  <span class="glyphicon glyphicon-chevron-right"
+                        aria-hidden="true"></span>
+                </a>
+              </div>
+
+              <h4>Thrusters</h4>
+              <div class="btn-group btn-group-justified">
+                <a class="btn btn-default" role="button">
+                  <span class="glyphicon glyphicon-chevron-left"
+                        aria-hidden="true"></span>
+                </a>
+                <a class="btn btn-default" role="button">
+                  <span class="glyphicon glyphicon-chevron-right"
+                        aria-hidden="true"></span>
+                </a>
+              </div>
+ 
             </div>
           </div>
         </div>
