@@ -1,0 +1,19 @@
+{
+    request: {
+        component_name: "{{ component_name }}",
+        component_id: {{ instance_id }}
+    },
+    response: {
+        {% if instance_data %}
+        found: true,
+        data: {
+           component: "{{ component_name }}",
+           component_id: {{ instance_id }},
+{{ instance_data }}
+        }
+        {% else %}
+        found: false,
+        error_msg: "No data was found for the requested component.",
+        {% endif %}
+    }
+}
