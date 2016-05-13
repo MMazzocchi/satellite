@@ -1,14 +1,14 @@
 {
-   responce: {
+   "response": {
         {% if instance_data %}
-        found: true,
-        data: {
-           component_id: {{ instance_data.id }},
+        "found": true,
+        "data": {
+           "component_id": {{ instance_data.id }},
            {% block data %}{% endblock %}
         }
         {% else %}
-        found: false,
-        error_msg: "No data was found for the requested component."
+        "found": false,
+        "error_msg": "No data was found for the requested component."
         {% endif %}
     }
 }

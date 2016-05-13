@@ -1,9 +1,9 @@
 {% extends "components/instance_data.json" %}
 
 {% block data %}
-name: "{{ instance_data.name }}",
-color: "{{ instance_data.color }}",
-width: {{ instance_data.width }},
-length: {{ instance_data.length }},
-height: {{ instance_data.height }}
+"name": "{{ instance_data.name }}",
+"color": "{{ instance_data.color }}",
+"width": {{ instance_data.width }},
+"length": {{ instance_data.length }},
+"height": {{ instance_data.height }}
 {% endblock %}
