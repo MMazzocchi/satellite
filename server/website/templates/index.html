@@ -1,0 +1,194 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Satellite</title>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable= no"/>
+
+    <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+  </head>
+  <body>
+    <div id="content" class="container-fluid">
+      <div id="row" class="row">
+        <div id="menuColumn" class="col-xs-3">
+          <div id="navHeader">
+            <div class="dropdown">
+              <button class="btn btn-default dropdown-toggle" type="button"
+                      data-toggle="dropdown" aria-haspopup="true" 
+                      aria-expanded="true" id="mainMenuDropdown">
+                <span class="glyphicon glyphicon-menu-hamburger" 
+                      aria-hidden="true"></span>
+              </button>
+              <ul class="dropdown-menu" aria-labelledby="mainMenuDropdown">
+                <li><a href="#" class="home-link"  >Home</a></li>
+                <li><a href="#" class="build-link" >Build</a></li>
+                <li><a href="#" class="jobs-link"  >Jobs</a></li>
+                <li><a href="#" class="status-link">Status</a></li>
+              </ul>
+            </div>
+            <div class="divider"></div>
+          </div>
+          <div id="menuPane">
+            <div id="homeMenu" class="btn-group-vertical menu-container"
+                 aria-label="..." role="group">
+              <button class="btn btn-default full-btn home-link" 
+                      type="button">Home</button>
+              <button class="btn btn-default full-btn build-link"
+                      type="button">Build</button>
+              <button class="btn btn-default full-btn jobs-link"
+                      type="button">Jobs</button>
+              <button class="btn btn-default full-btn status-link"
+                      type="button">Status</button>
+            </div>
+            <div id="buildMenu" class="menu-container">
+              <!-- TODO: Generate these with a django template. -->
+              <h4>Chassis</h4>
+              <div class="btn-group btn-group-justified">
+                <a id="chassis-left" class="btn btn-default" role="button">
+                  <span class="glyphicon glyphicon-chevron-left"
+                        aria-hidden="true"></span>
+                </a>
+                <a id="chassis-right" class="btn btn-default" role="button">
+                  <span class="glyphicon glyphicon-chevron-right"
+                        aria-hidden="true"></span>
+                </a>
+              </div>
+
+              <h4>Comm Dish</h4>
+              <div class="btn-group btn-group-justified">
+                <a class="btn btn-default" role="button">
+                  <span class="glyphicon glyphicon-chevron-left"
+                        aria-hidden="true"></span>
+                </a>
+                <a class="btn btn-default" role="button">
+                  <span class="glyphicon glyphicon-chevron-right"
+                        aria-hidden="true"></span>
+                </a>
+              </div>
+
+              <h4>Batteries</h4>
+              <div class="btn-group btn-group-justified">
+                <a class="btn btn-default" role="button">
+                  <span class="glyphicon glyphicon-chevron-left"
+                        aria-hidden="true"></span>
+                </a>
+                <a class="btn btn-default" role="button">
+                  <span class="glyphicon glyphicon-chevron-right"
+                        aria-hidden="true"></span>
+                </a>
+              </div>
+
+              <h4>Solar Panels</h4>
+              <div class="btn-group btn-group-justified">
+                <a class="btn btn-default" role="button">
+                  <span class="glyphicon glyphicon-chevron-left"
+                        aria-hidden="true"></span>
+                </a>
+                <a class="btn btn-default" role="button">
+                  <span class="glyphicon glyphicon-chevron-right"
+                        aria-hidden="true"></span>
+                </a>
+              </div>
+
+              <h4>Storage</h4>
+              <div class="btn-group btn-group-justified">
+                <a class="btn btn-default" role="button">
+                  <span class="glyphicon glyphicon-chevron-left"
+                        aria-hidden="true"></span>
+                </a>
+                <a class="btn btn-default" role="button">
+                  <span class="glyphicon glyphicon-chevron-right"
+                        aria-hidden="true"></span>
+                </a>
+              </div>
+
+              <h4>Sensors</h4>
+              <div class="btn-group btn-group-justified">
+                <a class="btn btn-default" role="button">
+                  <span class="glyphicon glyphicon-chevron-left"
+                        aria-hidden="true"></span>
+                </a>
+                <a class="btn btn-default" role="button">
+                  <span class="glyphicon glyphicon-chevron-right"
+                        aria-hidden="true"></span>
+                </a>
+              </div>
+ 
+              <h4>Processor</h4>
+              <div class="btn-group btn-group-justified">
+                <a class="btn btn-default" role="button">
+                  <span class="glyphicon glyphicon-chevron-left"
+                        aria-hidden="true"></span>
+                </a>
+                <a class="btn btn-default" role="button">
+                  <span class="glyphicon glyphicon-chevron-right"
+                        aria-hidden="true"></span>
+                </a>
+              </div>
+
+              <h4>Fuel Tank</h4>
+              <div class="btn-group btn-group-justified">
+                <a class="btn btn-default" role="button">
+                  <span class="glyphicon glyphicon-chevron-left"
+                        aria-hidden="true"></span>
+                </a>
+                <a class="btn btn-default" role="button">
+                  <span class="glyphicon glyphicon-chevron-right"
+                        aria-hidden="true"></span>
+                </a>
+              </div>
+
+              <h4>Thrusters</h4>
+              <div class="btn-group btn-group-justified">
+                <a class="btn btn-default" role="button">
+                  <span class="glyphicon glyphicon-chevron-left"
+                        aria-hidden="true"></span>
+                </a>
+                <a class="btn btn-default" role="button">
+                  <span class="glyphicon glyphicon-chevron-right"
+                        aria-hidden="true"></span>
+                </a>
+              </div>
+ 
+            </div>
+          </div>
+        </div>
+        <div id="viewColumn" class="col-xs-6 nopadding"></div>
+        <div id="displayColumn" class="col-xs-3"></div>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+<!--
+    <script src="js/3rd_party/three.min.js"></script>
+    <script src="js/3rd_party/bootstrap.min.js"></script>
+    <script src="js/Globe.js"></script>
+    <script src="js/Components/Chassis/Chassis.js"></script>
+    <script src="js/Components/Chassis/StandardChassis.js"></script>
+    <script src="js/Components/Chassis/LightChassis.js"></script>
+    <script src="js/Components/Chassis/HeavyChassis.js"></script>
+    <script src="js/Components/CommDish/CommDish.js"></script>
+    <script src="js/Components/Batteries/Batteries.js"></script>
+    <script src="js/Components/HardDrive/HardDrive.js"></script>
+    <script src="js/Components/FuelTank/FuelTank.js"></script>
+    <script src="js/Components/Processor/Processor.js"></script>
+    <script src="js/Components/SolarPanels/SolarPanels.js"></script>
+    <script src="js/Components/Thrusters/Thrusters.js"></script>
+    <script src="js/Components/Sensors/Sensors.js"></script>
+    <script src="js/Satellite.js"></script>
+    <script src="js/Scenes/Scene.js"></script>
+    <script src="js/Scenes/BuildScene.js"></script>
+    <script src="js/Scenes/GlobeScene.js"></script>
+    <script src="js/Scenes/OrbitScene.js"></script>
+    <script src="js/Scenes/BlankScene.js"></script>
+    <script src="js/Scenes/TitleScene.js"></script>
+    <script src="js/Views/View.js"></script>
+    <script src="js/Views/HomeView.js"></script>
+    <script src="js/Views/BuildView.js"></script>
+    <script src="js/Navigation.js"></script>
+    
+    <script src="js/code.js"></script>
+-->
+  </body>
+</html>
