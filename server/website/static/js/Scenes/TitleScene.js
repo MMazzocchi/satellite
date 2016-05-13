@@ -10,7 +10,7 @@ var TitleScene = function(satellite) {
 
     var scene = this.scene;
 
-    new THREE.TextureLoader().load("images/smallsats.png", function(map) {
+    new THREE.TextureLoader().load("static/images/smallsats.png", function(map) {
         var material = new THREE.SpriteMaterial({map: map, color: "#FFFFFF"});
         var logo = new THREE.Sprite(material);
         logo.scale.set(2*map.image.width, 2*map.image.height);
