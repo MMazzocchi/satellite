@@ -2,6 +2,7 @@ var renderer;
 var currentView;
 
 var navigation;
+var cache;
 
 function step() {
     currentView.step();
@@ -11,6 +12,8 @@ function step() {
 function setup() {
     navigation = new Navigation();
     navigation.loadHomeView();
+
+    cache = new ComponentCache();
 
     // Setup the renderer
     renderer = new THREE.WebGLRenderer();
