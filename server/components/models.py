@@ -17,6 +17,8 @@ class Chassis(models.Model):
     comp_type = models.ForeignKey(ComponentType, default=1)
     cost = models.SmallIntegerField(default=0)
     description = models.TextField(default="No description")
+    durability = models.DecimalField(max_digits=2, decimal_places=1, default=0.0)
+    weight = models.DecimalField(max_digits=2, decimal_places=1, default=0.0)
 
     def __str__(self):
         return self.name+" Chassis"
