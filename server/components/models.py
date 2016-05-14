@@ -15,6 +15,8 @@ class Chassis(models.Model):
     length = models.SmallIntegerField()
     height = models.SmallIntegerField()
     comp_type = models.ForeignKey(ComponentType, default=1)
+    cost = models.SmallIntegerField(default=0)
+    description = models.TextField(default="No description")
 
     def __str__(self):
         return self.name+" Chassis"
