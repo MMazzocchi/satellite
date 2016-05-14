@@ -5,6 +5,7 @@ var ComponentCache = function() {
 ComponentCache.prototype.refreshComponent = function(componentName, 
                                                      instanceId,
                                                      callBack) {
+
     var url = "/components/"+componentName+"/"+instanceId+"/";
     var thisCache = this;
     $.ajax(url).done(function(response) {
