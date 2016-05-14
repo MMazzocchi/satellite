@@ -36,9 +36,7 @@ BuildView.prototype.setupMenu = function() {
 
         function callBack(data) {
             {% if type.name == "chassis" %}
-            var newComponent = new Chassis(data.name,   data.width,
-                                           data.height, data.length,
-                                           data.color);
+            var newComponent = new Chassis(data);
             {% endif %}
             thisView.scene.satellite.replaceChassis(newComponent);
         }

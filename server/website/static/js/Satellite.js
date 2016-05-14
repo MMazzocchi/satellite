@@ -1,9 +1,10 @@
 var Satellite = function() {
     THREE.Object3D.call(this);
 
-    // No need to do any replacing; the chassis is always the center.
-    this.chassis = new StandardChassis();
-    this.add(this.chassis);
+    var thisSat = this;
+
+    // Create a 3D object for the chassis; we'll replace it last.
+    this.chassis = new THREE.Object3D();
 
     this.commDish = new CommDish();
     this.replaceCommDish(this.commDish);
@@ -28,6 +29,11 @@ var Satellite = function() {
 
     this.thrusters = new Thrusters();
     this.replaceThrusters(this.thrusters);
+
+    cache.getInstanceData("chassis", 1, function(data) {
+        thisSat.chassis = new Chassis(data);
+        thisSat.replaceChassis(thisSat.chassis);
+    });
 };
 
 Satellite.prototype = Object.create(THREE.Object3D.prototype);
