@@ -1,5 +1,6 @@
 var Chassis = function(data) {
-    this.name = data.name;
+    Component.call(this, data.name, data.cost, data.description);
+
     this.width  = data.width;
     this.height = data.height;
     this.length = data.length;
@@ -7,8 +8,10 @@ var Chassis = function(data) {
 
     var geometry = new THREE.BoxGeometry(this.width, this.height, this.length);
     var material = new THREE.MeshLambertMaterial({ color: this.color });
-    THREE.Mesh.call(this, geometry, material);
+    var mesh = new THREE.Mesh(geometry, material);
+
+    this.add(mesh);
 };
 
-Chassis.prototype = Object.create(THREE.Mesh.prototype);
+Chassis.prototype = Object.create(Component.prototype);
 Chassis.prototype.constructor = Chassis;

@@ -1,9 +1,13 @@
 {% extends "components/instance_data.json" %}
 
 {% block data %}
-"name": "{{ instance_data.name }}",
-"color": "{{ instance_data.color }}",
-"width": {{ instance_data.width }},
-"length": {{ instance_data.length }},
-"height": {{ instance_data.height }}
+"name":        "{{ instance_data.name }}",
+"color":       "{{ instance_data.color }}",
+"width":        {{ instance_data.width }},
+"length":       {{ instance_data.length }},
+"height":       {{ instance_data.height }},
+"cost":         {{ instance_data.cost }},
+"durability":   {{ instance_data.durability }},
+"weight":       {{ instance_data.weight }},
+"description": "{{ instance_data.description }}"
 {% endblock %}
