@@ -30,6 +30,17 @@ function setup() {
     renderer.setSize(dimension, dimension);
     $('#viewColumn').append(renderer.domElement);
 
+    // Adjust the height of the menu and status panes, forcing them to scroll
+    var menuPane = $('#menuPane')[0];
+    var navBar = $('#navHeader')[0];
+    var menuHeight = window.innerHeight - navBar.offsetHeight;
+    menuPane.style.height = menuHeight + "px";
+
+    var statusPane = $('#statusPane')[0];
+    var statusHeader = $('#statusHeader')[0];
+    var statusHeight = window.innerHeight - statusHeader.offsetHeight;
+    statusPane.style.height = statusHeight + "px";
+
     setInterval(step, 40);
 }
 setup();
