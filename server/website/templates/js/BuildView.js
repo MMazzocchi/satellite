@@ -18,6 +18,46 @@ var BuildView = function() {
 BuildView.prototype = Object.create(View.prototype);
 BuildView.prototype.constructor = BuildView;
 
+BuildView.prototype.showTotal = function() {
+    var statusPane = $('#statusPane')[0];
+    statusPane.scroll(0,0);
+    var buildStatus = $('#buildStatus')[0];
+
+    var html = "";
+    var total = 0;
+    html += "<div class=\"container-fluid\">\n";
+    html += "  <div class=\"row\"\n>";
+    html += "    <div class=\"col-xs-5\"><strong>Component</strong></div>\n";
+    html += "    <div class=\"col-xs-5\"><strong>Type</strong></div>\n";
+    html += "    <div class=\"col-xs-2\"><strong>Cost</strong></div>\n";
+    html += "  </div>\n";
+    {% for type in component_types %}
+    html += "  <div class=\"row\"\n>";
+    html += "    <div class=\"col-xs-5\">{{ type.display_name }}</div>\n";
+    html += "    <div class=\"col-xs-5\">";
+    html += this.scene.satellite.{{ type.name }}.name;
+    html += "    </div>\n";
+    html += "    <div class=\"col-xs-2\">";
+    html += this.scene.satellite.{{ type.name }}.cost;
+    html += "    </div>\n";
+    html += "  </div>\n";
+    {% endfor %}
+    html += "  <div class=\"row\"\n>";
+    html += "    <div class=\"col-xs-1 divider\"></div>\n";
+    html += "    </div>\n";
+    html += "  </div>\n";
+    html += "  <div class=\"row\"\n>";
+    html += "    <div class=\"col-xs-5\"></div>\n";
+    html += "    <div class=\"col-xs-5\">\n";
+    html += "      <strong>Total:</strong>\n";
+    html += "    </div>\n";
+    html += "    <div class=\"col-xs-2\">"+total+"</div>\n";
+    html += "  </div>\n";
+    html += "</div>\n";
+ 
+    buildStatus.innerHTML = html;
+}
+
 BuildView.prototype.updateStatusPane = function(component) {
     var statusPane = $('#statusPane')[0];
     statusPane.scroll(0,0);
@@ -32,7 +72,15 @@ BuildView.prototype.updateStatusPane = function(component) {
                 component.metrics[metric]+"\" class=\"meter\"></meter>"+
                 component.metrics[metric];
     }
+    html += "<div class=\"divider\"></div>";
+    html += "<button id=\"totalButton\">See Total</button>";
+
     buildStatus.innerHTML = html;
+
+    var thisView = this;
+    $('#totalButton').click(function() {
+        thisView.showTotal();
+    });
 };
 
 BuildView.prototype.setupMenu = function() {

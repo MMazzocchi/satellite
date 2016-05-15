@@ -1,4 +1,4 @@
-var HardDrive = function() {
+var Storage = function() {
     THREE.Object3D.call(this);
     var baseGeom = new THREE.BoxGeometry(100, 20, 100);
     var baseMat = new THREE.MeshLambertMaterial({ color: "#444444" });
@@ -18,5 +18,5 @@ var HardDrive = function() {
     this.height = 20;
 };
 
-HardDrive.prototype = Object.create(THREE.Object3D.prototype);
-HardDrive.prototype.constructor = HardDrive;
+Storage.prototype = Object.create(THREE.Object3D.prototype);
+Storage.prototype.constructor = Storage;

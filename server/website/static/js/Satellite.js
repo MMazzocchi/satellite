@@ -12,8 +12,8 @@ var Satellite = function() {
     this.batteries = new Batteries();
     this.replaceBatteries(this.batteries);
 
-    this.hardDrive = new HardDrive();
-    this.replaceHardDrive(this.hardDrive);
+    this.storage = new Storage();
+    this.replaceStorage(this.storage);
 
     this.fuelTank = new FuelTank();
     this.replaceFuelTank(this.fuelTank);
@@ -48,7 +48,7 @@ Satellite.prototype.replaceChassis = function(newChassis) {
     this.add(newChassis);
     if(this.commDish) {           this.replaceCommDish(this.commDish);       }
     if(this.replaceBatteries) {   this.replaceBatteries(this.batteries);     }
-    if(this.replaceHardDrive) {   this.replaceHardDrive(this.hardDrive);     }
+    if(this.replaceStorage) {   this.replaceStorage(this.storage);     }
     if(this.replaceFuelTank) {    this.replaceFuelTank(this.fuelTank);       }
     if(this.replaceProcessor) {   this.replaceProcessor(this.processor);     }
     if(this.replaceSensors) {     this.replaceSensors(this.sensors);         }
@@ -80,17 +80,17 @@ Satellite.prototype.replaceBatteries = function(newBatteries) {
     this.add(newBatteries);
 };
 
-Satellite.prototype.replaceHardDrive = function(newHardDrive) {
-    // Hard drive will be in front right corner of the chassis.
-    if(this.hardDrive != undefined) {
-        this.remove(this.hardDrive);
+Satellite.prototype.replaceStorage = function(newStorage) {
+    // storage will be in front right corner of the chassis.
+    if(this.storage != undefined) {
+        this.remove(this.storage);
     }
-    this.hardDrive = newHardDrive;
-    this.hardDrive.position.y =  this.chassis.height/2   + 
-                                 this.hardDrive.height/2 + 1;
-    this.hardDrive.position.x = -this.hardDrive.width/2;
-    this.hardDrive.position.z =  this.hardDrive.length/2;
-    this.add(newHardDrive);
+    this.storage = newStorage;
+    this.storage.position.y =  this.chassis.height/2   + 
+                                 this.storage.height/2 + 1;
+    this.storage.position.x = -this.storage.width/2;
+    this.storage.position.z =  this.storage.length/2;
+    this.add(newStorage);
 };
 
 Satellite.prototype.replaceFuelTank = function(newFuelTank) {
