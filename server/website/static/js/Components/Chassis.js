@@ -6,6 +6,9 @@ var Chassis = function(data) {
     this.length = data.length;
     this.color = data.color;
 
+    this.metrics['Durability'] = data.durability;
+    this.metrics['Weight'] = data.weight;
+
     var geometry = new THREE.BoxGeometry(this.width, this.height, this.length);
     var material = new THREE.MeshLambertMaterial({ color: this.color });
     var mesh = new THREE.Mesh(geometry, material);

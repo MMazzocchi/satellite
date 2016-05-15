@@ -26,6 +26,12 @@ BuildView.prototype.updateStatusPane = function(component) {
     var html = "";
     html += "<h4>"+component.name+"</h4>";
     html += "<p>"+component.description+"</p>";
+    for(var metric in component.metrics) {
+        html += "<h5>"+metric+"</h5>";
+        html += "<meter min=\"0\" max=\"5\" value=\""+
+                component.metrics[metric]+"\" class=\"meter\"></meter>"+
+                component.metrics[metric];
+    }
     buildStatus.innerHTML = html;
 };
 
