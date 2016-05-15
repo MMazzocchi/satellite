@@ -43,7 +43,7 @@ BuildView.prototype.showTotal = function() {
     html += "  </div>\n";
     {% endfor %}
     html += "  <div class=\"row\"\n>";
-    html += "    <div class=\"col-xs-1 table-cell divider\"></div>\n";
+    html += "    <div class=\"col-xs-12 table-cell divider\"></div>\n";
     html += "    </div>\n";
     html += "  </div>\n";
     html += "  <div class=\"row\"\n>";
