@@ -27,31 +27,31 @@ BuildView.prototype.showTotal = function() {
     var total = 0;
     html += "<div class=\"container-fluid\">\n";
     html += "  <div class=\"row\"\n>";
-    html += "    <div class=\"col-xs-5\"><strong>Component</strong></div>\n";
-    html += "    <div class=\"col-xs-5\"><strong>Type</strong></div>\n";
-    html += "    <div class=\"col-xs-2\"><strong>Cost</strong></div>\n";
+    html += "    <div class=\"col-xs-5 table-cell\"><strong>Component</strong></div>\n";
+    html += "    <div class=\"col-xs-5 table-cell\"><strong>Type</strong></div>\n";
+    html += "    <div class=\"col-xs-2 table-cell\"><strong>Cost</strong></div>\n";
     html += "  </div>\n";
     {% for type in component_types %}
     html += "  <div class=\"row\"\n>";
-    html += "    <div class=\"col-xs-5\">{{ type.display_name }}</div>\n";
-    html += "    <div class=\"col-xs-5\">";
+    html += "    <div class=\"col-xs-5 table-cell\">{{ type.display_name }}</div>\n";
+    html += "    <div class=\"col-xs-5 table-cell\">";
     html += this.scene.satellite.{{ type.name }}.name;
     html += "    </div>\n";
-    html += "    <div class=\"col-xs-2\">";
+    html += "    <div class=\"col-xs-2 table-cell\">";
     html += this.scene.satellite.{{ type.name }}.cost;
     html += "    </div>\n";
     html += "  </div>\n";
     {% endfor %}
     html += "  <div class=\"row\"\n>";
-    html += "    <div class=\"col-xs-1 divider\"></div>\n";
+    html += "    <div class=\"col-xs-1 table-cell divider\"></div>\n";
     html += "    </div>\n";
     html += "  </div>\n";
     html += "  <div class=\"row\"\n>";
-    html += "    <div class=\"col-xs-5\"></div>\n";
-    html += "    <div class=\"col-xs-5\">\n";
+    html += "    <div class=\"col-xs-5 table-cell\"></div>\n";
+    html += "    <div class=\"col-xs-5 table-cell\">\n";
     html += "      <strong>Total:</strong>\n";
     html += "    </div>\n";
-    html += "    <div class=\"col-xs-2\">"+total+"</div>\n";
+    html += "    <div class=\"col-xs-2 table-cell\">"+total+"</div>\n";
     html += "  </div>\n";
     html += "</div>\n";
  

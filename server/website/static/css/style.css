@@ -30,7 +30,7 @@ body {
 }
 
 #statusHeader > h4 {
-    margin-top: 0px;
+  margin-top: 0px;
 }
 
 .menu-container {
@@ -67,4 +67,10 @@ body {
 
 .meter {
   margin-right: 10px;
+}
+
+.table-cell {
+  font-size: 1.0vw;
+  padding: 0px;
+  margin: 0px;
 }
