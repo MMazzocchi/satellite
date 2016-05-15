@@ -1,7 +1,7 @@
 {% extends "components/instance_data.json" %}
 
 {% block data %}
-"name":        "{{ instance_data.name }}",
+"name":        "{{ instance_data.name }} Chassis",
 "color":       "{{ instance_data.color }}",
 "width":        {{ instance_data.width }},
 "length":       {{ instance_data.length }},

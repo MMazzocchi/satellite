@@ -18,6 +18,17 @@ var BuildView = function() {
 BuildView.prototype = Object.create(View.prototype);
 BuildView.prototype.constructor = BuildView;
 
+BuildView.prototype.updateStatusPane = function(component) {
+    var statusPane = $('#statusPane')[0];
+    statusPane.scroll(0,0);
+    var buildStatus = $('#buildStatus')[0];
+
+    var html = "";
+    html += "<h4>"+component.name+"</h4>";
+    html += "<p>"+component.description+"</p>";
+    buildStatus.innerHTML = html;
+};
+
 BuildView.prototype.setupMenu = function() {
     var thisView = this;
 
@@ -30,10 +41,9 @@ BuildView.prototype.setupMenu = function() {
             thisView.{{ type.name }}Options.total;
 
         function callBack(data) {
-            {% if type.name == "chassis" %}
-            var newComponent = new Chassis(data);
-            {% endif %}
-            thisView.scene.satellite.replaceChassis(newComponent);
+            var newComponent = new {{ type.model_name }}(data);
+            thisView.scene.satellite.replace{{ type.model_name }}(newComponent);
+            thisView.updateStatusPane(newComponent);
         }
 
         cache.getInstanceData("{{ type.name }}", 
@@ -52,6 +62,7 @@ BuildView.prototype.setupMenu = function() {
             var newComponent = new Chassis(data);
             {% endif %}
             thisView.scene.satellite.replaceChassis(newComponent);
+            thisView.updateStatusPane(newComponent);
         }
 
         cache.getInstanceData("{{ type.name }}", 
