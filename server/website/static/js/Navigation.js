@@ -3,12 +3,14 @@ var Navigation = function() {
 };
 
 Navigation.prototype.setCurrentView = function(newView) {
-    var menuPane = $('#menuPane');
-    var children = menuPane.children();
 
-    for(var i = 0; i < children.length; i++) {
-        if(children[i].style.display != "none") {
-            children[i].style.display = "none";
+    // Display the correct menu for this view.
+    var menuPane = $('#menuPane');
+    var menuChildren = menuPane.children();
+
+    for(var i = 0; i < menuChildren.length; i++) {
+        if(menuChildren[i].style.display != "none") {
+            menuChildren[i].style.display = "none";
         }
     }
 
@@ -17,6 +19,20 @@ Navigation.prototype.setCurrentView = function(newView) {
 
     newView.setupMenu();
 
+    // Display the correct status for this view.
+    var statusPane = $('#statusPane');
+    var statusChildren = statusPane.children();
+
+    for(var i = 0; i < statusChildren.length; i++) {
+        if(statusChildren[i].style.display != "none") {
+            statusChildren[i].style.display = "none";
+        }
+    }
+
+    var statusId = newView.statusId;
+    $('#'+statusId)[0].style.display = "block";
+
+    // Display the new view.
     currentView = newView;
 };
 

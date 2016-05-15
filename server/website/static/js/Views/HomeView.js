@@ -4,6 +4,7 @@ var HomeView = function() {
     this.scene = new TitleScene();
 
     this.menuId = "homeMenu";
+    this.statusId = "homeStatus";
 };
 
 HomeView.prototype = Object.create(View.prototype);

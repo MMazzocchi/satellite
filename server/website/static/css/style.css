@@ -39,6 +39,11 @@ body {
   text-align: center;
 }
 
+.status-container {
+  width: 100%;
+  display: none;
+}
+
 .nopadding {
   padding: 0px;
   margin: 0px;

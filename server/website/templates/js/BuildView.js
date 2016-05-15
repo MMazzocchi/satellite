@@ -3,6 +3,7 @@ var BuildView = function() {
 
     this.scene = new BuildScene();
     this.menuId = "buildMenu";
+    this.statusId = "buildStatus";
 
     {% for type in component_types %}
 

@@ -14,6 +14,8 @@
       <div id="row" class="row">
         <div id="menuColumn" class="col-xs-3">
           <div id="navHeader">
+
+            <!-- Navigation header/button -->
             <div class="dropdown">
               <button class="btn btn-default dropdown-toggle" type="button"
                       data-toggle="dropdown" aria-haspopup="true" 
@@ -30,6 +32,8 @@
             </div>
             <div class="divider"></div>
           </div>
+
+          <!-- View menu container -->
           <div id="menuPane">
             <div id="homeMenu" class="btn-group-vertical menu-container"
                  aria-label="..." role="group">
@@ -62,8 +66,41 @@
             </div>
           </div>
         </div>
+
+        <!-- WebGL container column -->
         <div id="viewColumn" class="col-xs-6 nopadding"></div>
-        <div id="displayColumn" class="col-xs-3"></div>
+
+        <div id="statusColumn" class="col-xs-3">
+          <div id="statusHeader">
+              <h4>
+                <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+                Max Mazzocchi
+              </h4>
+              <div class="divider"></div>
+          </div>
+          <div id="statusPane">
+            <div id="homeStatus" class="status-container">
+              <h3>Welcome to SmallSats!</h3>
+              <p>Congratulations! You're the owner of your very own satellite
+                 company. Build, purchase, operate, and maintain your very own
+                 satellite fleet. If you play your cards right, you could come 
+                 out a rich and successful! But space is not a forgiving place,
+                 so be careful out there!</p>
+              <h4>Use the navigation buttons on the left to get started.</h4>
+            </div>
+            <div id="buildStatus" class="status-container">
+              <p>Welcome to the machine shop! You buy the parts, we glue 'em
+                 together. We've also got a launch company on contract, so we
+                 can tell you exactly how much you'll pay to get this heap into
+                 space.</p>
+              <p>So wait are you waiting for? Pick out some components! Use the
+                 buttons on the left to select which parts you want; we'll 
+                 tell you what they all mean.</p>
+              <h4>Use the selection buttons on the left to pick out parts.</h4>
+            </div>
+          </div> 
+        </div>
+      </div>
     </div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
