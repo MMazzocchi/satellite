@@ -4,21 +4,37 @@ class ComponentType(models.Model):
     name = models.CharField(max_length=50)
     display_name = models.CharField(max_length=50)
     model_name = models.CharField(max_length=50)
+    total = models.SmallIntegerField(default=0)
 
     def __str__(self):
         return self.display_name
 
-class Chassis(models.Model):
+class Component(models.Model):
     name = models.CharField(max_length=50)
+    cost = models.SmallIntegerField(default=0)
+    description = models.TextField(default="No description")
+    weight = models.DecimalField(max_digits=2, decimal_places=1, default=0.0)
+
+    class Meta:
+        abstract = True
+
+class Chassis(Component):
     color = models.CharField(max_length=7)
     width = models.SmallIntegerField()
     length = models.SmallIntegerField()
     height = models.SmallIntegerField()
-    comp_type = models.ForeignKey(ComponentType, default=1)
-    cost = models.SmallIntegerField(default=0)
-    description = models.TextField(default="No description")
     durability = models.DecimalField(max_digits=2, decimal_places=1, default=0.0)
-    weight = models.DecimalField(max_digits=2, decimal_places=1, default=0.0)
 
     def __str__(self):
         return self.name+" Chassis"
+
+class CommDish(Component):
+    dish_color = models.CharField(max_length=7)
+    bulb_color = models.CharField(max_length=7)
+    dish_width = models.SmallIntegerField()
+    signal_range = models.DecimalField(max_digits=2, decimal_places=1, default=2.5)
+
+    def __str__(self):
+        return self.name+" Comm Dish"
+
+   

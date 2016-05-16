@@ -17,4 +17,4 @@ class BuildView(ListView):
     context_object_name = 'component_types'
 
     def get_queryset(self):
-        return ComponentType.objects.annotate(total=Count('chassis'))
+        return ComponentType.objects.all()

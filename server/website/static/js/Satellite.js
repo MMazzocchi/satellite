@@ -6,8 +6,10 @@ var Satellite = function() {
     // Create a 3D object for the chassis; we'll replace it last.
     this.chassis = new THREE.Object3D();
 
-    this.commDish = new CommDish();
-    this.replaceCommDish(this.commDish);
+    cache.getInstanceData("commDish", 1, function(data) {
+        thisSat.commDish = new CommDish(data);
+        thisSat.replaceCommDish(thisSat.commDish);
+    });
 
     this.batteries = new Batteries();
     this.replaceBatteries(this.batteries);

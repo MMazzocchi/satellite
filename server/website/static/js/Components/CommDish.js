@@ -1,10 +1,14 @@
-var CommDish = function() {
-    THREE.Object3D.call(this);
-    var dishGeom = new THREE.SphereGeometry(300, 20, 5,
+var CommDish = function(data) {
+    Component.call(this, data.name, data.cost, data.description);
+
+    this.metrics['Signal Range'] = data.signal_range;
+    this.metrics['Weight'] = data.weight;
+
+    var dishGeom = new THREE.SphereGeometry(data.dish_width, 20, 5,
                                             0, 2*Math.PI, 
                                             0, 0.2*Math.PI);
 
-    var dishMat = new THREE.MeshLambertMaterial({ color: "#FFFFFF" });
+    var dishMat = new THREE.MeshLambertMaterial({ color: data.dish_color });
     dishMat.side = THREE.DoubleSide;
     var dish = new THREE.Mesh(dishGeom, dishMat);
     dish.rotation.x -= 0.5*Math.PI;
@@ -14,20 +18,20 @@ var CommDish = function() {
                                               0, 2*Math.PI);
 
     var pole = new THREE.Mesh(poleGeom, dishMat);
-    pole.position.y += 150+75;
+    pole.position.y += (data.dish_width/2)+75;
     dish.add(pole);
 
     var ballGeom = new THREE.SphereGeometry(25, 10, 10, 0, 2*Math.PI,
                                             0, Math.PI);
-    var ballMat = new THREE.MeshLambertMaterial({ color: "#FF0000" });
+    var ballMat = new THREE.MeshLambertMaterial({ color: data.bulb_color });
     var ball = new THREE.Mesh(ballGeom, ballMat);
     ball.position.y -= 75;
     pole.add(ball);
 
-    this.length = 300*2;
-    this.width  = 300*2;
-    this.height = 300*2;
+    this.length = data.dish_width*2;
+    this.width  = data.dish_width*2;
+    this.height = data.dish_width*2;
 };
 
-CommDish.prototype = Object.create(THREE.Object3D.prototype);
+CommDish.prototype = Object.create(Component.prototype);
 CommDish.prototype.constructor = CommDish;

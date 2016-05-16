@@ -109,10 +109,8 @@ BuildView.prototype.setupMenu = function() {
             thisView.{{ type.name }}Options.total;
 
         function callBack(data) {
-            {% if type.name == "chassis" %}
-            var newComponent = new Chassis(data);
-            {% endif %}
-            thisView.scene.satellite.replaceChassis(newComponent);
+            var newComponent = new {{ type.model_name }}(data);
+            thisView.scene.satellite.replace{{ type.model_name }}(newComponent);
             thisView.updateStatusPane(newComponent);
         }
 
