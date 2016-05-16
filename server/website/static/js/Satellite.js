@@ -11,8 +11,10 @@ var Satellite = function() {
         thisSat.replaceCommDish(thisSat.commDish);
     });
 
-    this.batteries = new Batteries();
-    this.replaceBatteries(this.batteries);
+    cache.getInstanceData("batteries", 1, function(data) {
+        thisSat.batteries = new Batteries(data);
+        thisSat.replaceBatteries(thisSat.batteries);
+    });
 
     this.storage = new Storage();
     this.replaceStorage(this.storage);

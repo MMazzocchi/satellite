@@ -37,4 +37,10 @@ class CommDish(Component):
     def __str__(self):
         return self.name+" Comm Dish"
 
-   
+class Batteries(Component):
+    color = models.CharField(max_length=7)
+    width = models.SmallIntegerField()
+    life = models.DecimalField(max_digits=2, decimal_places=1, default=2.5)
+
+    def __str__(self):
+        return self.name+" Batteries"

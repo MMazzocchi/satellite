@@ -1,0 +1,10 @@
+{% extends "components/instance_data.json" %}
+
+{% block data %}
+"name":        "{{ instance_data.name }} Batteries",
+"color":       "{{ instance_data.color }}",
+"width":        {{ instance_data.width }},
+"weight":       {{ instance_data.weight }},
+"description": "{{ instance_data.description }}",
+"life":         {{ instance_data.life }}
+{% endblock %}
