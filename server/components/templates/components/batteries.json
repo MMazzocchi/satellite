@@ -6,5 +6,6 @@
 "width":        {{ instance_data.width }},
 "weight":       {{ instance_data.weight }},
 "description": "{{ instance_data.description }}",
+"cost":         {{ instance_data.cost }},
 "life":         {{ instance_data.life }}
 {% endblock %}

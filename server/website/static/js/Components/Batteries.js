@@ -2,6 +2,7 @@ var Batteries = function(data) {
     console.log(data);
     Component.call(this, data.name, data.cost, data.description);
     this.metrics["life"] = data.life;
+    this.metrics["weight"] = data.weight;
 
     var batteryGeom = new THREE.CylinderGeometry(data.width/2, data.width/2, 
                                                  60, 10, 1, false,
