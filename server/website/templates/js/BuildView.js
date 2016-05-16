@@ -20,7 +20,7 @@ BuildView.prototype.constructor = BuildView;
 
 BuildView.prototype.showTotal = function() {
     var statusPane = $('#statusPane')[0];
-    statusPane.scroll(0,0);
+    if(statusPane.scroll) statusPane.scroll(0,0);
     var buildStatus = $('#buildStatus')[0];
 
     var html = "";
@@ -62,7 +62,7 @@ BuildView.prototype.showTotal = function() {
 
 BuildView.prototype.updateStatusPane = function(component) {
     var statusPane = $('#statusPane')[0];
-    statusPane.scroll(0,0);
+    if(statusPane.scroll) statusPane.scroll(0,0);
     var buildStatus = $('#buildStatus')[0];
 
     var html = "";

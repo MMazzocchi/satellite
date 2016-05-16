@@ -6,7 +6,7 @@ Navigation.prototype.setCurrentView = function(newView) {
 
     // Display the correct menu for this view.
     var menuPane = $('#menuPane');
-    menuPane[0].scroll(0,0);
+    if(menuPane[0].scroll) menuPane[0].scroll(0,0);
     var menuChildren = menuPane.children();
 
     for(var i = 0; i < menuChildren.length; i++) {
@@ -22,7 +22,7 @@ Navigation.prototype.setCurrentView = function(newView) {
 
     // Display the correct status for this view.
     var statusPane = $('#statusPane');
-    statusPane[0].scroll(0,0);
+    if(statusPane[0].scroll) statusPane[0].scroll(0,0);
     var statusChildren = statusPane.children();
 
     for(var i = 0; i < statusChildren.length; i++) {
