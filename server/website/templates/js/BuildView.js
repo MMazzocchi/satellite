@@ -36,6 +36,8 @@ BuildView.prototype.showTotal = function() {
     html += this.scene.satellite.{{ type.name }}.name;
     html += "    </div>\n";
     html += "    <div class=\"col-xs-3 table-cell\">";
+    html += "      <span class=\"glyphicon glyphicon-minus-sign coin\" "+
+            "aria-hidden=\"true\"></span>\n";
     html += this.scene.satellite.{{ type.name }}.cost;
     total += this.scene.satellite.{{ type.name }}.cost;
     html += "    </div>\n";
@@ -48,7 +50,10 @@ BuildView.prototype.showTotal = function() {
     html += "    <div class=\"col-xs-9 table-cell\">\n";
     html += "      <strong>Total:</strong>\n";
     html += "    </div>\n";
-    html += "    <div class=\"col-xs-3 table-cell\">"+total+"</div>\n";
+    html += "    <div class=\"col-xs-3 table-cell\">"
+    html += "      <span class=\"glyphicon glyphicon-minus-sign coin\" "+
+            "aria-hidden=\"true\"></span>\n";
+    html += total+"</div>\n";
     html += "  </div>\n";
     html += "</div>\n";
  

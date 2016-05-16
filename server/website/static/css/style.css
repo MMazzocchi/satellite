@@ -57,7 +57,12 @@ body {
 }
 
 .table-cell {
-  font-size: 1.4vw;
+  font-size: 1.3vw;
   padding: 0px;
   margin: 0px;
+}
+
+.coin {
+  color: #008800;
+  font-size: 1.1vw;
 }
