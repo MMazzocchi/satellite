@@ -8,6 +8,6 @@
 {% endblock %}
 
 {% block metrics %}
-"signal_range": {{ instance_data.signal_range }},
-"weight":       {{ instance_data.weight }}
+"Signal Range": {{ instance_data.signal_range }},
+"Weight":       {{ instance_data.weight }}
 {% endblock %}
