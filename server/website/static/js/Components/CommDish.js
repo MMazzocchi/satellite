@@ -1,8 +1,5 @@
 var CommDish = function(data) {
-    Component.call(this, data.name, data.cost, data.description);
-
-    this.metrics['Signal Range'] = data.signal_range;
-    this.metrics['Weight'] = data.weight;
+    Component.call(this, data.name, data.cost, data.description, data.metrics);
 
     var dishGeom = new THREE.SphereGeometry(data.dish_width, 20, 5,
                                             0, 2*Math.PI, 

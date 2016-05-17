@@ -43,6 +43,41 @@ var Satellite = function() {
 Satellite.prototype = Object.create(THREE.Object3D.prototype);
 Satellite.prototype.constructor = Satellite;
 
+Satellite.prototype.replaceComponent = function(componentName, newComponent) {
+    switch(componentName) {
+        case "chassis":
+            this.replaceChassis(newComponent);
+            break;
+        case "commDish":
+            this.replaceCommDish(newComponent);
+            break;
+        case "processor":
+            this.replaceProcessor(newComponent);
+            break;
+        case "thrusters":
+            this.replaceThrusters(newComponent);
+            break;
+        case "storage":
+            this.replaceStorage(newComponent);
+            break;
+        case "batteries":
+            this.replaceBatteries(newComponent);
+            break;
+        case "fuelTank":
+            this.replaceFuelTank(newComponent);
+            break;
+        case "sensors":
+            this.replaceSensors(newComponent);
+            break;
+        case "solarPanels":
+            this.replaceSolarPanels(newComponent);
+            break;
+        default:
+            // TODO: Throw an error
+            console.error("Could not add compononent.");
+    }
+};
+
 Satellite.prototype.replaceChassis = function(newChassis) {
     // The chassis will be the center of the satellite.
     if(this.chassis != undefined) {

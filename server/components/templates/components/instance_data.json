@@ -4,7 +4,10 @@
         "found": true,
         "data": {
            "component_id": {{ instance_data.id }},
-           {% block data %}{% endblock %}
+           {% block data %}{% endblock %},
+           "metrics": {
+               {% block metrics %}{% endblock %}
+           }
         }
         {% else %}
         "found": false,

@@ -4,8 +4,11 @@
 "name":        "{{ instance_data.name }} Batteries",
 "color":       "{{ instance_data.color }}",
 "width":        {{ instance_data.width }},
-"weight":       {{ instance_data.weight }},
 "description": "{{ instance_data.description }}",
-"cost":         {{ instance_data.cost }},
-"life":         {{ instance_data.life }}
+"cost":         {{ instance_data.cost }}
+{% endblock %}
+
+{% block metrics %}
+"Life":         {{ instance_data.life }},
+"Weight":       {{ instance_data.weight }}
 {% endblock %}

@@ -98,7 +98,8 @@ BuildView.prototype.setupMenu = function() {
 
         function callBack(data) {
             var newComponent = new {{ type.model_name }}(data);
-            thisView.scene.satellite.replace{{ type.model_name }}(newComponent);
+            thisView.scene.satellite.replaceComponent("{{ type.name }}",
+                                                      newComponent);
             thisView.updateStatusPane(newComponent);
         }
 
@@ -115,7 +116,8 @@ BuildView.prototype.setupMenu = function() {
 
         function callBack(data) {
             var newComponent = new {{ type.model_name }}(data);
-            thisView.scene.satellite.replace{{ type.model_name }}(newComponent);
+            thisView.scene.satellite.replaceComponent("{{ type.name }}", 
+                                                      newComponent);
             thisView.updateStatusPane(newComponent);
         }
 

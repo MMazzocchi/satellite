@@ -7,7 +7,10 @@
 "length":       {{ instance_data.length }},
 "height":       {{ instance_data.height }},
 "cost":         {{ instance_data.cost }},
-"durability":   {{ instance_data.durability }},
-"weight":       {{ instance_data.weight }},
 "description": "{{ instance_data.description }}"
+{% endblock %}
+
+{% block metrics %}
+"Durability":   {{ instance_data.durability }},
+"Weight":       {{ instance_data.weight }}
 {% endblock %}
