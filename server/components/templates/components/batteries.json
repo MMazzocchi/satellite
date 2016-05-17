@@ -3,9 +3,7 @@
 {% block data %}
 "name":        "{{ instance_data.name }} Batteries",
 "color":       "{{ instance_data.color }}",
-"width":        {{ instance_data.width }},
-"description": "{{ instance_data.description }}",
-"cost":         {{ instance_data.cost }}
+"width":        {{ instance_data.width }}
 {% endblock %}
 
 {% block metrics %}

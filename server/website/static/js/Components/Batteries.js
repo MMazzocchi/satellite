@@ -1,5 +1,4 @@
 var Batteries = function(data) {
-    console.log(data);
     Component.call(this, data.name, data.cost, data.description, data.metrics);
 
     var batteryGeom = new THREE.CylinderGeometry(data.width/2, data.width/2, 

@@ -4,9 +4,7 @@
 "name":        "{{ instance_data.name }} Comm Dish",
 "dish_color":  "{{ instance_data.dish_color }}",
 "bulb_color":  "{{ instance_data.bulb_color }}",
-"dish_width":   {{ instance_data.dish_width }},
-"cost":         {{ instance_data.cost }},
-"description": "{{ instance_data.description }}"
+"dish_width":   {{ instance_data.dish_width }}
 {% endblock %}
 
 {% block metrics %}
