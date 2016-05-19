@@ -1,0 +1,13 @@
+{% extends "components/instance_data.json" %}
+
+{% block data %}
+"name":        "{{ instance_data.name }} Processor",
+"color":       "{{ instance_data.color }}",
+"height":       {{ instance_data.height }},
+"width":        {{ instance_data.width }}
+{% endblock %}
+
+{% block metrics %}
+"Speed":        {{ instance_data.speed }},
+"Weight":       {{ instance_data.weight }}
+{% endblock %}

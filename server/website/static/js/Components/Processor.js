@@ -1,20 +1,23 @@
-var Processor = function() {
-    THREE.Object3D.call(this);
-    var baseGeom = new THREE.BoxGeometry(100, 20, 100);
-    var baseMat = new THREE.MeshLambertMaterial({ color: "#444444" });
+var Processor = function(data) {
+    Component.call(this, data.name, data.cost, data.description, data.metrics);
+
+    var baseGeom = new THREE.BoxGeometry(data.width, 20, data.width);
+    var baseMat = new THREE.MeshLambertMaterial({ color: data.color });
 
     var base = new THREE.Mesh(baseGeom, baseMat);
-    base.position.y -= 30;
+    base.position.y -= (data.height/2);
     this.add(base);
 
-    var towerGeom = new THREE.BoxGeometry(80, 80, 80);
+    var towerGeom = new THREE.BoxGeometry(data.width-20, data.height,
+                                          data.width-20);
     var tower = new THREE.Mesh(towerGeom, baseMat);
+    tower.position.y += 10;
     this.add(tower);
 
-    this.length = 100;
-    this.width  = 100;
-    this.height = 80;
+    this.length = data.width;
+    this.width  = data.width;
+    this.height = data.height;
 };
 
-Processor.prototype = Object.create(THREE.Object3D.prototype);
+Processor.prototype = Object.create(Component.prototype);
 Processor.prototype.constructor = Processor;

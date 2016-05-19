@@ -31,11 +31,13 @@ var Satellite = function() {
         thisSat.replaceSensors(sensors);
     });
 
+    cache.getInstanceData("processor", 1, function(data) {
+        var processor = new Processor(data);
+        thisSat.replaceProcessor(processor);
+    });
+
     this.fuelTank = new FuelTank();
     this.replaceFuelTank(this.fuelTank);
-
-    this.processor = new Processor();
-    this.replaceProcessor(this.processor);
 
     this.thrusters = new Thrusters();
     this.replaceThrusters(this.thrusters);

@@ -16,5 +16,7 @@ urlpatterns = [
         name="storage"),
        url(r'^sensors/(?P<pk>[0-9]+)/$', views.SensorsView.as_view(),
         name="sensors"),
+        url(r'^processor/(?P<pk>[0-9]+)/$', views.ProcessorView.as_view(),
+        name="processor"),
  
 ]

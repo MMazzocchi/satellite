@@ -71,3 +71,12 @@ class Sensors(Component):
 
     def __str__(self):
         return self.name
+
+class Processor(Component):
+    color = models.CharField(max_length=7)
+    width = models.SmallIntegerField()
+    height = models.SmallIntegerField()
+    speed = models.DecimalField(max_digits=2, decimal_places=1, default=2.5)
+
+    def __str__(self):
+        return self.name + " Processor"
