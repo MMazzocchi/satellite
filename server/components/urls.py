@@ -12,5 +12,7 @@ urlpatterns = [
         name="batteries"),
      url(r'^solarPanels/(?P<pk>[0-9]+)/$', views.SolarPanelsView.as_view(),
         name="solarPanels"),
+      url(r'^storage/(?P<pk>[0-9]+)/$', views.StorageView.as_view(),
+        name="storage"),
  
 ]

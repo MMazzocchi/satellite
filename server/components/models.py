@@ -53,3 +53,12 @@ class SolarPanels(Component):
 
     def __str__(self):
         return self.name+" Solar Panels"
+
+class Storage(Component):
+    base_color = models.CharField(max_length=7)
+    disk_color = models.CharField(max_length=7)
+    width = models.SmallIntegerField()
+    space = models.DecimalField(max_digits=2, decimal_places=1, default=2.5)
+
+    def __str__(self):
+        return self.name+" Storage"

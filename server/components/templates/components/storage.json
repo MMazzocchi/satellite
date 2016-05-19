@@ -1,0 +1,13 @@
+{% extends "components/instance_data.json" %}
+
+{% block data %}
+"name":        "{{ instance_data.name }}",
+"base_color":  "{{ instance_data.base_color }}",
+"disk_color":  "{{ instance_data.disk_color }}",
+"width":        {{ instance_data.width }}
+{% endblock %}
+
+{% block metrics %}
+"Space":         {{ instance_data.space }},
+"Weight":       {{ instance_data.weight }}
+{% endblock %}

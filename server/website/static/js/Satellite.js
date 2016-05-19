@@ -7,22 +7,24 @@ var Satellite = function() {
     this.chassis = new THREE.Object3D();
 
     cache.getInstanceData("commDish", 1, function(data) {
-        thisSat.commDish = new CommDish(data);
-        thisSat.replaceCommDish(thisSat.commDish);
+        var commDish = new CommDish(data);
+        thisSat.replaceCommDish(commDish);
     });
 
     cache.getInstanceData("batteries", 1, function(data) {
-        thisSat.batteries = new Batteries(data);
-        thisSat.replaceBatteries(thisSat.batteries);
+        var batteries = new Batteries(data);
+        thisSat.replaceBatteries(batteries);
     });
 
     cache.getInstanceData("solarPanels", 1, function(data) {
-        thisSat.solarPanels = new SolarPanels(data);
-        thisSat.replaceSolarPanels(thisSat.solarPanels);
+        var solarPanels = new SolarPanels(data);
+        thisSat.replaceSolarPanels(solarPanels);
     });
 
-    this.storage = new Storage();
-    this.replaceStorage(this.storage);
+    cache.getInstanceData("storage", 1, function(data) {
+        var storage = new Storage(data);
+        thisSat.replaceStorage(storage);
+    });
 
     this.fuelTank = new FuelTank();
     this.replaceFuelTank(this.fuelTank);
