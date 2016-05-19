@@ -3,7 +3,7 @@ from django.http import HttpResponse
 from django.template import loader
 from django.views import generic
 
-from .models import Chassis, CommDish, Batteries
+from .models import Chassis, CommDish, Batteries, SolarPanels
 
 def index(request):
     return HttpResponse("Hello, welcome to the index.")
@@ -22,3 +22,8 @@ class BatteriesView(generic.DetailView):
     model = Batteries
     context_object_name = 'instance_data'
     template_name = "components/batteries.json"
+
+class SolarPanelsView(generic.DetailView):
+    model = SolarPanels
+    context_object_name = 'instance_data'
+    template_name = "components/solar_panels.json"

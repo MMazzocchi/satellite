@@ -16,6 +16,11 @@ var Satellite = function() {
         thisSat.replaceBatteries(thisSat.batteries);
     });
 
+    cache.getInstanceData("solarPanels", 1, function(data) {
+        thisSat.solarPanels = new SolarPanels(data);
+        thisSat.replaceSolarPanels(thisSat.solarPanels);
+    });
+
     this.storage = new Storage();
     this.replaceStorage(this.storage);
 
@@ -27,9 +32,6 @@ var Satellite = function() {
 
     this.sensors = new Sensors();
     this.replaceSensors(this.sensors);
-
-    this.solarPanels = new SolarPanels();
-    this.replaceSolarPanels(this.solarPanels);
 
     this.thrusters = new Thrusters();
     this.replaceThrusters(this.thrusters);

@@ -10,5 +10,7 @@ urlpatterns = [
         name="commDish"),
     url(r'^batteries/(?P<pk>[0-9]+)/$', views.BatteriesView.as_view(),
         name="batteries"),
+     url(r'^solarPanels/(?P<pk>[0-9]+)/$', views.SolarPanelsView.as_view(),
+        name="solarPanels"),
  
 ]
