@@ -26,14 +26,16 @@ var Satellite = function() {
         thisSat.replaceStorage(storage);
     });
 
+    cache.getInstanceData("sensors", 1, function(data) {
+        var sensors = new Sensors(data);
+        thisSat.replaceSensors(sensors);
+    });
+
     this.fuelTank = new FuelTank();
     this.replaceFuelTank(this.fuelTank);
 
     this.processor = new Processor();
     this.replaceProcessor(this.processor);
-
-    this.sensors = new Sensors();
-    this.replaceSensors(this.sensors);
 
     this.thrusters = new Thrusters();
     this.replaceThrusters(this.thrusters);

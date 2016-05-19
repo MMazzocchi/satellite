@@ -61,4 +61,13 @@ class Storage(Component):
     space = models.DecimalField(max_digits=2, decimal_places=1, default=2.5)
 
     def __str__(self):
-        return self.name+" Storage"
+        return self.name
+
+class Sensors(Component):
+    base_color = models.CharField(max_length=7)
+    dome_color = models.CharField(max_length=7)
+    width = models.SmallIntegerField()
+    strength = models.DecimalField(max_digits=2, decimal_places=1, default=2.5)
+
+    def __str__(self):
+        return self.name
