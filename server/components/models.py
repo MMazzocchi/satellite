@@ -90,3 +90,12 @@ class FuelTank(Component):
 
     def __str__(self):
         return self.name + " Fuel Tank"
+
+class Thrusters(Component):
+    color = models.CharField(max_length=7)
+    height = models.SmallIntegerField()
+    power = models.DecimalField(max_digits=2, decimal_places=1, default=2.5)
+    efficiency = models.DecimalField(max_digits=2, decimal_places=1, default=2.5)
+
+    def __str__(self):
+        return self.name + " Thrusters"

@@ -1,0 +1,13 @@
+{% extends "components/instance_data.json" %}
+
+{% block data %}
+"name":        "{{ instance_data.name }} Thrusters",
+"color":       "{{ instance_data.color }}",
+"height":       {{ instance_data.height }}
+{% endblock %}
+
+{% block metrics %}
+"Power":        {{ instance_data.power }},
+"Efficiency":   {{ instance_data.efficiency }},
+"Weight":       {{ instance_data.weight }}
+{% endblock %}

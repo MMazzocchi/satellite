@@ -4,7 +4,7 @@ from django.template import loader
 from django.views import generic
 
 from .models import Chassis, CommDish, Batteries, SolarPanels, Storage, Sensors
-from .models import Processor, FuelTank
+from .models import Processor, FuelTank, Thrusters
 
 def index(request):
     return HttpResponse("Hello, welcome to the index.")
@@ -48,3 +48,8 @@ class FuelTankView(generic.DetailView):
     model = FuelTank
     context_object_name = 'instance_data'
     template_name = "components/fuel_tank.json"
+
+class ThrustersView(generic.DetailView):
+    model = Thrusters
+    context_object_name = 'instance_data'
+    template_name = "components/thrusters.json"

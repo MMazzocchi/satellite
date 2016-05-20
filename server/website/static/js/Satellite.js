@@ -41,8 +41,10 @@ var Satellite = function() {
         thisSat.replaceFuelTank(fuelTank);
     });
 
-    this.thrusters = new Thrusters();
-    this.replaceThrusters(this.thrusters);
+    cache.getInstanceData("thrusters", 1, function(data) {
+        var thrusters = new Thrusters(data);
+        thisSat.replaceThrusters(thrusters);
+    });
 
     cache.getInstanceData("chassis", 1, function(data) {
         thisSat.chassis = new Chassis(data);

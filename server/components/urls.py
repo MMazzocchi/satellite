@@ -18,6 +18,9 @@ urlpatterns = [
         name="sensors"),
     url(r'^processor/(?P<pk>[0-9]+)/$', views.ProcessorView.as_view(),
         name="processor"),
-     url(r'^fuelTank/(?P<pk>[0-9]+)/$', views.FuelTankView.as_view(),
+    url(r'^fuelTank/(?P<pk>[0-9]+)/$', views.FuelTankView.as_view(),
         name="fuelTank"),
+    url(r'^thrusters/(?P<pk>[0-9]+)/$', views.ThrustersView.as_view(),
+        name="thrusters"),
+
 ]
