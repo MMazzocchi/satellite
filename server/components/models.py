@@ -80,3 +80,13 @@ class Processor(Component):
 
     def __str__(self):
         return self.name + " Processor"
+
+class FuelTank(Component):
+    tank_color = models.CharField(max_length=7)
+    tube_color = models.CharField(max_length=7)
+    radius = models.SmallIntegerField()
+    length = models.SmallIntegerField()
+    space = models.DecimalField(max_digits=2, decimal_places=1, default=2.5)
+
+    def __str__(self):
+        return self.name + " Fuel Tank"

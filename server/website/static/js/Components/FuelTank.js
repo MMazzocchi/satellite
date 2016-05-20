@@ -1,10 +1,11 @@
-var FuelTank = function() {
-    THREE.Object3D.call(this);
+var FuelTank = function(data) {
+    Component.call(this, data.name, data.cost, data.description, data.metrics);
+
     var points = [];
     
     // Round the end
     var endPoints = 5;
-    var radius = 40;
+    var radius = data.radius;
     var theta = 0;
     for(var i = 0; i < endPoints; i++) {
         points.push(new THREE.Vector2(radius*Math.sin(theta),
@@ -12,7 +13,7 @@ var FuelTank = function() {
         theta += (0.5*Math.PI)/(endPoints-1);
     }
 
-    var midLength = 150;
+    var midLength = data.length;
     points.push(new THREE.Vector2(radius, radius+midLength));
 
     for(var i = 0; i < endPoints; i++) {
@@ -22,7 +23,7 @@ var FuelTank = function() {
     }
 
     var tankGeom = new THREE.LatheGeometry(points, 20, 0, 2*Math.PI);
-    var tankMat  = new THREE.MeshLambertMaterial({ color: "#FFFF00" });
+    var tankMat  = new THREE.MeshLambertMaterial({ color: data.tank_color });
     var tank1    = new THREE.Mesh(tankGeom, tankMat);
     var tank2    = new THREE.Mesh(tankGeom, tankMat);
 
@@ -35,7 +36,7 @@ var FuelTank = function() {
     tank2.position.y -= radius;
 
     var tubeGeom = new THREE.TorusGeometry(radius, 20, 15, 20, Math.PI);
-    var tubeMat  = new THREE.MeshLambertMaterial({ color: "#FF0000" });
+    var tubeMat  = new THREE.MeshLambertMaterial({ color: data.tube_color });
     var tube     = new THREE.Mesh(tubeGeom, tubeMat);
 
     tube.position.x -= (radius + midLength)/2;
@@ -50,5 +51,5 @@ var FuelTank = function() {
     this.height = 2*radius;
 };
 
-FuelTank.prototype = Object.create(THREE.Object3D.prototype);
+FuelTank.prototype = Object.create(Component.prototype);
 FuelTank.prototype.constructor = FuelTank;

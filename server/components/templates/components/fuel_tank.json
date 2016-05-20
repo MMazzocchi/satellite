@@ -1,0 +1,14 @@
+{% extends "components/instance_data.json" %}
+
+{% block data %}
+"name":        "{{ instance_data.name }} Tank",
+"tank_color":  "{{ instance_data.tank_color }}",
+"tube_color":  "{{ instance_data.tube_color }}",
+"length":       {{ instance_data.length }},
+"radius":       {{ instance_data.radius }}
+{% endblock %}
+
+{% block metrics %}
+"Space":        {{ instance_data.space }},
+"Weight":       {{ instance_data.weight }}
+{% endblock %}
