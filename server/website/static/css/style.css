@@ -66,3 +66,17 @@ body {
   color: #008800;
   font-size: 1.1vw;
 }
+
+#login-container {
+  max-width: 800px;
+  min-width: 300px;
+  text-align: center;
+}
+
+#button-container {
+  text-align: center;
+}
+
+.alert {
+  text-align: left;
+}

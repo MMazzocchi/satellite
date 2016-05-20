@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Satellite</title>
+    <title>SmallSats Login</title>
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable= no"/>
 
@@ -11,7 +11,40 @@
   </head>
   <body>
     <div id="content" class="container-fluid">
-      <h1>Welcome to the login page!</h1>
+      <div id="login-container" class="container">
+        <h1>Welcome to SmallSats!</h1>
+        <form id="login-form" class="form-horizontal">
+          <div id="username-box" class="form-group">
+            <label for="username" class="col-xs-3 control-label">Username:
+            </label>
+            <div class="col-xs-9">
+              <input id="username" type="text" class="form-control"
+                     placeholder="Username"/>
+            </div>
+          </div>
+          <div id="password-box" class="form-group">
+            <label for="password" class="col-xs-3 control-label">Password:
+            </label>
+            <div class="col-xs-9">
+              <input id="password" type="password" class="form-control"
+                     placeholder="Password"/>
+            </div>
+          </div>
+          <div id="button-container" class="form-group">
+            <button id="login-button" type="button" class="btn btn-default">
+            Login</button>
+          </div>
+        </form>
+        <div id="error-box" class="alert alert-danger" role="alert" hidden="true">
+            <p><strong>Uh-oh! Your login had the following errors:</strong></p>
+            <ul id="error-list">
+            </ul>
+            <p>Please correct the errors above and login.</p>
+        </div>
+      </div>
     </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+
+    <script src="{% static 'js/auth/login.js' %}"></script>
   </body>
 </html> 
