@@ -6,7 +6,7 @@ from django.db.models import Count
 from components.models import ComponentType
 
 class IndexView(ListView):
-    template_name = "index.html"
+    template_name = "html/index.html"
     context_object_name = 'component_types'
     
     def get_queryset(self):
