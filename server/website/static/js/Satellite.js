@@ -98,13 +98,13 @@ Satellite.prototype.replaceChassis = function(newChassis) {
     this.chassis = newChassis;
     this.add(newChassis);
     if(this.commDish) {    this.replaceCommDish(this.commDish);       }
-    if(this.Batteries) {   this.replaceBatteries(this.batteries);     }
-    if(this.Storage) {     this.replaceStorage(this.storage);         }
-    if(this.FuelTank) {    this.replaceFuelTank(this.fuelTank);       }
-    if(this.Processor) {   this.replaceProcessor(this.processor);     }
-    if(this.Sensors) {     this.replaceSensors(this.sensors);         }
-    if(this.SolarPanels) { this.replaceSolarPanels(this.solarPanels); }
-    if(this.Thrusters) {   this.replaceThrusters(this.thrusters);     }
+    if(this.batteries) {   this.replaceBatteries(this.batteries);     }
+    if(this.storage) {     this.replaceStorage(this.storage);         }
+    if(this.fuelTank) {    this.replaceFuelTank(this.fuelTank);       }
+    if(this.processor) {   this.replaceProcessor(this.processor);     }
+    if(this.sensors) {     this.replaceSensors(this.sensors);         }
+    if(this.solarPanels) { this.replaceSolarPanels(this.solarPanels); }
+    if(this.thrusters) {   this.replaceThrusters(this.thrusters);     }
 };
 
 Satellite.prototype.replaceCommDish = function(newCommDish) {
