@@ -1,6 +1,10 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
+
+def logout_view(request):
+    logout(request)
+    return redirect("/")
 
 # Validate this request and verify that the user's credentials.
 def verification(request):
