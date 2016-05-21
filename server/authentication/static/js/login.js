@@ -8,6 +8,7 @@ function login() {
     var success = true;
     var errors = "";
 
+    // Validate the user's data.
     if(username.length == 0) {
         success = false;
         errors += "<li>You must enter a username.</li>\n";
@@ -36,28 +37,48 @@ function login() {
         errorList.innerHTML = errors;
         errorBox.hidden = false;
     } else {
+
+        // Construct the object we're sending to the server.
         var settings = {
-            method: 'POST'
+            method: 'POST',
+            data: {
+                username: username,
+                password: password,
+                csrfmiddlewaretoken: $('input[name=csrfmiddlewaretoken]')[0].value
+            }
         };
-        var url = "validate/";
+
+        // Send the data off.
+        var url = "verify/";
         $.ajax(url, settings).done(function(response) {
+            console.log(response);
             var data = JSON.parse(response);
-            if(data.valid) {
+            if(data.valid == "True") {
+
               // We're logged in! Redirect to the home page.
               errorBox.hidden = true;
+              window.location.replace(data.redirect)
+
             } else {
+
+                // Display the list of errors we got from the server.
                 for(var error in data.errors) {
                     errors += "<li>"+data.errors[error]+"</ul>\n";
                 }
                 errorList.innerHTML = errors;
                 errorBox.hidden = false;
+
             }
         }).fail(function() {
+
+            // TODO: Make this a more descriptive error message based on the 
+            // server response.
             var error = "<li>The login server couldn't be reached. Refresh the "+
                         "page, check your internet connection, and try logging "+
                         "in again.</li>\n";
             errorList.innerHTML = error;
             errorBox.hidden = false;
+
         });
     }
 }

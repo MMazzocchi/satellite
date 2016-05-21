@@ -1,0 +1,12 @@
+{
+    "valid": "{{ valid }}",
+    {% if valid %}
+    "redirect": "{{ redirect }}"
+    {% else %}
+    "errors": [
+        {% for error in errors %}
+        "{{ error }}"{% if not forloop.last %},{% endif %}
+        {% endfor %}
+    ]
+    {% endif %}
+}
