@@ -4,7 +4,6 @@ from components.models import Chassis, CommDish, Batteries, SolarPanels
 from components.models import Storage, Sensors, Processor, FuelTank
 from components.models import Thrusters
 
-
 class SiteUser(models.Model):
     user = models.OneToOneField(User)
     # TODO: Add money, satellites, jobs, basically everything.
@@ -14,6 +13,7 @@ class SiteUser(models.Model):
 
 class Satellite(models.Model):
     name        = models.CharField(max_length=50)
+    owner       = models.ForeignKey(User,        on_delete=models.CASCADE)
 
     chassis     = models.ForeignKey(Chassis,     on_delete=models.PROTECT)
     commDish    = models.ForeignKey(CommDish,    on_delete=models.PROTECT)
