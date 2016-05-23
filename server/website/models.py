@@ -24,3 +24,6 @@ class Satellite(models.Model):
     processor   = models.ForeignKey(Processor,   on_delete=models.PROTECT)
     fuelTank    = models.ForeignKey(FuelTank,    on_delete=models.PROTECT)
     thrusters   = models.ForeignKey(Thrusters,   on_delete=models.PROTECT)
+
+    def __str__(self):
+        return self.name
