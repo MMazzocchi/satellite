@@ -13,7 +13,7 @@ class SiteUser(models.Model):
 
 class Satellite(models.Model):
     name        = models.CharField(max_length=50)
-    owner       = models.ForeignKey(User,        on_delete=models.CASCADE)
+    owner       = models.ForeignKey(SiteUser,    on_delete=models.CASCADE)
 
     chassis     = models.ForeignKey(Chassis,     on_delete=models.PROTECT)
     commDish    = models.ForeignKey(CommDish,    on_delete=models.PROTECT)
