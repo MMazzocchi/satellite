@@ -1,0 +1,14 @@
+{
+    name: "{{ name }}",
+    components: {
+        chassis:     {{ chassis }},
+        commDish:    {{ commDish }},
+        batteries:   {{ batteries }},
+        solarPanels: {{ solarPanels }},
+        storage:     {{ storage }},
+        sensors:     {{ sensors }},
+        processor:   {{ processor }},
+        fuelTank:    {{ fuelTank }},
+        thrusters:   {{ thrusters }}
+    }
+}

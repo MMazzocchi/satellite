@@ -8,4 +8,5 @@ urlpatterns = [
     url(r'^$', views.index_view, name='index'),
     url(r'^js/BuildView.js$', BuildView.as_view(), name='build_view'),
     url(r'^js/StockView.js$', views.stock_view, name='stock_view'),
+    url(r'^satellite/$', views.satellite_view, name='satellite_view'),
 ]

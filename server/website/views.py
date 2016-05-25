@@ -23,6 +23,23 @@ def stock_view(request):
 
     return render(request, "js/StockView.js", context)
 
+@login_required
+def satellite_view(request):
+    context = {
+        'name':        "name",
+        'chassis':     1,
+        'commDish':    1,
+        'batteries':   1,
+        'solarPanels': 1,
+        'storage':     1,
+        'sensors':     1,
+        'processor':   1,
+        'fuelTank':    1,
+        'thrusters':   1
+    }
+
+    return render(request, "json/satellite.json", context)
+
 class BuildView(ListView):
     template_name = "js/BuildView.js"
     context_object_name = 'component_types'
