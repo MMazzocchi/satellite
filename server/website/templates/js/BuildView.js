@@ -1,7 +1,7 @@
 var BuildView = function() {
     View.call(this);
 
-    this.scene = new BuildScene();
+    this.scene = new DisplayScene();
     this.menuId = "buildMenu";
     this.statusId = "buildStatus";
 

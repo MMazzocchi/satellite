@@ -3,6 +3,6 @@ var BlankScene = function(satellite) {
 };
 
 BlankScene.prototype = Object.create(Scene.prototype);
-BlankScene.prototype.constructor = BuildScene;
+BlankScene.prototype.constructor = BlankScene;
 
 BlankScene.prototype.step = function() {};

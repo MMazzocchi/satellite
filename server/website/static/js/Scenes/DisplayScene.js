@@ -1,5 +1,5 @@
-var BuildScene = function(satellite) {
-    Scene.call(this, "Build Scene");
+var DisplayScene = function(satellite) {
+    Scene.call(this, "Display Scene");
 
     this.camera = new THREE.OrthographicCamera(-800, 800, 800, -800, 1, 10000);
 
@@ -21,9 +21,9 @@ var BuildScene = function(satellite) {
     this.scene.add(satellite);
 };
 
-BuildScene.prototype = Object.create(Scene.prototype);
-BuildScene.prototype.constructor = BuildScene;
+DisplayScene.prototype = Object.create(Scene.prototype);
+DisplayScene.prototype.constructor = DisplayScene;
 
-BuildScene.prototype.step = function() {
+DisplayScene.prototype.step = function() {
     this.satellite.rotation.y += 0.03;
 };

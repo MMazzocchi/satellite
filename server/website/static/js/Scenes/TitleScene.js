@@ -28,7 +28,7 @@ var TitleScene = function(satellite) {
 };
 
 TitleScene.prototype = Object.create(Scene.prototype);
-TitleScene.prototype.constructor = BuildScene;
+TitleScene.prototype.constructor = TitleScene;
 
 TitleScene.prototype.step = function() {
     this.ball.angle += 0.07;
