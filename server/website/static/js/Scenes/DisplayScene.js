@@ -15,7 +15,7 @@ var DisplayScene = function(satellite) {
     this.scene.add(light);
 
     if(satellite == undefined) {
-        satellite = new Satellite();
+        satellite = new THREE.Object3D();
     }
     this.satellite = satellite;    
     this.scene.add(satellite);

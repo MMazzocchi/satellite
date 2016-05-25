@@ -1,5 +1,6 @@
 var Navigation = function() {
     this.homeView = new HomeView();
+    this.stockView = new StockView();
 };
 
 Navigation.prototype.setCurrentView = function(newView) {
@@ -45,3 +46,7 @@ Navigation.prototype.loadHomeView = function() {
 Navigation.prototype.loadBuildView = function() {
     this.setCurrentView(new BuildView());
 };
+
+Navigation.prototype.loadStockView = function() {
+    this.setCurrentView(this.stockView);
+}

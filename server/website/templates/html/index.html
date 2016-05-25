@@ -26,6 +26,7 @@
               <ul class="dropdown-menu" aria-labelledby="mainMenuDropdown">
                 <li><a href="#" class="home-link"  >Home</a></li>
                 <li><a href="#" class="build-link" >Build</a></li>
+                <li><a href="#" class="stock-link" >Stock</a></li>
                 <li><a href="#" class="jobs-link"  >Jobs</a></li>
                 <li><a href="#" class="status-link">Status</a></li>
                 <li><a href="auth/logout/"         >Logout</a></li>
@@ -42,11 +43,13 @@
                       type="button">Home</button>
               <button class="btn btn-default build-link"
                       type="button">Build</button>
+              <button class="btn btn-default stock-link"
+                      type="button">Stock</button>
               <button class="btn btn-default jobs-link"
                       type="button">Jobs</button>
               <button class="btn btn-default status-link"
                       type="button">Status</button>
-           </div>
+            </div>
             <div id="buildMenu" class="menu-container">
 
               <!-- One selection menu for each component type -->
@@ -64,6 +67,23 @@
               </div>
               {% endfor %}
 
+            </div>
+            <div id="stockMenu" class="menu-container">
+              <h4 id="satelliteName">None!</h4>
+              <div class="btn-group btn-group-justified">
+                <a id="satellite-left" class="btn btn-default" role="button"
+                   disabled="true">
+                  <span class="glyphicon glyphicon-chevron-left"
+                        aria-hidden="true"></span>
+                </a>
+                <a id="satellite-right" class="btn btn-default" role="button"
+                   disabled="true">
+                  <span class="glyphicon glyphicon-chevron-right"
+                        aria-hidden="true"></span>
+                </a>
+              </div>
+              <p>You haven't purchased a satellite yet! Head over to the Build
+                 screen and build a satellite!</p>
             </div>
           </div>
         </div>
@@ -99,6 +119,9 @@
                  tell you what they all mean.</p>
               <h4>Use the selection buttons on the left to pick out parts.</h4>
             </div>
+            <div id="stockStatus" class="status-container">
+
+            </div>
           </div> 
         </div>
       </div>
@@ -128,6 +151,7 @@
     <script src="{% static 'js/Scenes/TitleScene.js' %}"></script>
     <script src="{% static 'js/Views/View.js' %}"></script>
     <script src="{% static 'js/Views/HomeView.js' %}"></script>
+    <script src="{% static 'js/Views/StockView.js' %}"></script>
     <script src="{% url 'build_view' %}"></script>
     <script src="{% static 'js/Navigation.js' %}"></script>
     <script src="{% static 'js/Components/ComponentCache.js' %}"></script>

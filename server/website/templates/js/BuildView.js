@@ -1,7 +1,7 @@
 var BuildView = function() {
     View.call(this);
 
-    this.scene = new DisplayScene();
+    this.scene = new DisplayScene(new Satellite());
     this.menuId = "buildMenu";
     this.statusId = "buildStatus";
 

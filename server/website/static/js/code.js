@@ -10,10 +10,10 @@ function step() {
 }
 
 function setup() {
+    cache = new ComponentCache();
+
     navigation = new Navigation();
     navigation.loadHomeView();
-
-    cache = new ComponentCache();
 
     // Setup the renderer
     renderer = new THREE.WebGLRenderer();
