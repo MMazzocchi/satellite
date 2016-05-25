@@ -6,9 +6,9 @@ var StockView = function() {
     this.menuId = "stockMenu";
     this.statusId = "stockStatus";
 
-    this.{{ type.name }}Options = {
+    this.satelliteOptions = {
         index: 0,
-        total: 0
+        total: {{ totalSatellites }}
     };
 };
 

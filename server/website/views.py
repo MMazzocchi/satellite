@@ -17,7 +17,9 @@ def index_view(request):
 
 @login_required
 def stock_view(request):
-    context = {}
+    context = {
+        'totalSatellites': request.user.siteuser.satellite_set.count(),
+    }
 
     return render(request, "js/StockView.js", context)
 
