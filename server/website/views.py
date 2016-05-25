@@ -15,6 +15,12 @@ def index_view(request):
 
     return render(request, "html/index.html", context)   
 
+@login_required
+def stock_view(request):
+    context = {}
+
+    return render(request, "js/StockView.js", context)
+
 class BuildView(ListView):
     template_name = "js/BuildView.js"
     context_object_name = 'component_types'

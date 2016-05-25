@@ -8,7 +8,7 @@ var StockView = function() {
 
     this.{{ type.name }}Options = {
         index: 0,
-        total: {{ type.total }}
+        total: 0
     };
 };
 
