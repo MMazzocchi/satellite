@@ -1,4 +1,6 @@
 {
+    {% if valid %}
+    valid: true,
     name: "{{ name }}",
     components: {
         chassis:     {{ chassis }},
@@ -11,4 +13,7 @@
         fuelTank:    {{ fuelTank }},
         thrusters:   {{ thrusters }}
     }
+    {% else %}
+    valid: false
+    {% endif %}
 }

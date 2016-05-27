@@ -24,19 +24,25 @@ def stock_view(request):
     return render(request, "js/StockView.js", context)
 
 @login_required
-def satellite_view(request):
+def satellite_view(request, pk):
+    satellites = request.user.siteuser.satellite_set
     context = {
-        'name':        "name",
-        'chassis':     1,
-        'commDish':    1,
-        'batteries':   1,
-        'solarPanels': 1,
-        'storage':     1,
-        'sensors':     1,
-        'processor':   1,
-        'fuelTank':    1,
-        'thrusters':   1
+        'valid': True
     }
+
+    if satellites.count() < int(pk):
+        context['valid'] = False
+    else:
+        context['name']        = "name"
+        context['chassis']     = 1
+        context['commDish']    = 1
+        context['batteries']   = 1
+        context['solarPanels'] = 1
+        context['storage']     = 1
+        context['sensors']     = 1
+        context['processor']   = 1
+        context['fuelTank']    = 1
+        context['thrusters']   = 1
 
     return render(request, "json/satellite.json", context)
 
