@@ -1,7 +1,7 @@
 {% extends "components/instance_data.json" %}
 
 {% block data %}
-"name":        "{{ instance_data.name }}",
+"name":        "{{ instance_data.name }} Sensors",
 "base_color":  "{{ instance_data.base_color }}",
 "dome_color":  "{{ instance_data.dome_color }}",
 "width":        {{ instance_data.width }}

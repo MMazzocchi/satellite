@@ -1,7 +1,7 @@
 {% extends "components/instance_data.json" %}
 
 {% block data %}
-"name":        "{{ instance_data.name }}",
+"name":        "{{ instance_data.name }} Drive",
 "base_color":  "{{ instance_data.base_color }}",
 "disk_color":  "{{ instance_data.disk_color }}",
 "width":        {{ instance_data.width }}

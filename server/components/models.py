@@ -61,7 +61,7 @@ class Storage(Component):
     space = models.DecimalField(max_digits=2, decimal_places=1, default=2.5)
 
     def __str__(self):
-        return self.name
+        return self.name+" Drive"
 
 class Sensors(Component):
     base_color = models.CharField(max_length=7)
@@ -70,7 +70,7 @@ class Sensors(Component):
     strength = models.DecimalField(max_digits=2, decimal_places=1, default=2.5)
 
     def __str__(self):
-        return self.name
+        return self.name+" Sensors"
 
 class Processor(Component):
     color = models.CharField(max_length=7)
