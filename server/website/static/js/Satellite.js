@@ -5,15 +5,30 @@ var Satellite = function(chassisId, commDishId, batteriesId, solarPanelsId,
 
     var thisSat = this;
 
-    if(chassisId     == undefined) { chassisId     = 1; }
-    if(commDishId    == undefined) { commDishId    = 1; }
-    if(batteriesId   == undefined) { batteriesId   = 1; }
-    if(solarPanelsId == undefined) { solarPanelsId = 1; }
-    if(storageId     == undefined) { storageId     = 1; }
-    if(sensorsId     == undefined) { sensorsId     = 1; }
-    if(processorId   == undefined) { processorId   = 1; }
-    if(fuelTankId    == undefined) { fuelTankId    = 1; }
-    if(thrustersId   == undefined) { thrustersId   = 1; }
+    var chassisId, commDishId, batteriesId, solarPanelsId, storageId, sensorsId,
+        processorId, fuelTankId, thrustersId;
+
+    if(data == undefined) {
+        chassisId     = 1;
+        commDishId    = 1;
+        batteriesId   = 1;
+        solarPanelsId = 1;
+        storageId     = 1;
+        sensorsId     = 1;
+        processorId   = 1;
+        fuelTankId    = 1;
+        thrustersId   = 1;
+    } else {
+        chassisId     = components.chassis;
+        commDishId    = components.commDish;
+        batteriesId   = components.batteries;
+        solarPanelsId = components.solarPanels;
+        storageId     = components.storage;
+        sensorsId     = components.sensors;
+        processorId   = components.processor;
+        fuelTankId    = components.fuelTank;
+        thrustersId   = components.thrusters;
+    }
 
     // Create a 3D object for the chassis; we'll replace it last.
     this.chassis = new THREE.Object3D();
