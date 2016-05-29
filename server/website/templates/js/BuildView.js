@@ -103,9 +103,9 @@ BuildView.prototype.setupMenu = function() {
             thisView.updateStatusPane(newComponent);
         }
 
-        cache.getInstanceData("{{ type.name }}", 
-                              thisView.{{ type.name }}Options.index + 1,
-                              callBack);
+        cache.getComponentData("{{ type.name }}", 
+                               thisView.{{ type.name }}Options.index + 1,
+                               callBack);
     });
 
     $('#{{ type.name }}-left').click(function() {
@@ -121,9 +121,9 @@ BuildView.prototype.setupMenu = function() {
             thisView.updateStatusPane(newComponent);
         }
 
-        cache.getInstanceData("{{ type.name }}", 
-                              thisView.{{ type.name }}Options.index + 1,
-                              callBack);
+        cache.getComponentData("{{ type.name }}", 
+                               thisView.{{ type.name }}Options.index + 1,
+                               callBack);
     });
     {% endfor %}
 };

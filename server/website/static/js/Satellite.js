@@ -6,47 +6,47 @@ var Satellite = function() {
     // Create a 3D object for the chassis; we'll replace it last.
     this.chassis = new THREE.Object3D();
 
-    cache.getInstanceData("commDish", 1, function(data) {
+    cache.getComponentData("commDish", 1, function(data) {
         var commDish = new CommDish(data);
         thisSat.replaceCommDish(commDish);
     });
 
-    cache.getInstanceData("batteries", 1, function(data) {
+    cache.getComponentData("batteries", 1, function(data) {
         var batteries = new Batteries(data);
         thisSat.replaceBatteries(batteries);
     });
 
-    cache.getInstanceData("solarPanels", 1, function(data) {
+    cache.getComponentData("solarPanels", 1, function(data) {
         var solarPanels = new SolarPanels(data);
         thisSat.replaceSolarPanels(solarPanels);
     });
 
-    cache.getInstanceData("storage", 1, function(data) {
+    cache.getComponentData("storage", 1, function(data) {
         var storage = new Storage(data);
         thisSat.replaceStorage(storage);
     });
 
-    cache.getInstanceData("sensors", 1, function(data) {
+    cache.getComponentData("sensors", 1, function(data) {
         var sensors = new Sensors(data);
         thisSat.replaceSensors(sensors);
     });
 
-    cache.getInstanceData("processor", 1, function(data) {
+    cache.getComponentData("processor", 1, function(data) {
         var processor = new Processor(data);
         thisSat.replaceProcessor(processor);
     });
 
-    cache.getInstanceData("fuelTank", 1, function(data) {
+    cache.getComponentData("fuelTank", 1, function(data) {
         var fuelTank = new FuelTank(data);
         thisSat.replaceFuelTank(fuelTank);
     });
 
-    cache.getInstanceData("thrusters", 1, function(data) {
+    cache.getComponentData("thrusters", 1, function(data) {
         var thrusters = new Thrusters(data);
         thisSat.replaceThrusters(thrusters);
     });
 
-    cache.getInstanceData("chassis", 1, function(data) {
+    cache.getComponentData("chassis", 1, function(data) {
         thisSat.chassis = new Chassis(data);
         thisSat.replaceChassis(thisSat.chassis);
     });

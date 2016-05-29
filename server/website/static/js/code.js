@@ -10,7 +10,7 @@ function step() {
 }
 
 function setup() {
-    cache = new ComponentCache();
+    cache = new Cache();
 
     navigation = new Navigation();
     navigation.loadHomeView();
