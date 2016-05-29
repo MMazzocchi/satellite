@@ -38,7 +38,7 @@ var Satellite = function(data, callback) {
     function componentCallback() {
         thisSat.loaded++;
         if(thisSat.loaded == 9) {
-            callback(thisSat);
+            if(callback) { callback(thisSat); }
         }
     }
 
