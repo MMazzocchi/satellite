@@ -27,3 +27,9 @@ DisplayScene.prototype.constructor = DisplayScene;
 DisplayScene.prototype.step = function() {
     this.satellite.rotation.y += 0.03;
 };
+
+DisplayScene.prototype.replaceSatellite(newSatellite) {
+    this.scene.remove(this.satellite);
+    this.scene.add(newSatellite);
+    this.satellite = newSatellite;
+};
