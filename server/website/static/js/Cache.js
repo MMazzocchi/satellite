@@ -58,7 +58,7 @@ Cache.prototype.getSatelliteData = function(satelliteId, callBack) {
     if(this.satellites[satelliteId] == undefined) {
         this.refreshSatellite(satelliteId, callBack);
     } else {
-        callBack(this.components[satelliteId]);
+        callBack(this.satellites[satelliteId]);
     }
 };
 

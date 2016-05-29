@@ -30,6 +30,7 @@ DisplayScene.prototype.step = function() {
 
 DisplayScene.prototype.replaceSatellite = function(newSatellite) {
     this.scene.remove(this.satellite);
+    newSatellite.rotation.y = this.satellite.rotation.y;
     this.scene.add(newSatellite);
     this.satellite = newSatellite;
 };
