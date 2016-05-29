@@ -1,52 +1,64 @@
-var Satellite = function() {
+var Satellite = function(chassisId, commDishId, batteriesId, solarPanelsId,
+                         storageId, sensorsId,  processorId, fuelTankId,
+                         thrustersId) {
     THREE.Object3D.call(this);
 
     var thisSat = this;
 
+    if(chassisId     == undefined) { chassisId     = 1; }
+    if(commDishId    == undefined) { commDishId    = 1; }
+    if(batteriesId   == undefined) { batteriesId   = 1; }
+    if(solarPanelsId == undefined) { solarPanelsId = 1; }
+    if(storageId     == undefined) { storageId     = 1; }
+    if(sensorsId     == undefined) { sensorsId     = 1; }
+    if(processorId   == undefined) { processorId   = 1; }
+    if(fuelTankId    == undefined) { fuelTankId    = 1; }
+    if(thrustersId   == undefined) { thrustersId   = 1; }
+
     // Create a 3D object for the chassis; we'll replace it last.
     this.chassis = new THREE.Object3D();
 
-    cache.getComponentData("commDish", 1, function(data) {
+    cache.getComponentData("commDish", commDishId, function(data) {
         var commDish = new CommDish(data);
         thisSat.replaceCommDish(commDish);
     });
 
-    cache.getComponentData("batteries", 1, function(data) {
+    cache.getComponentData("batteries", batteriesId, function(data) {
         var batteries = new Batteries(data);
         thisSat.replaceBatteries(batteries);
     });
 
-    cache.getComponentData("solarPanels", 1, function(data) {
+    cache.getComponentData("solarPanels", solarPanelsId, function(data) {
         var solarPanels = new SolarPanels(data);
         thisSat.replaceSolarPanels(solarPanels);
     });
 
-    cache.getComponentData("storage", 1, function(data) {
+    cache.getComponentData("storage", storageId, function(data) {
         var storage = new Storage(data);
         thisSat.replaceStorage(storage);
     });
 
-    cache.getComponentData("sensors", 1, function(data) {
+    cache.getComponentData("sensors", sensorsId, function(data) {
         var sensors = new Sensors(data);
         thisSat.replaceSensors(sensors);
     });
 
-    cache.getComponentData("processor", 1, function(data) {
+    cache.getComponentData("processor", processorId, function(data) {
         var processor = new Processor(data);
         thisSat.replaceProcessor(processor);
     });
 
-    cache.getComponentData("fuelTank", 1, function(data) {
+    cache.getComponentData("fuelTank", fuelTankId, function(data) {
         var fuelTank = new FuelTank(data);
         thisSat.replaceFuelTank(fuelTank);
     });
 
-    cache.getComponentData("thrusters", 1, function(data) {
+    cache.getComponentData("thrusters", thrustersId, function(data) {
         var thrusters = new Thrusters(data);
         thisSat.replaceThrusters(thrusters);
     });
 
-    cache.getComponentData("chassis", 1, function(data) {
+    cache.getComponentData("chassis", chassisId, function(data) {
         thisSat.chassis = new Chassis(data);
         thisSat.replaceChassis(thisSat.chassis);
     });
