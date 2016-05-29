@@ -33,7 +33,8 @@ SolarPanel.prototype = Object.create(THREE.Object3D.prototype);
 SolarPanel.prototype.constructor = SolarPanel;
 
 var SolarPanels = function(data) {
-    Component.call(this, data.name, data.cost, data.description, data.metrics);
+    Component.call(this, data.name, data.type, data.cost, data.description,
+                   data.metrics);
 
     this.leftPanel = new SolarPanel(data, true);
     this.rightPanel = new SolarPanel(data, false);

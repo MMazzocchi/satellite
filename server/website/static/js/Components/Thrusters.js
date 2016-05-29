@@ -27,7 +27,8 @@ Thruster.prototype = Object.create(THREE.Object3D.prototype);
 Thruster.prototype.constructor = Thruster;
 
 var Thrusters = function(data) {
-    Component.call(this, data.name, data.cost, data.description, data.metrics);
+    Component.call(this, data.name, data.type, data.cost, data.description,
+                   data.metrics);
 
     this.leftThrusters = [];
     this.rightThrusters = [];

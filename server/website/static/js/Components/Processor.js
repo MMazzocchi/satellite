@@ -1,5 +1,6 @@
 var Processor = function(data) {
-    Component.call(this, data.name, data.cost, data.description, data.metrics);
+    Component.call(this, data.name, data.type, data.cost, data.description,
+                   data.metrics);
 
     var baseGeom = new THREE.BoxGeometry(data.width, 20, data.width);
     var baseMat = new THREE.MeshLambertMaterial({ color: data.color });

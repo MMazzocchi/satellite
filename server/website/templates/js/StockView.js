@@ -41,10 +41,10 @@ StockView.prototype.updateStatusPane = function() {
         {% for type in component_types %}
         html += "  <div class=\"row\"\n>";
         html += "    <div class=\"col-xs-6 table-cell\">";
-        html += "{{ type.name }}";
+        html += "{{ type.display_name }}";
         html += "    </div>\n";
         html += "    <div class=\"col-xs-6 table-cell\">";
-        html += this.satellite.{{ type.name }}.name;
+        html += this.satellite.{{ type.name }}.type;
         html += "    </div>\n";
         html += "  </div>\n";
         {% endfor %}

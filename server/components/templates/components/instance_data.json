@@ -4,6 +4,7 @@
         "found": true,
         "data": {
            "component_id": {{ instance_data.id }},
+           "type": "{{ instance_data.name }}",
            "description": "{{ instance_data.description }}",
            "cost": {{ instance_data.cost }},
            {% block data %}{% endblock %},
