@@ -1,19 +1,19 @@
 {
     {% if valid %}
-    valid: true,
-    name: "{{ name }}",
-    components: {
-        chassis:     {{ chassis }},
-        commDish:    {{ commDish }},
-        batteries:   {{ batteries }},
-        solarPanels: {{ solarPanels }},
-        storage:     {{ storage }},
-        sensors:     {{ sensors }},
-        processor:   {{ processor }},
-        fuelTank:    {{ fuelTank }},
-        thrusters:   {{ thrusters }}
+    "valid": true,
+    "name": "{{ name }}",
+    "components": {
+        "chassis":     {{ chassis }},
+        "commDish":    {{ commDish }},
+        "batteries":   {{ batteries }},
+        "solarPanels": {{ solarPanels }},
+        "storage":     {{ storage }},
+        "sensors":     {{ sensors }},
+        "processor":   {{ processor }},
+        "fuelTank":    {{ fuelTank }},
+        "thrusters":   {{ thrusters }}
     }
     {% else %}
-    valid: false
+    "valid": false
     {% endif %}
 }

@@ -1,6 +1,4 @@
-var Satellite = function(chassisId, commDishId, batteriesId, solarPanelsId,
-                         storageId, sensorsId,  processorId, fuelTankId,
-                         thrustersId) {
+var Satellite = function(data) {
     THREE.Object3D.call(this);
 
     var thisSat = this;
@@ -19,15 +17,15 @@ var Satellite = function(chassisId, commDishId, batteriesId, solarPanelsId,
         fuelTankId    = 1;
         thrustersId   = 1;
     } else {
-        chassisId     = components.chassis;
-        commDishId    = components.commDish;
-        batteriesId   = components.batteries;
-        solarPanelsId = components.solarPanels;
-        storageId     = components.storage;
-        sensorsId     = components.sensors;
-        processorId   = components.processor;
-        fuelTankId    = components.fuelTank;
-        thrustersId   = components.thrusters;
+        chassisId     = data.components.chassis;
+        commDishId    = data.components.commDish;
+        batteriesId   = data.components.batteries;
+        solarPanelsId = data.components.solarPanels;
+        storageId     = data.components.storage;
+        sensorsId     = data.components.sensors;
+        processorId   = data.components.processor;
+        fuelTankId    = data.components.fuelTank;
+        thrustersId   = data.components.thrusters;
     }
 
     // Create a 3D object for the chassis; we'll replace it last.

@@ -1,7 +1,14 @@
 var StockView = function() {
     View.call(this);
 
-    this.scene = new DisplayScene();
+    // Initialize with an empty object; we'll replace it in the callback.
+    this.scene = new DisplayScene(new THREE.Object3D());
+
+    var thisView = this;
+    cache.getSatelliteData(1, function(data) {
+        var satellite = new Satellite(data);
+        thisView.scene.replaceSatellite(satellite);
+    });
 
     this.menuId = "stockMenu";
     this.statusId = "stockStatus";
@@ -22,5 +29,4 @@ StockView.prototype.setupMenu = function() {
     $('#satellite-right').click(function() {
 
     });
-
 };

@@ -43,10 +43,9 @@ Cache.prototype.refreshSatellite = function(satelliteId, callBack) {
 
     $.ajax(url).done(function(response) {
         var data = JSON.parse(response);
-        if(data.response.found) {
-            thisCache.satellites[satelliteId] = 
-                data.response.data;
-            callBack(data.response.data);
+        if(data.valid) {
+            thisCache.satellites[satelliteId] = data;
+            callBack(data);
         } else {
             // TODO: Throw an error.
         }
