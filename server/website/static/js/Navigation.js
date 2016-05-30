@@ -47,6 +47,6 @@ Navigation.prototype.loadBuildView = function() {
     this.setCurrentView(new BuildView());
 };
 
-Navigation.prototype.loadStockView = function() {
-    this.setCurrentView(this.stockView);
+Navigation.prototype.loadStockView = function(satellite_id) {
+    this.setCurrentView(new StockView(satellite_id));
 }
