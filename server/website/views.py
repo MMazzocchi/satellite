@@ -67,15 +67,15 @@ def purchase_view(request):
        'processor'   in request.POST and 'fuelTank'    in request.POST and \
        'thrusters'   in request.POST and 'name'        in request.POST:
 
-        chassis_id     = request.POST['chassis']
-        commDish_id    = request.POST['commDish']
-        batteries_id   = request.POST['batteries']
-        solarPanels_id = request.POST['solarPanels']
-        storage_id     = request.POST['storage']
-        sensors_id     = request.POST['sensors']
-        processor_id   = request.POST['processor']
-        fuelTank_id    = request.POST['fuelTank']
-        thrusters_id   = request.POST['thrusters']
+        chassis_id     = int(request.POST['chassis'])
+        commDish_id    = int(request.POST['commDish'])
+        batteries_id   = int(request.POST['batteries'])
+        solarPanels_id = int(request.POST['solarPanels'])
+        storage_id     = int(request.POST['storage'])
+        sensors_id     = int(request.POST['sensors'])
+        processor_id   = int(request.POST['processor'])
+        fuelTank_id    = int(request.POST['fuelTank'])
+        thrusters_id   = int(request.POST['thrusters'])
 
         name = request.POST['name']
 
@@ -115,9 +115,9 @@ def purchase_view(request):
             thrusters   = Thrusters.objects.get(  pk=thrusters_id)
 
             cost = 0
-            cost += chassis.cost     + commDish.cost  + batteries.cost + \
-                    solarPanels.cost + storage.cost   + sensors.cost   + \
-                    processor.cost   + fuelTank.cost  + thrusters.cost
+            cost += chassis.cost     + commDish.cost + batteries.cost + \
+                    solarPanels.cost + storage.cost  + sensors.cost   + \
+                    processor.cost   + fuelTank.cost + thrusters.cost
 
             if money >= cost:
                 # This is a valid purchase. Let's make it happen.
@@ -135,7 +135,7 @@ def purchase_view(request):
                 satellite.save()
 
                 request.user.siteuser.money -= cost
-                request.user.siteuset.save()
+                request.user.siteuser.save()
 
                 context['valid'] = True
                 context['id'] = request.user.siteuser.satellite_set.count()
