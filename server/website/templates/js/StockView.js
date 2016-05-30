@@ -1,4 +1,4 @@
-var StockView = function() {
+var StockView = function(satellite_id) {
     View.call(this);
 
     // Initialize with an empty object; we'll replace it in the callback.
@@ -7,16 +7,21 @@ var StockView = function() {
     this.menuId = "stockMenu";
     this.statusId = "stockStatus";
 
+    if(satellite_id == undefined) {
+        satellite_id = 1;
+    } 
+
     this.satelliteOptions = {
-        index: 0,
+        index: satellite_id - 1,
         total: {{ total_satellites }}
     };
 
     this.satellite = undefined;
 
-    if(this.satelliteOptions.total > 0) {
+    if(this.satelliteOptions.total > 0 && 
+       satellite_id <= this.satelliteOptions.total) {
         // Show the user's first satellite.
-        this.showSatellite(1);
+        this.showSatellite(satellite_id);
     }
 };
 
@@ -85,9 +90,9 @@ StockView.prototype.setupMenu = function() {
     $('#satellite-left').click(function() {
         if(thisView.satelliteOptions.total > 0) {
             thisView.satelliteOptions.index =
-                (thisView.satelliteOptions.total - 1) % 
+                (thisView.satelliteOptions.index +
+                 (thisView.satelliteOptions.total - 1)) % 
                 thisView.satelliteOptions.total;
-
             thisView.showSatellite(thisView.satelliteOptions.index);
         }
     });
