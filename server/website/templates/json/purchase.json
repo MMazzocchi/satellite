@@ -1,6 +1,7 @@
 {
     {% if valid %}
-    "valid": true
+    "valid": true,
+    "id": {{ id }}
     {% else %}
     "valid": false,
     "error": "{{ error }}"
