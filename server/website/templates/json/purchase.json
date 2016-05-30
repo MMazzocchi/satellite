@@ -2,7 +2,7 @@
     {% if valid %}
     "valid": true
     {% else %}
-    "valid": false
+    "valid": false,
+    "error": "{{ error }}"
     {% endif %}
-
 }

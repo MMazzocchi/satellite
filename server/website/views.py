@@ -139,7 +139,12 @@ def purchase_view(request):
 
                 context['valid'] = True
                 context['id'] = request.user.siteuser.satellite_set.count()
-
+            else:
+                context['error'] = "Not enough money to make this purchase."
+        else:
+            context['error'] = "A bad request was recieved."
+    else:
+        context['error'] = "A bad request was recieved."
     return render(request, "json/purchase.json", context)
 
 class BuildView(ListView):
