@@ -6,7 +6,7 @@ from components.models import Thrusters
 
 class SiteUser(models.Model):
     user = models.OneToOneField(User)
-    # TODO: Add money, satellites, jobs, basically everything.
+    money = models.PositiveIntegerField(default=0)
 
     def __str__(self):
         return self.user.get_username()
