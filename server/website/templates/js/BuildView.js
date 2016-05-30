@@ -52,12 +52,58 @@ BuildView.prototype.showTotal = function() {
     html += "    </div>\n";
     html += "    <div class=\"col-xs-3 table-cell\">"
     html += "      <span class=\"glyphicon glyphicon-minus-sign coin\" "+
-            "aria-hidden=\"true\"></span>\n";
+            "            aria-hidden=\"true\"></span>\n";
     html += total+"</div>\n";
+    html += "  </div>\n";
+    html += " <input id=\"new_name\" type=\"text\" "+
+            "        placeholder=\"Satellite Name\"/>\n";
+    html += "  {% csrf_token %}\n";
+    html += "  <button id=\"purchaseButton\">Purchase</button>\n";
+    html += "  <div id=\"error-box\" class=\"alert alert-danger\" ";
+    html += "       role=\"alert\" hidden=\"true\">\n";
+    html += "    <p id=\"error-msg\"></p>\n";
     html += "  </div>\n";
     html += "</div>\n";
  
     buildStatus.innerHTML = html;
+
+    var thisView = this;
+    $('#purchaseButton').click(function() {
+        // TODO Client-side verification of this request
+
+        // Construct the object we're sending to the server.
+        var settings = {
+            method: 'POST',
+            data: {
+                name: $('#new_name')[0].value,
+                {% for type in component_types %}
+                {{ type.name }}: thisView.scene.satellite.{{ type.name }}.component_id,
+                {% endfor %}
+                csrfmiddlewaretoken: $('input[name=csrfmiddlewaretoken]')[0].value
+            }
+        };
+
+        // Send the data off.
+        var url = "purchase/";
+        $.ajax(url, settings).done(function(response) {
+            var data = JSON.parse(response);
+            if(data.valid) {
+                $('#error-box')[0].hidden = true;
+                navigation.loadStockView(data.id, true);
+            } else {
+                $('#error-msg')[0].innerHTML = data.error;
+                $('#error-box')[0].hidden = false;
+            }
+        }).fail(function() {
+
+            // TODO: Make this a more descriptive error message based on the 
+            // server response.
+            var error = "The server couldn't be reached. Refresh the "+
+                        "page and check your internet connection.\n";
+            $('#error-msg')[0].innerHTML = error;
+            $('#error-box')[0].hidden = false;
+        }); 
+    });
 }
 
 BuildView.prototype.updateStatusPane = function(component) {
