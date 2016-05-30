@@ -1,4 +1,4 @@
-var StockView = function(satellite_id) {
+var StockView = function() {
     View.call(this);
 
     // Initialize with an empty object; we'll replace it in the callback.
@@ -7,21 +7,16 @@ var StockView = function(satellite_id) {
     this.menuId = "stockMenu";
     this.statusId = "stockStatus";
 
-    if(satellite_id == undefined) {
-        satellite_id = 1;
-    } 
-
     this.satelliteOptions = {
-        index: satellite_id - 1,
+        index: 0,
         total: {{ total_satellites }}
     };
 
     this.satellite = undefined;
 
-    if(this.satelliteOptions.total > 0 && 
-       satellite_id <= this.satelliteOptions.total) {
+    if(this.satelliteOptions.total > 0) {
         // Show the user's first satellite.
-        this.showSatellite(satellite_id);
+        this.showSatellite(1);
     }
 };
 

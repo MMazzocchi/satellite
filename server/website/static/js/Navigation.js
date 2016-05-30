@@ -47,6 +47,13 @@ Navigation.prototype.loadBuildView = function() {
     this.setCurrentView(new BuildView());
 };
 
-Navigation.prototype.loadStockView = function(satellite_id) {
-    this.setCurrentView(new StockView(satellite_id));
+Navigation.prototype.loadStockView = function(satellite_id, new_satellite) {
+    if(new_satellite) {
+        this.stockView.satelliteOptions.total++;
+    }
+    if(satellite_id) {
+        this.stockView.satelliteOptions.index = satellite_id - 1;
+        this.stockView.showSatellite(satellite_id);
+    }
+    this.setCurrentView(this.stockView);
 }
