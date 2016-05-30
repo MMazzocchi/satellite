@@ -1,0 +1,8 @@
+{
+    {% if valid %}
+    "valid": true
+    {% else %}
+    "valid": false
+    {% endif %}
+
+}

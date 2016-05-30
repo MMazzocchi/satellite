@@ -5,6 +5,11 @@ from django.db.models import Count
 from django.contrib.auth.decorators import login_required
 
 from components.models import ComponentType
+from components.models import Chassis, CommDish, Batteries, SolarPanels
+from components.models import Storage, Sensors, Processor, FuelTank
+from components.models import Thrusters
+
+from .models import Satellite
 
 @login_required
 def index_view(request):
@@ -47,6 +52,95 @@ def satellite_view(request, num):
         context['thrusters']   = satellite.thrusters.id
 
     return render(request, "json/satellite.json", context)
+
+@login_required
+def purchase_view(request):
+
+    context = {
+        'valid': False
+    }
+
+    # Make sure we got all the data we need
+    if 'chassis'     in request.POST and 'commDish'    in request.POST and \
+       'batteries'   in request.POST and 'solarPanels' in request.POST and \
+       'solarPanels' in request.POST and 'storage'     in request.POST and \
+       'processor'   in request.POST and 'fuelTank'    in request.POST and \
+       'thrusters'   in request.POST and 'name'        in request.POST:
+
+        chassis_id     = request.POST['chassis']
+        commDish_id    = request.POST['commDish']
+        batteries_id   = request.POST['batteries']
+        solarPanels_id = request.POST['solarPanels']
+        storage_id     = request.POST['storage']
+        sensors_id     = request.POST['sensors']
+        processor_id   = request.POST['processor']
+        fuelTank_id    = request.POST['fuelTank']
+        thrusters_id   = request.POST['thrusters']
+
+        name = request.POST['name']
+
+        types = ComponentType.objects
+        # Make sure all the ids we got are valid
+        # TODO make this a try/catch
+        if chassis_id     >  0                                   and \
+           chassis_id     <= types.get(name="chassis").total     and \
+           commDish_id    >  0                                   and \
+           commDish_id    <= types.get(name="commDish").total    and \
+           batteries_id   >  0                                   and \
+           batteries_id   <= types.get(name="batteries").total   and \
+           solarPanels_id >  0                                   and \
+           solarPanels_id <= types.get(name="solarPanels").total and \
+           storage_id     >  0                                   and \
+           storage_id     <= types.get(name="storage").total     and \
+           sensors_id     >  0                                   and \
+           sensors_id     <= types.get(name="sensors").total     and \
+           processor_id   >  0                                   and \
+           processor_id   <= types.get(name="processor").total   and \
+           fuelTank_id    >  0                                   and \
+           fuelTank_id    <= types.get(name="fuelTank").total    and \
+           thrusters_id   >  0                                   and \
+           thrusters_id   <= types.get(name="thrusters").total:
+
+            # Make sure the user has enough money for this purchase
+            money = request.user.siteuser.money
+
+            chassis     = Chassis.objects.get(    pk=chassis_id)
+            commDish    = CommDish.objects.get(   pk=commDish_id)
+            batteries   = Batteries.objects.get(  pk=batteries_id)
+            solarPanels = SolarPanels.objects.get(pk=solarPanels_id)
+            storage     = Storage.objects.get(    pk=storage_id)
+            sensors     = Sensors.objects.get(    pk=sensors_id)
+            processor   = Processor.objects.get(  pk=processor_id)
+            fuelTank    = FuelTank.objects.get(   pk=fuelTank_id)
+            thrusters   = Thrusters.objects.get(  pk=thrusters_id)
+
+            cost = 0
+            cost += chassis.cost     + commDish.cost  + batteries.cost + \
+                    solarPanels.cost + storage.cost   + sensors.cost   + \
+                    processor.cost   + fuelTank.cost  + thrusters.cost
+
+            if money >= cost:
+                # This is a valid purchase. Let's make it happen.
+                satellite = Satellite(owner=request.user.siteuser,
+                                      name=name,
+                                      chassis=chassis,
+                                      commDish=commDish,
+                                      batteries=batteries,
+                                      solarPanels=solarPanels,
+                                      storage=storage,
+                                      sensors=sensors,
+                                      processor=processor,
+                                      fuelTank=fuelTank,
+                                      thrusters=thrusters)
+                satellite.save()
+
+                request.user.siteuser.money -= cost
+                request.user.siteuset.save()
+
+                context['valid'] = True
+                context['id'] = request.user.siteuser.satellite_set.count()
+
+    return render(request, "json/purchase.json", context)
 
 class BuildView(ListView):
     template_name = "js/BuildView.js"
