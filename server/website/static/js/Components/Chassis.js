@@ -1,6 +1,5 @@
 var Chassis = function(data) {
-    Component.call(this, data.name, data.type, data.cost, data.description,
-                   data.metrics);
+    Component.call(this, data);
 
     this.width  = data.width;
     this.height = data.height;

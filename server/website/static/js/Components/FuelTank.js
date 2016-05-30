@@ -1,6 +1,5 @@
 var FuelTank = function(data) {
-    Component.call(this, data.name, data.type, data.cost, data.description, 
-                   data.metrics);
+    Component.call(this, data);
 
     var points = [];
     
