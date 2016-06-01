@@ -43,7 +43,7 @@ BuildView.prototype.showTotal = function() {
     html += "    </div>\n";
     html += "  </div>\n";
     {% endfor %}
-    html += "  <div class=\"row\"\n>";
+    html += "  <div class=\"row\">\n";
     html += "    <div class=\"col-xs-13 divider\"></div>\n";
     html += "  </div>\n";
     html += "  <div class=\"row\"\n>";
@@ -55,12 +55,18 @@ BuildView.prototype.showTotal = function() {
             "            aria-hidden=\"true\"></span>\n";
     html += total+"</div>\n";
     html += "  </div>\n";
-    html += " <input id=\"new_name\" type=\"text\" "+
+    html += "  <div class=\"row\">\n";
+    html += "  <input id=\"new_name\" type=\"text\" class=\"form-control\""+
             "        placeholder=\"Satellite Name\"/>\n";
+    html += "  </div>\n";
     html += "  {% csrf_token %}\n";
-    html += "  <button id=\"purchaseButton\">Purchase</button>\n";
-    html += "  <div id=\"error-box\" class=\"alert alert-danger\" ";
+    html += "  <div class=\"row\">\n";
+    html += "    <button id=\"purchaseButton\" class=\"btn btn-default\">"+
+            "Purchase</button>\n";
+    html += "  </div>\n";
+    html += "  <div id=\"error-box\" class=\"alert alert-danger row\" ";
     html += "       role=\"alert\" hidden=\"true\">\n";
+    html += "    <p><strong>There was a problem with your purchase!</strong></p>\n";
     html += "    <p id=\"error-msg\"></p>\n";
     html += "  </div>\n";
     html += "</div>\n";
@@ -69,40 +75,50 @@ BuildView.prototype.showTotal = function() {
 
     var thisView = this;
     $('#purchaseButton').click(function() {
-        // TODO Client-side verification of this request
-
-        // Construct the object we're sending to the server.
-        var settings = {
-            method: 'POST',
-            data: {
-                name: $('#new_name')[0].value,
-                {% for type in component_types %}
-                {{ type.name }}: thisView.scene.satellite.{{ type.name }}.component_id,
-                {% endfor %}
-                csrfmiddlewaretoken: $('input[name=csrfmiddlewaretoken]')[0].value
-            }
-        };
-
-        // Send the data off.
-        var url = "purchase/";
-        $.ajax(url, settings).done(function(response) {
-            var data = JSON.parse(response);
-            if(data.valid) {
-                $('#error-box')[0].hidden = true;
-                navigation.loadStockView(data.id, true);
-            } else {
-                $('#error-msg')[0].innerHTML = data.error;
-                $('#error-box')[0].hidden = false;
-            }
-        }).fail(function() {
-
-            // TODO: Make this a more descriptive error message based on the 
-            // server response.
-            var error = "The server couldn't be reached. Refresh the "+
-                        "page and check your internet connection.\n";
-            $('#error-msg')[0].innerHTML = error;
+        var name = $('#new_name')[0].value;
+        if(name.length == 0) {
+            $('#error-msg')[0].innerHTML = "Please enter a name for your "+
+                                           "satellite.";
             $('#error-box')[0].hidden = false;
-        }); 
+
+            // TODO: Verify the user can afford this.
+        } else{
+
+            // Construct the object we're sending to the server.
+            var settings = {
+                method: 'POST',
+                data: {
+                    name: $('#new_name')[0].value,
+                    {% for type in component_types %}
+                    {{ type.name }}: thisView.scene.satellite
+                                     .{{ type.name }}.component_id,
+                    {% endfor %}
+                    csrfmiddlewaretoken: $('input[name=csrfmiddlewaretoken]')[0]
+                                         .value
+                }
+            };
+
+            // Send the data off.
+            var url = "purchase/";
+            $.ajax(url, settings).done(function(response) {
+                var data = JSON.parse(response);
+                if(data.valid) {
+                    $('#error-box')[0].hidden = true;
+                    navigation.loadStockView(data.id, true);
+                } else {
+                    $('#error-msg')[0].innerHTML = data.error;
+                    $('#error-box')[0].hidden = false;
+                }
+            }).fail(function() {
+
+                // TODO: Make this a more descriptive error message based on the 
+                // server response.
+                var error = "The server couldn't be reached. Refresh the "+
+                            "page and check your internet connection.\n";
+                $('#error-msg')[0].innerHTML = error;
+                $('#error-box')[0].hidden = false;
+            });
+        }
     });
 }
 
