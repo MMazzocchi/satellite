@@ -1,6 +1,7 @@
 var Cache = function() {
     this.components = {};
     this.satellites = {};
+    this.userData = undefined;
 };
 
 Cache.prototype.refreshComponent = function(componentName, 
@@ -59,6 +60,31 @@ Cache.prototype.getSatelliteData = function(satelliteId, callBack) {
         this.refreshSatellite(satelliteId, callBack);
     } else {
         callBack(this.satellites[satelliteId]);
+    }
+};
+
+Cache.prototype.refreshUser = function(callBack) {
+    var url = "/user/";
+    var thisCache = this;
+
+    $.ajax(url).done(function(response) {
+        var data = JSON.parse(response);
+        if(data.valid) {
+            thisCache.userData = data;
+            callBack(data);
+        } else {
+            // TODO: Throw an error.
+        }
+    }).fail(function() {
+        // TODO: Throw an error.
+    });
+}
+
+Cache.prototype.getUserData = function(callBack) {
+    if(this.userData == undefined) {
+        this.refreshUser(callBack);
+    } else {
+        callBack(this.userData);
     }
 };
 
