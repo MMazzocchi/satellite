@@ -1,0 +1,10 @@
+{
+    {% if valid %}
+    "valid": true,
+    "username": "{{ username }}",
+    "money": {{ user.money }},
+    "satellites": {{ total_satellites }}
+    {% else %}
+    "valid": false
+    {% endif %}
+}

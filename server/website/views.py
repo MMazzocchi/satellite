@@ -54,6 +54,17 @@ def satellite_view(request, num):
     return render(request, "json/satellite.json", context)
 
 @login_required
+def user_view(request):
+    context = {
+        'valid': True,
+        "username": request.user.get_username(),
+        'user': request.user.siteuser,
+        'total_satellites': request.user.siteuser.satellite_set.count()
+    }
+
+    return render(request, "json/user.json", context)
+
+@login_required
 def purchase_view(request):
 
     context = {
