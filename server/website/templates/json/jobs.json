@@ -1,0 +1,18 @@
+{
+    {% if valid %}
+    "valid": true,
+    "jobs": [
+        {% for job in jobs %}
+        {
+          "id":    {{ job.id }},
+          "theta": {{ job.theta }},
+          "phi":   {{ job.phi }},
+          "type":  {{job.type }}
+        }
+        {% if not forloop.last %},{% endif %}
+        {% endfor %}
+    ]
+    {% else %}
+    "valid": false
+    {% endif %}
+}

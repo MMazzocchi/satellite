@@ -31,6 +31,9 @@ class Satellite(models.Model):
 class Job(models.Model):
     user = models.ForeignKey(SiteUser, on_delete=models.CASCADE)
 
+    theta = models.DecimalField(default=0, max_digits=6, decimal_places=5)
+    phi   = models.DecimalField(default=0, max_digits=6, decimal_places=5)
+
     class Types:
         COMMERCIAL = 1
         CRIMINAL   = 2

@@ -65,6 +65,15 @@ def user_view(request):
     return render(request, "json/user.json", context)
 
 @login_required
+def jobs_view(request):
+    context = {
+        'valid': True,
+        'jobs': request.user.siteuser.job_set.all()
+    }
+
+    return render(request, "json/jobs.json", context)
+
+@login_required
 def purchase_view(request):
 
     context = {
