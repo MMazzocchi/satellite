@@ -303,3 +303,14 @@ Satellite.prototype.replaceThrusters = function(newThrusters) {
         this.add(thruster3);
     }
 };
+
+Satellite.prototype.getCost = function() {
+    return this.commDish.cost +
+           this.batteries.cost +
+           this.storage.cost +
+           this.fuelTank.cost +
+           this.processor.cost +
+           this.sensors.cost +
+           this.solarPanels.cost +
+           this.thrusters.cost;
+}

@@ -47,13 +47,26 @@ Navigation.prototype.loadBuildView = function() {
     this.setCurrentView(new BuildView());
 };
 
-Navigation.prototype.loadStockView = function(satellite_id, new_satellite) {
-    if(new_satellite) {
-        this.stockView.satelliteOptions.total++;
+Navigation.prototype.loadStockView = function(satellite_id, update) {
+    var thisNav = this;
+
+    function gotoStockView() {
+        // Display a certain satellite if requested.
+        if(satellite_id) {
+            thisNav.stockView.satelliteOptions.index = satellite_id - 1;
+            thisNav.stockView.showSatellite(satellite_id);
+        }
+        thisNav.setCurrentView(thisNav.stockView);
     }
-    if(satellite_id) {
-        this.stockView.satelliteOptions.index = satellite_id - 1;
-        this.stockView.showSatellite(satellite_id);
+
+    // If an update is needed, reset the stockView satellite options with
+    // current user data.
+    if(update) {
+        cache.getUserData(function(data) {
+            thisNav.stockView.satelliteOptions.total = data.satellites;
+            gotoStockView();
+        });
+    } else {
+        gotoStockView();
     }
-    this.setCurrentView(this.stockView);
 }

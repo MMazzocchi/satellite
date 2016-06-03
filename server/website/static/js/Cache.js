@@ -15,7 +15,10 @@ Cache.prototype.refreshComponent = function(componentName,
         if(data.response.found) {
             thisCache.components[componentName][instanceId] = 
                 data.response.data;
-            callBack(data.response.data);
+
+            if(callBack) {
+                callBack(data.response.data);
+            }
         } else {
             // TODO: Throw an error.
         }
@@ -33,7 +36,7 @@ Cache.prototype.getComponentData = function(componentName, instanceId,
     // If this component hasn't already been created, create it from web data.
     if(this.components[componentName][instanceId] == undefined) {
         this.refreshComponent(componentName, instanceId, callBack);
-    } else {
+    } else if(callBack) {
         callBack(this.components[componentName][instanceId]);
     }
 };
@@ -46,7 +49,10 @@ Cache.prototype.refreshSatellite = function(satelliteId, callBack) {
         var data = JSON.parse(response);
         if(data.valid) {
             thisCache.satellites[satelliteId] = data;
-            callBack(data);
+
+            if(callBack) {
+                callBack(data);
+            }
         } else {
             // TODO: Throw an error.
         }
@@ -58,7 +64,7 @@ Cache.prototype.refreshSatellite = function(satelliteId, callBack) {
 Cache.prototype.getSatelliteData = function(satelliteId, callBack) {
     if(this.satellites[satelliteId] == undefined) {
         this.refreshSatellite(satelliteId, callBack);
-    } else {
+    } else if(callBack) {
         callBack(this.satellites[satelliteId]);
     }
 };
@@ -71,7 +77,10 @@ Cache.prototype.refreshUser = function(callBack) {
         var data = JSON.parse(response);
         if(data.valid) {
             thisCache.userData = data;
-            callBack(data);
+
+            if(callBack) {
+                callBack(data);
+            }
         } else {
             // TODO: Throw an error.
         }
@@ -83,7 +92,7 @@ Cache.prototype.refreshUser = function(callBack) {
 Cache.prototype.getUserData = function(callBack) {
     if(this.userData == undefined) {
         this.refreshUser(callBack);
-    } else {
+    } else if(callBack) {
         callBack(this.userData);
     }
 };

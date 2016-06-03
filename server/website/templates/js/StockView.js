@@ -73,6 +73,9 @@ StockView.prototype.showSatellite = function(satelliteId) {
 
 StockView.prototype.setupMenu = function() {
     var thisView = this;
+    $('#satellite-right').unbind("click");
+    $('#satellite-left').unbind("click");
+
     $('#satellite-right').click(function() {
         if(thisView.satelliteOptions.total > 0) {
             thisView.satelliteOptions.index =

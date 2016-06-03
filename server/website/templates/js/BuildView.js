@@ -18,6 +18,70 @@ var BuildView = function() {
 BuildView.prototype = Object.create(View.prototype);
 BuildView.prototype.constructor = BuildView;
 
+BuildView.prototype.showError = function(error) {
+    $('#error-msg')[0].innerHTML = error;
+    $('#error-box')[0].hidden = false;
+};
+
+BuildView.prototype.purchase = function() {
+    var thisView = this;
+
+    var total = this.scene.satellite.getCost();
+
+    var name = $('#new_name')[0].value;
+    if(name.length == 0) {
+        thisView.showError("Please enter a name for your satellite.");
+    } else {
+
+        cache.getUserData(function(user) {
+
+            if(total > user.money) {
+                thisView.showError(
+                    "You cannot afford this satellite! Try choosing less " +
+                    "expensive components, or make some more money on the " +
+                    "jobs screen.");
+            } else {
+
+                // Construct the object we're sending to the server.
+                var settings = {
+                    method: 'POST',
+                    data: {
+                        name: $('#new_name')[0].value,
+                        {% for type in component_types %}
+                        {{ type.name }}: thisView.scene.satellite
+                                         .{{ type.name }}.component_id,
+                        {% endfor %}
+                        csrfmiddlewaretoken: 
+                            $('input[name=csrfmiddlewaretoken]')[0].value
+                    }
+                };
+
+                // Send the data off.
+                var url = "purchase/";
+                $.ajax(url, settings).done(function(response) {
+                    var data = JSON.parse(response);
+
+                    if(data.valid) {
+                        $('#error-box')[0].hidden = true;
+                        cache.refreshUser(function() {
+                            navigation.loadStockView(data.id, true);
+                        });
+                    } else {
+                        thisView.showError(data.error);
+                    }
+
+                }).fail(function() {
+                    // TODO: Make this a more descriptive error message based on the
+                    // server response.
+                    thisView.showError(
+                        "The server couldn't be reached. Refresh the page " +
+                        "and check your internet connection.\n");
+                });
+            }
+        });
+    }
+};
+
 BuildView.prototype.showTotal = function() {
     var statusPane = $('#statusPane')[0];
     if(statusPane.scroll) statusPane.scroll(0,0);
@@ -75,50 +139,7 @@ BuildView.prototype.showTotal = function() {
 
     var thisView = this;
     $('#purchaseButton').click(function() {
-        var name = $('#new_name')[0].value;
-        if(name.length == 0) {
-            $('#error-msg')[0].innerHTML = "Please enter a name for your "+
-                                           "satellite.";
-            $('#error-box')[0].hidden = false;
-
-            // TODO: Verify the user can afford this.
-        } else{
-
-            // Construct the object we're sending to the server.
-            var settings = {
-                method: 'POST',
-                data: {
-                    name: $('#new_name')[0].value,
-                    {% for type in component_types %}
-                    {{ type.name }}: thisView.scene.satellite
-                                     .{{ type.name }}.component_id,
-                    {% endfor %}
-                    csrfmiddlewaretoken: $('input[name=csrfmiddlewaretoken]')[0]
-                                         .value
-                }
-            };
-
-            // Send the data off.
-            var url = "purchase/";
-            $.ajax(url, settings).done(function(response) {
-                var data = JSON.parse(response);
-                if(data.valid) {
-                    $('#error-box')[0].hidden = true;
-                    navigation.loadStockView(data.id, true);
-                } else {
-                    $('#error-msg')[0].innerHTML = data.error;
-                    $('#error-box')[0].hidden = false;
-                }
-            }).fail(function() {
-
-                // TODO: Make this a more descriptive error message based on the 
-                // server response.
-                var error = "The server couldn't be reached. Refresh the "+
-                            "page and check your internet connection.\n";
-                $('#error-msg')[0].innerHTML = error;
-                $('#error-box')[0].hidden = false;
-            });
-        }
+        thisView.purchase();
     });
 }
 
@@ -152,6 +173,9 @@ BuildView.prototype.setupMenu = function() {
 
     // Attach events to each component type selector
     {% for type in component_types %}
+
+    $('#{{ type.name }}-right').unbind("click");
+    $('#{{ type.name }}-left').unbind("click");
 
     $('#{{ type.name }}-right').click(function() {
         thisView.{{ type.name }}Options.index =
