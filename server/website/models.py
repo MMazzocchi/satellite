@@ -27,3 +27,35 @@ class Satellite(models.Model):
 
     def __str__(self):
         return self.name
+
+class Job(models.Model):
+    user = models.ForeignKey(SiteUser, on_delete=models.CASCADE)
+
+    class Types:
+        COMMERCIAL = 1
+        CRIMINAL   = 2
+        GOVERNMENT = 3
+        NON_PROFIT = 4
+        SCIENCE    = 5
+
+        type_choices = (
+            (COMMERCIAL, "Commercial"),
+            (CRIMINAL,   "Criminal"),
+            (GOVERNMENT, "Government"),
+            (NON_PROFIT, "Non-Profit"),
+            (SCIENCE,    "Science")
+        )
+
+        def getTypeStr(choices, type_id):
+            for t in choices:
+                if type_id in t:
+                    return t[1]
+
+            return ""
+
+    type = models.PositiveSmallIntegerField(choices=Types.type_choices)
+    payment = models.PositiveIntegerField()
+
+    def __str__(self):
+        return self.user.user.username + " / " + \
+               self.Types.getTypeStr(self.Types.type_choices, self.type)
