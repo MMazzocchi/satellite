@@ -3,17 +3,17 @@ var GLOBE_RADIUS = 500;
 
 function getTextSprite(text, color) {
     var scratchCanvas = document.createElement('canvas');
-    scratchCanvas.width = 250;
-    scratchCanvas.height = 55;
+    scratchCanvas.width = 256;
+    scratchCanvas.height = 64;
     var scratchCtx = scratchCanvas.getContext('2d');
 
-    scratchCtx.font = "50px monospace";
+    scratchCtx.font = "900 52px monospace";
 
     scratchCtx.clearRect(0, 0, scratchCanvas.width, scratchCanvas.height);
     scratchCtx.fillStyle = color;
-    scratchCtx.fillText(text, 5, 45);
+    scratchCtx.fillText(text, 5, 47);
     scratchCtx.strokeStyle = color;
-    scratchCtx.lineWidth = 5;
+    scratchCtx.lineWidth = 8;
     scratchCtx.strokeRect(0, 0, scratchCanvas.width, scratchCanvas.height);
 
     var map = new THREE.Texture(scratchCanvas);
@@ -21,7 +21,7 @@ function getTextSprite(text, color) {
 
     var mat = new THREE.SpriteMaterial({ map: map });
     var sprite = new THREE.Sprite(mat);
-    sprite.scale.set(0.75*scratchCanvas.width, 0.75*scratchCanvas.height);
+    sprite.scale.set(1.5*scratchCanvas.width, 1.5*scratchCanvas.height);
 
     return sprite;
 }
@@ -70,9 +70,9 @@ var Sector = function(color, id) {
 
     // Make the sector label
     var label = getTextSprite("Sector "+ id, "#FFFFFF");
-    label.position.x -= 345;
-    label.position.y += 345;
-    label.position.z += 345;
+    label.position.x -= 385;
+    label.position.y += 385;
+    label.position.z += 385;
     this.add(label);
 };
 
