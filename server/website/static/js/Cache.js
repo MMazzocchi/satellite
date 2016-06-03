@@ -97,4 +97,31 @@ Cache.prototype.getUserData = function(callBack) {
     }
 };
 
+Cache.prototype.refreshJobs = function(callBack) {
+    var url = "/jobs/";
+    var thisCache = this;
+
+    $.ajax(url).done(function(response) {
+        var data = JSON.parse(response);
+        if(data.valid) {
+            thisCache.jobs = data;
+
+            if(callBack) {
+                callBack(data);
+            }
+        } else {
+            // TODO: Throw an error.
+        }
+    }).fail(function() {
+        // TODO: Throw an error.
+    });
+};
+
+Cache.prototype.getJobs = function(callBack) {
+    if(this.jobs == undefined) {
+        this.refreshJobs(callBack);
+    } else if(callBack) {
+        callBack(this.jobs);
+    }
+};
 

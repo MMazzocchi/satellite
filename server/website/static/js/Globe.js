@@ -1,4 +1,5 @@
 var GLOBE_SEGMENTS = 30;
+var GLOBE_RADIUS = 500;
 
 function getTextSprite(text, color) {
     var scratchCanvas = document.createElement('canvas');
@@ -32,7 +33,7 @@ var Sector = function(color, id) {
     var sectorSegments = GLOBE_SEGMENTS/2;
 
     // Create the transparent main section of the sector
-    var sectorGeom = new THREE.SphereGeometry(510, sectorSegments, 
+    var sectorGeom = new THREE.SphereGeometry(GLOBE_RADIUS+10, sectorSegments, 
                                               sectorSegments,
                                               0, Math.PI/2, 0, Math.PI/2);
 
@@ -46,7 +47,8 @@ var Sector = function(color, id) {
     var sectorOutlineMat = new THREE.MeshLambertMaterial({ color: color });
 
     // Create the outline; bottom
-    var sectorOutline1Geom = new THREE.SphereGeometry(511, sectorSegments, 1,
+    var sectorOutline1Geom = new THREE.SphereGeometry(GLOBE_RADIUS+11,
+                                                      sectorSegments, 1,
                                                       0, Math.PI/2,
                                                       (0.5-outlineWidth)*Math.PI,
                                                       outlineWidth*Math.PI);
@@ -80,7 +82,8 @@ Sector.prototype.constructor = Sector;
 var Globe = function() {
 
     // Create the surface.
-    var globeGeom = new THREE.SphereGeometry(500, GLOBE_SEGMENTS, GLOBE_SEGMENTS,
+    var globeGeom = new THREE.SphereGeometry(GLOBE_RADIUS,
+                                             GLOBE_SEGMENTS, GLOBE_SEGMENTS,
                                              0, 2*Math.PI, 
                                              0, Math.PI);
     var globeMat  = new THREE.MeshLambertMaterial({ color: "#0000FF" });
