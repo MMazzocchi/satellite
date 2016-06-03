@@ -15,13 +15,6 @@ var GlobeScene = function() {
     sun.position.y = 5000;
     sun.position.z = 3000;
     this.scene.add(sun);
-
-    var curve = new THREE.EllipseCurve(0, 0, 650, 650, 0, 2*Math.PI, false, 0);
-    var path = new THREE.Path(curve.getPoints(50));
-    var geom = path.createPointsGeometry(50);
-    var material = new THREE.LineBasicMaterial({color:"#FFFF00"});
-    var ellipse = new THREE.Line(geom, material);
-    this.scene.add(ellipse);
 };
 
 GlobeScene.prototype = Object.create(Scene.prototype);

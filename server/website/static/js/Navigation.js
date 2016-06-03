@@ -1,6 +1,7 @@
 var Navigation = function() {
     this.homeView = new HomeView();
     this.stockView = new StockView();
+    this.jobsView = new JobsView();
 };
 
 Navigation.prototype.setCurrentView = function(newView) {
@@ -69,4 +70,8 @@ Navigation.prototype.loadStockView = function(satellite_id, update) {
     } else {
         gotoStockView();
     }
+}
+
+Navigation.prototype.loadJobsView = function() {
+    this.setCurrentView(this.jobsView);
 }
