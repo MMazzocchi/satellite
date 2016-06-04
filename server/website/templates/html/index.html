@@ -83,8 +83,8 @@
               <p id="noSatHelpText">You haven't purchased a satellite yet! Head
                  over to the Build screen and build a satellite!</p>
             </div>
-            <div id="jobsMenu" class="menu-container">
-
+            <div id="jobsMenu" class="btn-group-vertical menu-container"
+                 aria-label="..." role="group">
             </div>
           </div>
         </div>
@@ -154,7 +154,7 @@
     <script src="{% static 'js/Scenes/TitleScene.js' %}"></script>
     <script src="{% static 'js/Views/View.js' %}"></script>
     <script src="{% static 'js/Views/HomeView.js' %}"></script>
-    <script src="{% static 'js/Views/JobsView.js' %}"></script>
+    <script src="{% url 'jobs_js_view' %}"></script>
     <script src="{% url 'stock_view' %}"></script>
     <script src="{% url 'build_view' %}"></script>
     <script src="{% static 'js/Navigation.js' %}"></script>

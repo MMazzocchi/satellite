@@ -29,6 +29,12 @@ def stock_view(request):
 
     return render(request, "js/StockView.js", context)
 
+def jobs_js_view(request):
+    context = {
+    }
+
+    return render(request, "js/JobsView.js", context)
+
 @login_required
 def satellite_view(request, num):
     satellites = request.user.siteuser.satellite_set
