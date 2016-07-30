@@ -305,7 +305,8 @@ Satellite.prototype.replaceThrusters = function(newThrusters) {
 };
 
 Satellite.prototype.getCost = function() {
-    return this.commDish.cost +
+    return this.chassis.cost +
+           this.commDish.cost +
            this.batteries.cost +
            this.storage.cost +
            this.fuelTank.cost +
@@ -313,4 +314,20 @@ Satellite.prototype.getCost = function() {
            this.sensors.cost +
            this.solarPanels.cost +
            this.thrusters.cost;
+}
+
+Satellite.prototype.getTemplateData = function() {
+    var data = {
+        chassisType:     this.chassis.type,
+        commDishType:    this.commDish.type,
+        batteriesType:   this.batteries.type,
+        storageType:     this.storage.type,
+        fuelTankType:    this.fuelTank.type,
+        processorType:   this.processor.type,
+        sensorsType:     this.sensors.type,
+        solarPanelsType: this.solarPanels.type,
+        thrustersType:   this.thrusters.type
+    };
+
+    return data;
 }

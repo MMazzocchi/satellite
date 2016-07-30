@@ -29,6 +29,6 @@ JobsView.prototype.setupMenu = function() {
 
     // Fill the jobs menu with items created from the template
     $("#jobsMenu").loadTemplate(
-      "{% static 'jquery_templates/job_menu_item_template.html' %}",
+      "{% static 'jquery_templates/job_menu_item.html' %}",
       this.jobs);
 };

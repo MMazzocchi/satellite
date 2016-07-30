@@ -1,3 +1,5 @@
+{% load staticfiles %}
+
 var StockView = function() {
     View.call(this);
 
@@ -29,31 +31,11 @@ StockView.prototype.updateStatusPane = function() {
 
     var statusPane = $('#statusPane')[0];
     if(statusPane.scroll) statusPane.scroll(0,0);
-    var stockStatus = $('#stockStatus')[0];
 
-    if(this.satellite != undefined) {
-        var html = "";
-        html += "<div class=\"container-fluid\">\n";
-        html += "  <div class=\"row\"\n>";
-        html += "    <div class=\"col-xs-6 table-cell\"><strong>Component</strong></div>\n";
-        html += "    <div class=\"col-xs-6 table-cell\"><strong>Type</strong></div>\n";
-        html += "  </div>\n";
-        {% for type in component_types %}
-        html += "  <div class=\"row\"\n>";
-        html += "    <div class=\"col-xs-6 table-cell\">";
-        html += "{{ type.display_name }}";
-        html += "    </div>\n";
-        html += "    <div class=\"col-xs-6 table-cell\">";
-        html += this.satellite.{{ type.name }}.type;
-        html += "    </div>\n";
-        html += "  </div>\n";
-        {% endfor %}
-        html += "  <div class=\"row\"\n>";
-        html += "    <div class=\"col-xs-13 divider\"></div>\n";
-        html += "  </div>\n";
-        html += "</div>\n";
-    }
-    stockStatus.innerHTML = html;
+    // Create the table from a jQuery template
+    $("#stockStatus").loadTemplate(
+      "{% static 'jquery_templates/stock_component_table.html' %}",
+      this.satellite.getTemplateData());
 };
 
 StockView.prototype.showSatellite = function(satelliteId) {
