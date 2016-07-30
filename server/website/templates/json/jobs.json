@@ -1,18 +1,42 @@
+{% load staticfiles %}
+
 {
-    {% if valid %}
-    "valid": true,
-    "jobs": [
-        {% for job in jobs %}
-        {
-          "id":    {{ job.id }},
-          "theta": {{ job.theta }},
-          "phi":   {{ job.phi }},
-          "type":  {{job.type }}
-        }
-        {% if not forloop.last %},{% endif %}
-        {% endfor %}
-    ]
-    {% else %}
-    "valid": false
-    {% endif %}
+  {% if valid %}
+  "valid": true,
+  "jobs": [
+    {% for job in jobs %}
+    {
+      "id":    {{ job.id }},
+      "theta": {{ job.theta }},
+      "phi":   {{ job.phi }},
+      "type":  {{job.type }},
+
+      {% comment %}
+        The following data is for the job menu template element; therefore
+        the keys should NOT be changed unless the template is changed too.
+      {% endcomment %}
+                    
+      {% if job.type == 1 %}
+      "jobTypeIcon": "{% static 'images/commercial.png' %}",
+      "jobType":     "Commercial"
+      {% elif job.type == 2 %}
+      "jobTypeIcon": "{% static 'images/criminal.png' %}",
+      "jobType":     "Criminal"
+      {% elif job.type == 3 %}
+      "jobTypeIcon": "{% static 'images/government.png' %}",
+      "jobType":     "Government"
+      {% elif job.type == 4 %}
+      "jobTypeIcon": "{% static 'images/non_profit.png' %}",
+      "jobType":     "Non-Profit"
+      {% elif job.type == 5 %}
+      "jobTypeIcon": "{% static 'images/science.png' %}",
+      "jobType":     "Science"
+      {% endif %}
+    }
+    {% if not forloop.last %},{% endif %}
+    {% endfor %}
+  ]
+  {% else %}
+  "valid": false
+  {% endif %}
 }
