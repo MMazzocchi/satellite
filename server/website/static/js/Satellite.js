@@ -318,6 +318,7 @@ Satellite.prototype.getCost = function() {
 
 Satellite.prototype.getTemplateData = function() {
     var data = {
+        // Type data
         chassisType:     this.chassis.type,
         commDishType:    this.commDish.type,
         batteriesType:   this.batteries.type,
@@ -326,7 +327,20 @@ Satellite.prototype.getTemplateData = function() {
         processorType:   this.processor.type,
         sensorsType:     this.sensors.type,
         solarPanelsType: this.solarPanels.type,
-        thrustersType:   this.thrusters.type
+        thrustersType:   this.thrusters.type,
+
+        // Cost data
+        chassisCost:     this.chassis.cost,
+        commDishCost:    this.commDish.cost,
+        batteriesCost:   this.batteries.cost,
+        storageCost:     this.storage.cost,
+        fuelTankCost:    this.fuelTank.cost,
+        processorCost:   this.processor.cost,
+        sensorsCost:     this.sensors.cost,
+        solarPanelsCost: this.solarPanels.cost,
+        thrustersCost:   this.thrusters.cost,
+
+        totalCost:       this.getCost()
     };
 
     return data;

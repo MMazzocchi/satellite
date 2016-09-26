@@ -1,0 +1,127 @@
+<div class="container-fluid">
+
+  <!-- HEADER ROW -->
+  <div class="row">
+    <div class="col-xs-9 table-cell"><strong>Component</strong></div>
+    <div class="col-xs-3 table-cell"><strong>Cost</strong></div>
+  </div>
+
+  <div class="row">
+    <div class="col-xs-9 table-cell">
+      <span data-content="chassisType"></span> Chassis
+    </div>
+    <div class="col-xs-3 table-cell">
+      <span class="glyphicon glyphicon-minus-sign coin" aria-hidden="true"></span>
+      <span data-content="chassisCost"></span>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-xs-9 table-cell">
+      <span data-content="commDishType"></span> Comm Dish
+    </div>
+    <div class="col-xs-3 table-cell">
+      <span class="glyphicon glyphicon-minus-sign coin" aria-hidden="true"></span>
+      <span data-content="commDishCost"></span>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-xs-9 table-cell">
+      <span data-content="batteriesType"></span> Batteries
+    </div>
+    <div class="col-xs-3 table-cell">
+      <span class="glyphicon glyphicon-minus-sign coin" aria-hidden="true"></span>
+      <span data-content="batteriesCost"></span>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-xs-9 table-cell">
+      <span data-content="solarPanelsType"></span> Solar Panels
+    </div>
+    <div class="col-xs-3 table-cell">
+      <span class="glyphicon glyphicon-minus-sign coin" aria-hidden="true"></span>
+      <span data-content="solarPanelsCost"></span>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-xs-9 table-cell">
+      <span data-content="storageType"></span> Storage
+    </div>
+    <div class="col-xs-3 table-cell">
+      <span class="glyphicon glyphicon-minus-sign coin" aria-hidden="true"></span>
+      <span data-content="storageCost"></span>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-xs-9 table-cell">
+      <span data-content="sensorsType"></span> Sensors
+    </div>
+    <div class="col-xs-3 table-cell">
+      <span class="glyphicon glyphicon-minus-sign coin" aria-hidden="true"></span>
+      <span data-content="sensorsCost"></span>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-xs-9 table-cell">
+      <span data-content="processorType"></span> Processor
+    </div>
+    <div class="col-xs-3 table-cell">
+      <span class="glyphicon glyphicon-minus-sign coin" aria-hidden="true"></span>
+      <span data-content="processorCost"></span>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-xs-9 table-cell">
+      <span data-content="fuelTankType"></span> Fuel Tank
+    </div>
+    <div class="col-xs-3 table-cell">
+      <span class="glyphicon glyphicon-minus-sign coin" aria-hidden="true"></span>
+      <span data-content="fuelTankCost"></span>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-xs-9 table-cell">
+      <span data-content="thrustersType"></span> Thrusters
+    </div>
+    <div class="col-xs-3 table-cell">
+      <span class="glyphicon glyphicon-minus-sign coin" aria-hidden="true"></span>
+      <span data-content="thrustersCost"></span>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-xs-13 divider"></div>
+  </div>
+
+<!-- TOTAL ROW -->
+  <div class="row">
+    <div class="col-xs-9 table-cell">
+      <strong>Total:</strong>
+    </div>
+    <div class="col-xs-3 table-cell">
+      <span class="glyphicon glyphicon-minus-sign coin" aria-hidden="true"></span>
+      <span data-content="totalCost"></span>
+    </div>
+  </div>
+  <div class="row">
+  <input id="new_name" type="text" class="form-control"
+         placeholder="Satellite Name"/>
+  </div>
+  {% csrf_token %}
+  <div class="row">
+    <button id="purchaseButton" class="btn btn-default">Purchase</button>
+  </div>
+  <div id="error-box" class="alert alert-danger row" 
+       role="alert" hidden="true">
+    <p><strong>There was a problem with your purchase!</strong></p>
+    <p id="error-msg"></p>
+  </div>
+</div>
+ 
