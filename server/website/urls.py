@@ -13,4 +13,5 @@ urlpatterns = [
     url(r'^purchase/?$', views.purchase_view, name='purchase_view'),
     url(r'^user/?$', views.user_view, name='user_view'),
     url(r'^jobs/?$', views.jobs_view, name='jobs_view'),
+    url(r'^template/(?P<title>[^ ]+)$', views.template_view, name='template_view'),
 ]

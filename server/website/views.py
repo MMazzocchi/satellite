@@ -35,6 +35,9 @@ def jobs_js_view(request):
 
     return render(request, "js/JobsView.js", context)
 
+def template_view(request, title):
+    return render(request, "jquery_templates/"+title)
+
 @login_required
 def satellite_view(request, num):
     satellites = request.user.siteuser.satellite_set

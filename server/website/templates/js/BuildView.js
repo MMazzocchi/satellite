@@ -1,5 +1,3 @@
-{% load staticfiles %}
-
 var BuildView = function() {
     View.call(this);
 
@@ -88,65 +86,20 @@ BuildView.prototype.showTotal = function() {
     var statusPane = $('#statusPane')[0];
     if(statusPane.scroll) statusPane.scroll(0,0);
 
+    var thisView = this;
+
     // Create the table from a jQuery template
     $("#buildStatus").loadTemplate(
-      "{% static 'jquery_templates/build_component_table.html' %}",
-      this.scene.satellite.getTemplateData());
+      "template/build_component_table.html",
 
-//    var buildStatus = $('#buildStatus')[0];
-//    var html = "";
-//    var total = 0;
-//    html += "<div class=\"container-fluid\">\n";
-//    html += "  <div class=\"row\"\n>";
-//    html += "    <div class=\"col-xs-9 table-cell\"><strong>Component</strong></div>\n";
-//    html += "    <div class=\"col-xs-3 table-cell\"><strong>Cost</strong></div>\n";
-//    html += "  </div>\n";
-//    {% for type in component_types %}
-//    html += "  <div class=\"row\"\n>";
-//    html += "    <div class=\"col-xs-9 table-cell\">";
-//    html += this.scene.satellite.{{ type.name }}.name;
-//    html += "    </div>\n";
-//    html += "    <div class=\"col-xs-3 table-cell\">";
-//    html += "      <span class=\"glyphicon glyphicon-minus-sign coin\" "+
-//            "aria-hidden=\"true\"></span>\n";
-//    html += this.scene.satellite.{{ type.name }}.cost;
-//    total += this.scene.satellite.{{ type.name }}.cost;
-//    html += "    </div>\n";
-//    html += "  </div>\n";
-//    {% endfor %}
-//    html += "  <div class=\"row\">\n";
-//    html += "    <div class=\"col-xs-13 divider\"></div>\n";
-//    html += "  </div>\n";
-//    html += "  <div class=\"row\"\n>";
-//    html += "    <div class=\"col-xs-9 table-cell\">\n";
-//    html += "      <strong>Total:</strong>\n";
-//    html += "    </div>\n";
-//    html += "    <div class=\"col-xs-3 table-cell\">"
-//    html += "      <span class=\"glyphicon glyphicon-minus-sign coin\" "+
-//            "            aria-hidden=\"true\"></span>\n";
-//    html += total+"</div>\n";
-//    html += "  </div>\n";
-//    html += "  <div class=\"row\">\n";
-//    html += "  <input id=\"new_name\" type=\"text\" class=\"form-control\""+
-//            "        placeholder=\"Satellite Name\"/>\n";
-//    html += "  </div>\n";
-//    html += "  {% csrf_token %}\n";
-//    html += "  <div class=\"row\">\n";
-//    html += "    <button id=\"purchaseButton\" class=\"btn btn-default\">"+
-//            "Purchase</button>\n";
-//    html += "  </div>\n";
-//    html += "  <div id=\"error-box\" class=\"alert alert-danger row\" ";
-//    html += "       role=\"alert\" hidden=\"true\">\n";
-//    html += "    <p><strong>There was a problem with your purchase!</strong></p>\n";
-//    html += "    <p id=\"error-msg\"></p>\n";
-//    html += "  </div>\n";
-//    html += "</div>\n";
-// 
-//    buildStatus.innerHTML = html;
+        this.scene.satellite.getTemplateData(),
 
-    var thisView = this;
-    $('#purchaseButton').click(function() {
-        thisView.purchase();
+        // On complete, assign the purchase button a function
+        { "complete": function() {
+            $('#purchaseButton').click(function() {
+                thisView.purchase();
+            });
+        }
     });
 }
 
