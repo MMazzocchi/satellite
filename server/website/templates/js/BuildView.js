@@ -1,3 +1,5 @@
+{% load staticfiles %}
+
 var BuildView = function() {
     View.call(this);
 
@@ -90,7 +92,7 @@ BuildView.prototype.showTotal = function() {
 
     // Create the table from a jQuery template
     $("#buildStatus").loadTemplate(
-      "template/build_component_table.html",
+        "template/build_component_table.html",
 
         this.scene.satellite.getTemplateData(),
 
@@ -106,26 +108,31 @@ BuildView.prototype.showTotal = function() {
 BuildView.prototype.updateStatusPane = function(component) {
     var statusPane = $('#statusPane')[0];
     if(statusPane.scroll) statusPane.scroll(0,0);
-    var buildStatus = $('#buildStatus')[0];
 
     var html = "";
-    html += "<h4>"+component.name+"</h4>";
-    html += "<p>"+component.description+"</p>";
     for(var metric in component.metrics) {
         html += "<h5>"+metric+"</h5>";
         html += "<meter min=\"0\" max=\"5\" value=\""+
                 component.metrics[metric]+"\" class=\"meter\"></meter>"+
                 component.metrics[metric];
     }
-    html += "<div class=\"divider\"></div>";
-    html += "<button id=\"totalButton\">See Total</button>";
-
-    buildStatus.innerHTML = html;
 
     var thisView = this;
-    $('#totalButton').click(function() {
-        thisView.showTotal();
+
+    $('#buildStatus').loadTemplate(
+        "{% static 'jquery_templates/component_status.html' %}",
+
+        component,
+
+        // On complete, assign the purchase button a function
+        { "complete": function() {
+            $('#metricList')[0].innerHTML = html;
+            $('#totalButton').click(function() {
+                thisView.showTotal();
+            });
+        }
     });
+
 };
 
 BuildView.prototype.setupMenu = function() {
