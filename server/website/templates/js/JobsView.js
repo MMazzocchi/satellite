@@ -34,15 +34,15 @@ JobsView.prototype.setupMenu = function() {
 
     // Fill the jobs menu with items created from the template
     $("#jobsMenu").loadTemplate(
-      "{% static 'jquery_templates/job_menu_item.html' %}",
+        "{% static 'jquery_templates/job_menu_item.html' %}",
 
-      this.jobList,
+        this.jobList,
 
-      { "complete": function() {
-              $('.jobs-btn').click(function(e) {
-                  var id = e.currentTarget.children[2].innerHTML;
-                  thisView.scene.selectJob(id);
-              });
-          }
-      });
+        { "complete": function() {
+            $('.jobs-btn').click(function(e) {
+                var id = e.currentTarget.children[2].innerHTML;
+                thisView.scene.selectJob(id);
+            });
+        }}
+    );
 };
