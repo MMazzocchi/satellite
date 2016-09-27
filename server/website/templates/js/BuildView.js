@@ -109,12 +109,12 @@ BuildView.prototype.updateStatusPane = function(component) {
     var statusPane = $('#statusPane')[0];
     if(statusPane.scroll) statusPane.scroll(0,0);
 
-    var html = "";
+    var metrics = [];
     for(var metric in component.metrics) {
-        html += "<h5>"+metric+"</h5>";
-        html += "<meter min=\"0\" max=\"5\" value=\""+
-                component.metrics[metric]+"\" class=\"meter\"></meter>"+
-                component.metrics[metric];
+        metrics.push({
+            name:  metric,
+            value: component.metrics[metric]
+        });
     }
 
     var thisView = this;
@@ -124,15 +124,19 @@ BuildView.prototype.updateStatusPane = function(component) {
 
         component,
 
-        // On complete, assign the purchase button a function
+        // On complete, template the metric list, and assign the purchase 
+        // button a function
         { "complete": function() {
-            $('#metricList')[0].innerHTML = html;
+
+            $('#metricList').loadTemplate(
+                "{% static 'jquery_templates/metric_item.html' %}",
+                metrics);
+
             $('#totalButton').click(function() {
                 thisView.showTotal();
             });
         }
     });
-
 };
 
 BuildView.prototype.setupMenu = function() {
