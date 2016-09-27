@@ -6,10 +6,11 @@
   "jobs": [
     {% for job in jobs %}
     {
-      "id":    {{ job.id }},
-      "theta": {{ job.theta }},
-      "phi":   {{ job.phi }},
-      "type":  {{job.type }},
+      "id":      {{ job.id }},
+      "theta":   {{ job.theta }},
+      "phi":     {{ job.phi }},
+      "type":    {{ job.type }},
+      "payment": {{ job.payment }},
 
       {% comment %}
         The following data is for the job menu template element; therefore

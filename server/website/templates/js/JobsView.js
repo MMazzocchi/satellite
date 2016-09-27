@@ -42,6 +42,13 @@ JobsView.prototype.setupMenu = function() {
             $('.jobs-btn').click(function(e) {
                 var id = e.currentTarget.children[2].innerHTML;
                 thisView.scene.selectJob(id);
+
+                var job = thisView.jobs[id];
+                console.log(job);
+                $("#jobsStatus").loadTemplate(
+                    "{% static 'jquery_templates/job_status.html' %}",
+
+                    job);
             });
         }}
     );
