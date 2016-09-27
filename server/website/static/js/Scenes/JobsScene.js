@@ -4,6 +4,8 @@ var JobsScene = function() {
 
     this.jobs = {};
     this.count = 0;
+
+    this.selectedJob = undefined;
 };
 
 JobsScene.prototype = Object.create(GlobeScene.prototype);
@@ -26,7 +28,8 @@ JobsScene.prototype.addJob = function(job) {
     this.globe.add(indicator);
 
     this.jobs[job.id] = {
-        indicator: indicator
+        indicator: indicator,
+        data:      job
     };
 };
 
@@ -40,4 +43,14 @@ JobsScene.prototype.step = function() {
         }
     }
     this.count++;
+};
+
+JobsScene.prototype.selectJob = function(id) {
+    if(this.selectedJob != undefined) {
+        this.selectedJob.indicator.material.color.g = 1;
+    }
+
+    this.selectedJob = this.jobs[id];
+    var indicator = this.selectedJob.indicator;
+    indicator.material.color.g = 0;
 };
