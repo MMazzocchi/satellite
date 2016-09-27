@@ -24,11 +24,18 @@ JobsView.prototype.constructor = JobsView;
 JobsView.prototype.setupMenu = function() {
     var statusPane = $('#statusPane')[0];
     if(statusPane.scroll) statusPane.scroll(0,0);
-    var jobsMenu = $('#jobsMenu')[0];
-    var jobsStatus = $('#jobsStatus')[0];
 
     // Fill the jobs menu with items created from the template
     $("#jobsMenu").loadTemplate(
       "{% static 'jquery_templates/job_menu_item.html' %}",
-      this.jobs);
+
+      this.jobs,
+
+      { "complete": function() {
+              $('.jobs-btn').click(function(e) {
+                  var id = e.currentTarget.children[2].innerHTML;
+                  
+              });
+          }
+      });
 };
