@@ -11,6 +11,8 @@
       "phi":     {{ job.phi }},
       "type":    {{ job.type }},
       "payment": {{ job.payment }},
+      "speed":   {{ job.required_speed }},
+      "space":   {{ job.required_space }},
 
       {% comment %}
         The following data is for the job menu template element; therefore

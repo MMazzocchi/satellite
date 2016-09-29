@@ -59,6 +59,11 @@ class Job(models.Model):
     type = models.PositiveSmallIntegerField(choices=Types.type_choices)
     payment = models.PositiveIntegerField()
 
+    required_space = models.DecimalField(max_digits=2, decimal_places=1,
+                                         default=2.5)
+    required_speed = models.DecimalField(max_digits=2, decimal_places=1, 
+                                         default=2.5)
+
     def __str__(self):
         return self.user.user.username + " / " + \
                self.Types.getTypeStr(self.Types.type_choices, self.type)
