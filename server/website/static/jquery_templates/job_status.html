@@ -7,11 +7,27 @@
 
 <div class="container-fluid">
   <h5>Required Processor Speed</h5>
-  <meter min="0" max="5" data-value="speed" class="meter"></meter>
+
+  <svg width="70" height="14">
+    <rect class="meter-bg" x="1" y="1" width="68" height="12"></rect>
+    <rect class="meter-fill-green" x="0" y="0" height="12"
+          data-template-bind='[{"attribute": "width", "value": "speed"}]'
+          transform="scale(13.6, 1)"></rect>
+    <rect class="meter-border" x="1" y="1" width="68" height="12"></rect>
+  </svg>
+
   <span data-content="speed"></span> 
 
   <h5>Required Storage Space</h5>
-  <meter min="0" max="5" data-value="space" class="meter"></meter>
+
+  <svg width="70" height="14">
+    <rect class="meter-bg" x="1" y="1" width="68" height="12"></rect>
+    <rect class="meter-fill-green" x="0" y="0" height="12"
+          data-template-bind='[{"attribute": "width", "value": "space"}]'
+          transform="scale(13.6, 1)"></rect>
+    <rect class="meter-border" x="1" y="1" width="68" height="12"></rect>
+  </svg>
+
   <span data-content="space"></span> 
 
   <div class="divider"></div>
