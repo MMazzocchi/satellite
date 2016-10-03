@@ -8,11 +8,11 @@
 <div class="container-fluid">
   <h5>Required Processor Speed</h5>
 
-  <svg width="70" height="14">
+  <svg width="70" height="14" class="meter">
     <rect class="meter-bg" x="1" y="1" width="68" height="12"></rect>
     <rect class="meter-fill-green" x="0" y="0" height="12"
           data-template-bind='[{"attribute": "width", "value": "speed"}]'
-          transform="scale(13.6, 1)"></rect>
+          transform="translate(1, 1) scale(13.6, 1)"></rect>
     <rect class="meter-border" x="1" y="1" width="68" height="12"></rect>
   </svg>
 
@@ -20,11 +20,11 @@
 
   <h5>Required Storage Space</h5>
 
-  <svg width="70" height="14">
+  <svg width="70" height="14" class="meter">
     <rect class="meter-bg" x="1" y="1" width="68" height="12"></rect>
     <rect class="meter-fill-green" x="0" y="0" height="12"
           data-template-bind='[{"attribute": "width", "value": "space"}]'
-          transform="scale(13.6, 1)"></rect>
+          transform="translate(1,1) scale(13.6, 1)"></rect>
     <rect class="meter-border" x="1" y="1" width="68" height="12"></rect>
   </svg>
 

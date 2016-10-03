@@ -107,3 +107,7 @@ body {
     stroke-width: 2;
     fill-opacity: 0.0;
 }
+
+.meter-top .meter-fill-green {
+  width: inherit;
+}
