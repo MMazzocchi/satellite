@@ -46,7 +46,7 @@ JobsView.prototype.setupMenu = function() {
                 var job = thisView.jobs[id];
                 console.log(job);
                 $("#jobsStatus").loadTemplate(
-                    "{% static 'jquery_templates/job_status.html' %}",
+                    "template/job_status.html",
 
                     job);
             });

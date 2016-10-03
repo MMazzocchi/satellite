@@ -27,21 +27,9 @@
   <rect class="meter-border" x="1" y="1" width="68" height="12"></rect>
 </svg>
 
-<span data-content="space"></span> 
+<span data-content="space"></span>
 
-<h5 id="satellite-name" class="satellite-name">No Satellite Selected</h5>
-<div class="btn-group btn-group-justified">
-  <a id="satellite-left" class="btn btn-default" role="button">
-    <span class="glyphicon glyphicon-chevron-left"
-          aria-hidden="true"></span>
-  </a>
-  <a id="satellite-right" class="btn btn-default" role="button">
-    <span class="glyphicon glyphicon-chevron-right"
-          aria-hidden="true"></span>
-  </a>
-</div>
-<p id="noSatHelpText">You haven't purchased a satellite yet! Head
-   over to the Build screen and build a satellite!</p>
+{% include "html/satellite_selector.html" %}
 
 <div class="divider"></div>
 
