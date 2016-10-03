@@ -108,6 +108,6 @@ body {
     fill-opacity: 0.0;
 }
 
-.meter-top .meter-fill-green {
-  width: inherit;
+.satellite-name {
+    text-align: center;
 }
