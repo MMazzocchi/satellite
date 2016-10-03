@@ -9,26 +9,13 @@ var StockView = function() {
     this.menuId = "stockMenu";
     this.statusId = "stockStatus";
 
-    this.satelliteOptions = {
-        index: 0,
-        total: {{ total_satellites }}
-    };
-
     this.satellite = undefined;
-
-    if(this.satelliteOptions.total > 0) {
-        // Show the user's first satellite.
-        this.showSatellite(1);
-    }
 };
 
 StockView.prototype = Object.create(View.prototype);
 StockView.prototype.constructor = StockView;
 
 StockView.prototype.updateStatusPane = function() {
-    $('#satelliteName')[0].innerHTML = this.satellite.name;
-    $('#noSatHelpText')[0].innerHTML = "";
-
     var statusPane = $('#statusPane')[0];
     if(statusPane.scroll) statusPane.scroll(0,0);
 
@@ -38,42 +25,24 @@ StockView.prototype.updateStatusPane = function() {
       this.satellite.getTemplateData());
 };
 
-StockView.prototype.showSatellite = function(satelliteId) {
+StockView.prototype.showSatellite = function(data) {
+
     var thisView = this;
 
-    function callBack(data) {
-        new Satellite(data, function (newSatellite) {
-            thisView.scene.replaceSatellite(newSatellite);
-            thisView.satellite = newSatellite;
-            thisView.updateStatusPane();
-        });
-    }
-
-    cache.getSatelliteData(this.satelliteOptions.index + 1,
-                           callBack);
+    new Satellite(data, function(satellite) {
+        thisView.scene.replaceSatellite(satellite);
+        thisView.satellite = satellite;
+        thisView.updateStatusPane();
+    });
 };
 
 StockView.prototype.setupMenu = function() {
     var thisView = this;
-    $('#satellite-right').unbind("click");
-    $('#satellite-left').unbind("click");
 
-    $('#satellite-right').click(function() {
-        if(thisView.satelliteOptions.total > 0) {
-            thisView.satelliteOptions.index =
-                (thisView.satelliteOptions.index + 1) % 
-                thisView.satelliteOptions.total;
+    // Create a callback function to pass to the selector.
+    function callback(data) {
+        thisView.showSatellite(data);
+    }
 
-            thisView.showSatellite(thisView.satelliteOptions.index);
-        }
-    });
-    $('#satellite-left').click(function() {
-        if(thisView.satelliteOptions.total > 0) {
-            thisView.satelliteOptions.index =
-                (thisView.satelliteOptions.index +
-                 (thisView.satelliteOptions.total - 1)) % 
-                thisView.satelliteOptions.total;
-            thisView.showSatellite(thisView.satelliteOptions.index);
-        }
-    });
+    SatelliteSelector.instatiate(callback);
 };

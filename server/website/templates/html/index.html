@@ -69,19 +69,7 @@
 
             </div>
             <div id="stockMenu" class="menu-container">
-              <h4 id="satelliteName">None!</h4>
-              <div class="btn-group btn-group-justified">
-                <a id="satellite-left" class="btn btn-default" role="button">
-                  <span class="glyphicon glyphicon-chevron-left"
-                        aria-hidden="true"></span>
-                </a>
-                <a id="satellite-right" class="btn btn-default" role="button">
-                  <span class="glyphicon glyphicon-chevron-right"
-                        aria-hidden="true"></span>
-                </a>
-              </div>
-              <p id="noSatHelpText">You haven't purchased a satellite yet! Head
-                 over to the Build screen and build a satellite!</p>
+              {% include "html/satellite_selector.html" %}
             </div>
             <div id="jobsMenu" class="btn-group-vertical menu-container"
                  aria-label="..." role="group">

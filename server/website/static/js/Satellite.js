@@ -34,7 +34,7 @@ var Satellite = function(data, callback) {
 
     this.loaded = 0;
     // This function gets called after each component has loaded. After they've
-    // all checked in (and loaded = 9), the finall callback will be called.
+    // all checked in (and loaded = 9), the final callback will be called.
     function componentCallback() {
         thisSat.loaded++;
         if(thisSat.loaded == 9) {
