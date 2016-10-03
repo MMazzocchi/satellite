@@ -38,17 +38,26 @@ JobsView.prototype.setupMenu = function() {
 
         this.jobList,
 
+        // After we've instatiated the jobs list, attach an event to each
+        // button.
         { "complete": function() {
             $('.jobs-btn').click(function(e) {
+
+                // On click, get the id, and load a template for this job.
                 var id = e.currentTarget.children[2].innerHTML;
                 thisView.scene.selectJob(id);
 
                 var job = thisView.jobs[id];
-                console.log(job);
                 $("#jobsStatus").loadTemplate(
                     "template/job_status.html",
 
-                    job);
+                    job,
+
+                    { "complete": function() {
+                        SatelliteSelector.instatiate(function(data) {
+                            // TODO: Something with this data!
+                        });
+                    }});
             });
         }}
     );

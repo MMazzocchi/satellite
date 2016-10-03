@@ -21,16 +21,22 @@ var SatelliteSelector = {
                 var btns = $( element ).children('.btn-group');
                 var name = $( element ).children('#satellite-name')[0];
                 var help = $( element ).children('#noSatHelpText')[0];
+
                 var selector = SatelliteSelector.selectors[i];
 
-                // The function to call when the data is selected
+                // The function to call when the data is retrieved
                 function satSelected(data) {
                     name.innerHTML = data.name;
                     help.innerHTML = "";
 
                     callback(data);
                 }
-  
+ 
+                // If we have satellites, select the first one.
+                if(numSats > 0) {
+                    cache.getSatelliteData(1, satSelected);
+                }
+ 
                 // On click, advance to the next satellite
                 btns.children('#satellite-right').click(function() {
                     if(selector.total > 0) {
