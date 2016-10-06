@@ -11,7 +11,7 @@ var SatelliteSelector = {
             // For each satellite selector visible, store some data and attach
             // events to the buttons.
             $('.satellite-selector').each(function(i, element) {
-  
+
                 // Create an object to hold data for this particular selector.
                 SatelliteSelector.selectors[i] = {
                     index: 0,

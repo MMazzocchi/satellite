@@ -10,6 +10,7 @@ var JobsView = function() {
 
     this.jobs = {};
     this.jobList = [];
+    this.currentJob = undefined;
 
     var thisView = this;
     cache.getJobs(function(data) {
@@ -25,6 +26,67 @@ var JobsView = function() {
 
 JobsView.prototype = Object.create(View.prototype);
 JobsView.prototype.constructor = JobsView;
+
+JobsView.prototype.selectNewSatellite = function(data) {
+    var speedMeter = $('#speedMeter');
+    var spaceMeter = $('#spaceMeter');
+
+    var jobSpeed = this.currentJob.speed;
+    var jobSpace = this.currentJob.space;
+
+    var processorId = data.components.processor;
+    var storageId = data.components.storage;
+
+    new Satellite(data, function(newSat) {
+        var satSpeed = newSat.processor.metrics.Speed;
+        var satSpace = newSat.storage.metrics.Space;
+
+        // Speed meter
+        var red = speedMeter.children(".meter-fill-red")[0];
+        var blue = speedMeter.children(".meter-fill-blue")[0];
+        var green = speedMeter.children(".meter-fill-green")[0];
+
+        var icon = "";
+
+        if(satSpeed < jobSpeed) {
+            blue.width.baseVal.value = satSpeed;
+            icon = "<span class=\"glyphicon glyphicon-remove\" "+
+                   "aria-hidden=\"true\"></span>";
+        } else {
+            blue.width.baseVal.value = jobSpeed;
+            green.width.baseVal.value = satSpeed;
+
+            icon = "<span class=\"glyphicon glyphicon-ok\" "+
+                   "aria-hidden=\"true\"></span>";
+        }
+
+        $('#speedMeasure')[0].innerHTML = satSpeed + " / " + jobSpeed + " " +
+                                          icon;
+
+        // Space meter
+        var red = spaceMeter.children(".meter-fill-red")[0];
+        var blue = spaceMeter.children(".meter-fill-blue")[0];
+        var green = spaceMeter.children(".meter-fill-green")[0];
+
+        var icon = "";
+
+        if(satSpace < jobSpace) {
+            blue.width.baseVal.value = satSpace;
+
+            icon = "<span class=\"glyphicon glyphicon-remove\" "+
+                   "aria-hidden=\"true\"></span>";
+        } else {
+            blue.width.baseVal.value = jobSpace;
+            green.width.baseVal.value = satSpace;
+
+            icon = "<span class=\"glyphicon glyphicon-ok\" "+
+                   "aria-hidden=\"true\"></span>";
+        }
+
+        $('#spaceMeasure')[0].innerHTML = satSpace + " / " + jobSpace + " " + 
+                                          icon;
+    });
+};
 
 JobsView.prototype.setupMenu = function() {
     var statusPane = $('#statusPane')[0];
@@ -47,15 +109,15 @@ JobsView.prototype.setupMenu = function() {
                 var id = e.currentTarget.children[2].innerHTML;
                 thisView.scene.selectJob(id);
 
-                var job = thisView.jobs[id];
+                thisView.currentJob = thisView.jobs[id];
                 $("#jobsStatus").loadTemplate(
                     "template/job_status.html",
 
-                    job,
+                    thisView.currentJob,
 
                     { "complete": function() {
                         SatelliteSelector.instatiate(function(data) {
-                            // TODO: Something with this data!
+                            thisView.selectNewSatellite(data);
                         });
                     }});
             });

@@ -102,6 +102,15 @@ body {
     fill: #007700;
 }
 
+.meter-fill-red {
+    fill: #BB0000;
+}
+
+
+.meter-fill-blue {
+    fill: #0000BB;
+}
+
 .meter-border {
     stroke: #555555;
     stroke-width: 2;
