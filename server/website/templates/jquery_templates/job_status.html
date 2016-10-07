@@ -5,45 +5,62 @@
 </h4>
 <div class="divider"></div>
 
-<h5>Required Processor Speed</h5>
 
-<svg id="speedMeter" width="70" height="14" class="meter">
-  <rect class="meter-bg" x="1" y="1" width="68" height="12"></rect>
+<div class="container-fluid">
+  <div class="row">
+    <h5>Required Processor Speed</h5>
+  </div>
+  <div class="row">
+    <div class="col-xs-4">
+      <svg id="speedMeter" width="70" height="14" class="meter">
+        <rect class="meter-bg" x="1" y="1" width="68" height="12"></rect>
+      
+        <rect class="meter-fill-green" x="0" y="0" height="12"
+              width="0" transform="translate(1, 1) scale(13.6, 1)"></rect>
+      
+        <rect class="meter-fill-red" x="0" y="0" height="12"
+              data-template-bind='[{"attribute": "width", "value": "speed"}]'
+              transform="translate(1, 1) scale(13.6, 1)"></rect>
+      
+        <rect class="meter-fill-blue" x="0" y="0" height="12"
+              width="0" transform="translate(1, 1) scale(13.6, 1)"></rect>
+      
+        <rect class="meter-border" x="1" y="1" width="68" height="12"></rect>
+      </svg>
+    </div>
+    <div class="col-xs-4">
+      <span id="speedMeasure" data-content="speed"></span> 
+    </div>
+    <div id="speedIcon" class="col-xs-4"></div>
+  </div>
 
-  <rect class="meter-fill-green" x="0" y="0" height="12"
-        width="0" transform="translate(1, 1) scale(13.6, 1)"></rect>
-
-  <rect class="meter-fill-red" x="0" y="0" height="12"
-        data-template-bind='[{"attribute": "width", "value": "speed"}]'
-        transform="translate(1, 1) scale(13.6, 1)"></rect>
-
-  <rect class="meter-fill-blue" x="0" y="0" height="12"
-        width="0" transform="translate(1, 1) scale(13.6, 1)"></rect>
-
-  <rect class="meter-border" x="1" y="1" width="68" height="12"></rect>
-</svg>
-
-<span id="speedMeasure" data-content="speed"></span> 
-
-<h5>Required Storage Space</h5>
-
-<svg id="spaceMeter" width="70" height="14" class="meter">
-  <rect class="meter-bg" x="1" y="1" width="68" height="12"></rect>
-
-  <rect class="meter-fill-green" x="0" y="0" height="12"
-        width="0" transform="translate(1, 1) scale(13.6, 1)"></rect>
-
-  <rect class="meter-fill-red" x="0" y="0" height="12"
-        data-template-bind='[{"attribute": "width", "value": "space"}]'
-        transform="translate(1, 1) scale(13.6, 1)"></rect>
-
-  <rect class="meter-fill-blue" x="0" y="0" height="12"
-        width="0" transform="translate(1, 1) scale(13.6, 1)"></rect>
-
-  <rect class="meter-border" x="1" y="1" width="68" height="12"></rect>
-</svg>
-
-<span id="spaceMeasure" data-content="space"></span>
+  <div class="row">
+    <h5>Required Storage Space</h5>
+  </div>
+  <div class="row">
+    <div class="col-xs-4">
+      <svg id="spaceMeter" width="70" height="14" class="meter">
+        <rect class="meter-bg" x="1" y="1" width="68" height="12"></rect>
+      
+        <rect class="meter-fill-green" x="0" y="0" height="12"
+              width="0" transform="translate(1, 1) scale(13.6, 1)"></rect>
+      
+        <rect class="meter-fill-red" x="0" y="0" height="12"
+              data-template-bind='[{"attribute": "width", "value": "space"}]'
+              transform="translate(1, 1) scale(13.6, 1)"></rect>
+      
+        <rect class="meter-fill-blue" x="0" y="0" height="12"
+              width="0" transform="translate(1, 1) scale(13.6, 1)"></rect>
+      
+        <rect class="meter-border" x="1" y="1" width="68" height="12"></rect>
+      </svg>
+    </div>
+    <div class="col-xs-4">
+      <span id="spaceMeasure" data-content="space"></span>
+    </div>
+    <div id="spaceIcon" class="col-xs-4"></div>
+  </div>
+</div>
 
 {% include "html/satellite_selector.html" %}
 

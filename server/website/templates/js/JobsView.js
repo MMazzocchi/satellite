@@ -50,18 +50,19 @@ JobsView.prototype.selectNewSatellite = function(data) {
 
         if(satSpeed < jobSpeed) {
             blue.width.baseVal.value = satSpeed;
-            icon = "<span class=\"glyphicon glyphicon-remove\" "+
+            icon = "<span class=\"glyphicon glyphicon-remove error-text\" "+
                    "aria-hidden=\"true\"></span>";
         } else {
             blue.width.baseVal.value = jobSpeed;
             green.width.baseVal.value = satSpeed;
 
-            icon = "<span class=\"glyphicon glyphicon-ok\" "+
+            icon = "<span class=\"glyphicon glyphicon-ok success-text\" "+
                    "aria-hidden=\"true\"></span>";
         }
 
-        $('#speedMeasure')[0].innerHTML = satSpeed + " / " + jobSpeed + " " +
-                                          icon;
+        $('#speedMeasure')[0].innerHTML = satSpeed.toFixed(1) + " / " + 
+                                          jobSpeed.toFixed(1);
+        $('#speedIcon')[0].innerHTML = icon;
 
         // Space meter
         var red = spaceMeter.children(".meter-fill-red")[0];
@@ -73,18 +74,19 @@ JobsView.prototype.selectNewSatellite = function(data) {
         if(satSpace < jobSpace) {
             blue.width.baseVal.value = satSpace;
 
-            icon = "<span class=\"glyphicon glyphicon-remove\" "+
+            icon = "<span class=\"glyphicon glyphicon-remove error-text\" "+
                    "aria-hidden=\"true\"></span>";
         } else {
             blue.width.baseVal.value = jobSpace;
             green.width.baseVal.value = satSpace;
 
-            icon = "<span class=\"glyphicon glyphicon-ok\" "+
+            icon = "<span class=\"glyphicon glyphicon-ok success-text\" "+
                    "aria-hidden=\"true\"></span>";
         }
 
-        $('#spaceMeasure')[0].innerHTML = satSpace + " / " + jobSpace + " " + 
-                                          icon;
+        $('#spaceMeasure')[0].innerHTML = satSpace.toFixed(1) + " / " + 
+                                          jobSpace.toFixed(1);
+        $('#spaceIcon')[0].innerHTML = icon;
     });
 };
 

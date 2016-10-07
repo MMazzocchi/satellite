@@ -120,3 +120,11 @@ body {
 .satellite-selector {
     text-align: center;
 }
+
+.error-text {
+    color: #BB0000;
+}
+
+.success-text {
+    color: #00BB00;
+}
