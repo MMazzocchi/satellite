@@ -14,6 +14,8 @@
       "speed":   {{ job.required_speed }},
       "space":   {{ job.required_space }},
 
+      "status":  {{ job.status }},
+
       {% comment %}
         The following data is for the job menu template element; therefore
         the keys should NOT be changed unless the template is changed too.
