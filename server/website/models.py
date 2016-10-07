@@ -34,6 +34,28 @@ class Job(models.Model):
     theta = models.DecimalField(default=0, max_digits=6, decimal_places=5)
     phi   = models.DecimalField(default=0, max_digits=6, decimal_places=5)
 
+    class Statuses:
+        NEW         = 1
+        EXPIRED     = 2
+        REJECTED    = 3
+        IN_PROGRESS = 4
+        COMPLETE    = 5
+
+        status_choices = (
+            (NEW,         "New"),
+            (EXPIRED,     "Expired"),
+            (REJECTED,    "Rejected"),
+            (IN_PROGRESS, "In Progress"),
+            (COMPLETE,    "Complete")
+        )
+
+        def getStatusStr(choices, type_id):
+            for t in choices:
+                if type_id in t:
+                    return t[1]
+
+            return ""
+
     class Types:
         COMMERCIAL = 1
         CRIMINAL   = 2
@@ -57,6 +79,8 @@ class Job(models.Model):
             return ""
 
     type = models.PositiveSmallIntegerField(choices=Types.type_choices)
+    status = models.PositiveSmallIntegerField(choices=Statuses.status_choices,
+                                              default=Statuses.NEW)
     payment = models.PositiveIntegerField()
 
     required_space = models.DecimalField(max_digits=2, decimal_places=1,
