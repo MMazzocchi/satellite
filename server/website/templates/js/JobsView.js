@@ -96,6 +96,28 @@ JobsView.prototype.setupMenu = function() {
 
     var thisView = this;
 
+    var openJobs = [];
+    var inProgressJobs = [];
+    var closedJobs = [];
+
+    // Sort the jobs by status
+    for(var i in this.jobList) {
+        var job = this.jobList[i];
+        switch(job.status) }
+            case 1: // New
+                openJobs.push(job);
+                break;
+            case 2: // Expired
+            case 3: // Rejected
+            case 5: // Complete
+                closedjobs.push(job);
+                break;
+            case 4: // In Progress
+                inProgressJobs.push(job);
+                break;
+        }
+    }
+
     // Fill the jobs menu with items created from the template
     $("#jobsMenu").loadTemplate(
         "{% static 'jquery_templates/job_menu_item.html' %}",
