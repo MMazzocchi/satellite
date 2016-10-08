@@ -71,8 +71,46 @@
             <div id="stockMenu" class="menu-container">
               {% include "html/satellite_selector.html" %}
             </div>
-            <div id="jobsMenu" class="btn-group-vertical menu-container"
-                 aria-label="..." role="group">
+            <div id="jobsMenu" class="menu-container btn-group-vertical">
+
+              <!-- Open Jobs -->
+              <button class="btn btn-default" 
+                      type="button" data-toggle="collapse" 
+                      href="#openJobsMenu" aria-expanded="false"
+                      aria-controls="#openJobsMenu">
+                Open Jobs
+              </button>
+              <div id="openJobsMenu"
+                   class="well btn-group-vertical menu-container collapse"
+                   aria-label="..." role="group">
+                None!
+              </div>
+
+              <!-- In Progress Jobs -->
+              <button class="btn btn-default" 
+                      type="button" data-toggle="collapse" 
+                      href="#inProgressJobsMenu" aria-expanded="false"
+                      aria-controls="#inProgressJobsMenu">
+                In Progress Jobs
+              </button>
+              <div id="inProgressJobsMenu"
+                   class="well btn-group-vertical menu-container collapse"
+                   aria-label="..." role="group">
+                None!
+              </div>
+
+              <!-- Closed Jobs -->
+              <button class="btn btn-default" 
+                      type="button" data-toggle="collapse" 
+                      href="#closedJobsMenu" aria-expanded="false"
+                      aria-controls="#closedJobsMenu">
+                Closed Jobs
+              </button>
+              <div id="closedJobsMenu"
+                   class="well btn-group-vertical menu-container collapse"
+                   aria-label="..." role="group">
+                None!
+              </div>
             </div>
           </div>
         </div>

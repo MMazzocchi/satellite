@@ -73,7 +73,7 @@ body {
   text-align: center;
 }
 
-#button-container {
+.button-container {
   text-align: center;
 }
 
@@ -127,4 +127,8 @@ body {
 
 .success-text {
     color: #00BB00;
+}
+
+.hidden-element {
+    display: none;
 }

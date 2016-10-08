@@ -41,6 +41,14 @@ JobsView.prototype.selectNewSatellite = function(data) {
         var satSpeed = newSat.processor.metrics.Speed;
         var satSpace = newSat.storage.metrics.Space;
 
+        var valid = ((satSpeed >= jobSpeed) && (satSpace >= jobSpace));
+
+        if(valid) {
+            $('#assignButton')[0].disabled = false;
+        } else {
+            $('#assignButton')[0].disabled = true;
+        }
+
         // Speed meter
         var red = speedMeter.children(".meter-fill-red")[0];
         var blue = speedMeter.children(".meter-fill-blue")[0];
@@ -103,14 +111,14 @@ JobsView.prototype.setupMenu = function() {
     // Sort the jobs by status
     for(var i in this.jobList) {
         var job = this.jobList[i];
-        switch(job.status) }
+        switch(job.status) {
             case 1: // New
                 openJobs.push(job);
                 break;
             case 2: // Expired
             case 3: // Rejected
             case 5: // Complete
-                closedjobs.push(job);
+                closedJobs.push(job);
                 break;
             case 4: // In Progress
                 inProgressJobs.push(job);
@@ -118,33 +126,60 @@ JobsView.prototype.setupMenu = function() {
         }
     }
 
-    // Fill the jobs menu with items created from the template
-    $("#jobsMenu").loadTemplate(
+    function clickEvent(e) {
+
+        // On click, get the id, and load a template for this job.
+        var id = e.currentTarget.children[2].innerHTML;
+        thisView.scene.selectJob(id);
+
+        thisView.currentJob = thisView.jobs[id];
+        $("#jobsStatus").loadTemplate(
+            "template/job_status.html",
+
+            thisView.currentJob,
+
+            { "complete": function() {
+                if(thisView.currentJob.status == 1) {
+                    $('#satSelector').show();
+                    $('#assignButtonContainer').show();
+
+                    SatelliteSelector.instatiate(function(data) {
+                        thisView.selectNewSatellite(data);
+                    });
+                }
+            }});
+    }
+
+    // Fill the open jobs menu with items created from the template
+    $("#openJobsMenu").loadTemplate(
         "{% static 'jquery_templates/job_menu_item.html' %}",
 
-        this.jobList,
+        openJobs,
 
-        // After we've instatiated the jobs list, attach an event to each
-        // button.
         { "complete": function() {
-            $('.jobs-btn').click(function(e) {
 
-                // On click, get the id, and load a template for this job.
-                var id = e.currentTarget.children[2].innerHTML;
-                thisView.scene.selectJob(id);
+            // Fill the inprogress jobs menu
+            $("#inProgressJobsMenu").loadTemplate(
+                "{% static 'jquery_templates/job_menu_item.html' %}",
 
-                thisView.currentJob = thisView.jobs[id];
-                $("#jobsStatus").loadTemplate(
-                    "template/job_status.html",
+                inProgressJobs,
 
-                    thisView.currentJob,
+                // After we've instatiated the jobs list, attach an event to each
+                // button.
+                { "complete": function() {
 
-                    { "complete": function() {
-                        SatelliteSelector.instatiate(function(data) {
-                            thisView.selectNewSatellite(data);
-                        });
-                    }});
-            });
+                    // Fill the closed jobs menu
+                    $("#closedJobsMenu").loadTemplate(
+                        "{% static 'jquery_templates/job_menu_item.html' %}",
+
+                        closedJobs,
+
+                        { "complete": function() {
+                            $('.jobs-btn').click(clickEvent);
+                        }}
+                    );
+                }}
+            );
         }}
     );
 };

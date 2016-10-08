@@ -5,7 +5,6 @@
 </h4>
 <div class="divider"></div>
 
-
 <div class="container-fluid">
   <div class="row">
     <h5>Required Processor Speed</h5>
@@ -62,7 +61,9 @@
   </div>
 </div>
 
-{% include "html/satellite_selector.html" %}
+<div id="satSelector" class="hidden-element">
+  {% include "html/satellite_selector.html" %}
+</div>
 
 <div class="divider"></div>
 
@@ -75,3 +76,12 @@
     </div>
   </div>
 </div>
+
+<div id="assignButtonContainer" 
+     class="container-fluid button-container hidden-element">
+  <div class="divider"></div>
+  <button id="assignButton" class="btn btn-default" type="button">
+    Assign
+  </button>
+</div>
+
