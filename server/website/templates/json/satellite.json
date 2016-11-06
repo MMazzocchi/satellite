@@ -1,19 +1,23 @@
 {
     {% if valid %}
     "valid": true,
-    "name": "{{ name }}",
+    "name": "{{ satellite.name }}",
     "components": {
-        "chassis":     {{ chassis }},
-        "commDish":    {{ commDish }},
-        "batteries":   {{ batteries }},
-        "solarPanels": {{ solarPanels }},
-        "storage":     {{ storage }},
-        "sensors":     {{ sensors }},
-        "processor":   {{ processor }},
-        "fuelTank":    {{ fuelTank }},
-        "thrusters":   {{ thrusters }}
+        "chassis":     {{ satellite.chassis.id }},
+        "commDish":    {{ satellite.commDish.id }},
+        "batteries":   {{ satellite.batteries.id }},
+        "solarPanels": {{ satellite.solarPanels.id }},
+        "storage":     {{ satellite.storage.id }},
+        "sensors":     {{ satellite.sensors.id }},
+        "processor":   {{ satellite.processor.id }},
+        "fuelTank":    {{ satellite.fuelTank.id }},
+        "thrusters":   {{ satellite.thrusters.id }}
     },
-    "job": {{ job }}
+      {% if satellite.job %}
+    "job": {{ satellite.job.id }}
+      {% else %}
+    "job": -1
+      {% endif %}
     {% else %}
     "valid": false
     {% endif %}
