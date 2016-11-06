@@ -16,6 +16,19 @@
 
       "status":  {{ job.status }},
 
+      {% if job.status == 1 %}
+      "statusText": "Open",
+      {% elif job.status == 2 %}
+      "statusText": "Expired",
+      {% elif job.status == 3 %}
+      "statusText": "Rejected",
+      {% elif job.status == 4 %}
+      "statusText": "In Progress",
+      {% elif job.status == 5 %}
+      "statusText": "Complete",
+      {% endif %}
+    
+
       {% comment %}
         The following data is for the job menu template element; therefore
         the keys should NOT be changed unless the template is changed too.
