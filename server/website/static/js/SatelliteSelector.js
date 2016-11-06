@@ -58,8 +58,8 @@ var SatelliteSelector = {
     },
   
     remove: function() {
-        $('.satellite-right').unbind("click");
-        $('.satellite-left').unbind("click");
+        $('#satellite-right').unbind("click");
+        $('#satellite-left').unbind("click");
     
         this.selectors = {};
     }
