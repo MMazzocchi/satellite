@@ -11,23 +11,6 @@ class SiteUser(models.Model):
     def __str__(self):
         return self.user.get_username()
 
-class Satellite(models.Model):
-    name        = models.CharField(max_length=50)
-    owner       = models.ForeignKey(SiteUser,    on_delete=models.CASCADE)
-
-    chassis     = models.ForeignKey(Chassis,     on_delete=models.PROTECT)
-    commDish    = models.ForeignKey(CommDish,    on_delete=models.PROTECT)
-    batteries   = models.ForeignKey(Batteries,   on_delete=models.PROTECT)
-    solarPanels = models.ForeignKey(SolarPanels, on_delete=models.PROTECT)
-    storage     = models.ForeignKey(Storage,     on_delete=models.PROTECT)
-    sensors     = models.ForeignKey(Sensors,     on_delete=models.PROTECT)
-    processor   = models.ForeignKey(Processor,   on_delete=models.PROTECT)
-    fuelTank    = models.ForeignKey(FuelTank,    on_delete=models.PROTECT)
-    thrusters   = models.ForeignKey(Thrusters,   on_delete=models.PROTECT)
-
-    def __str__(self):
-        return self.name
-
 class Job(models.Model):
     user = models.ForeignKey(SiteUser, on_delete=models.CASCADE)
 
@@ -91,3 +74,23 @@ class Job(models.Model):
     def __str__(self):
         return self.user.user.username + " / " + \
                self.Types.getTypeStr(self.Types.type_choices, self.type)
+
+class Satellite(models.Model):
+    name        = models.CharField(max_length=50)
+    owner       = models.ForeignKey(SiteUser,    on_delete=models.CASCADE)
+
+    chassis     = models.ForeignKey(Chassis,     on_delete=models.PROTECT)
+    commDish    = models.ForeignKey(CommDish,    on_delete=models.PROTECT)
+    batteries   = models.ForeignKey(Batteries,   on_delete=models.PROTECT)
+    solarPanels = models.ForeignKey(SolarPanels, on_delete=models.PROTECT)
+    storage     = models.ForeignKey(Storage,     on_delete=models.PROTECT)
+    sensors     = models.ForeignKey(Sensors,     on_delete=models.PROTECT)
+    processor   = models.ForeignKey(Processor,   on_delete=models.PROTECT)
+    fuelTank    = models.ForeignKey(FuelTank,    on_delete=models.PROTECT)
+    thrusters   = models.ForeignKey(Thrusters,   on_delete=models.PROTECT)
+
+    job         = models.ForeignKey(Job,         on_delete=models.SET_NULL,
+                                    null=True)
+
+    def __str__(self):
+        return self.name

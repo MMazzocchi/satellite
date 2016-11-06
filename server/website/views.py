@@ -48,6 +48,7 @@ def satellite_view(request, num):
     if satellites.count() < int(num):
         context['valid'] = False
     else:
+        # TODO: Fix this
         satellite = satellites.order_by('pk')[int(num)-1]
         context['name']        = satellite.name
         context['chassis']     = satellite.chassis.id
@@ -59,6 +60,10 @@ def satellite_view(request, num):
         context['processor']   = satellite.processor.id
         context['fuelTank']    = satellite.fuelTank.id
         context['thrusters']   = satellite.thrusters.id
+        if satellite.job != None:
+          context['job']         = satellite.job.id
+        else:
+          context['job']         = -1
 
     return render(request, "json/satellite.json", context)
 

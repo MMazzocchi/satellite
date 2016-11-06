@@ -12,7 +12,8 @@
         "processor":   {{ processor }},
         "fuelTank":    {{ fuelTank }},
         "thrusters":   {{ thrusters }}
-    }
+    },
+    "job": {{ job }}
     {% else %}
     "valid": false
     {% endif %}
